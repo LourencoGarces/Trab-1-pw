@@ -20,14 +20,21 @@
     width: 95%;
 }
 
-.logoProfile{
+.iconButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
     width: 10%;
     margin-left: 4%;
 }
 
+.logoProfile{
+    width: 100%;
+}
+
 .logoCard{
-    width: 10%;
-    margin-left: 4%;
+    width: 100%;
 }
 
 .logoMarca{
