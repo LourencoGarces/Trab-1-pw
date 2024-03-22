@@ -42,6 +42,16 @@
     height: 60%;
 }
 
+.LogIn{
+    width: 45%;
+    margin: 1%;
+}
+
+.Register{
+    width: 45%;
+    margin: 1%;
+}
+
 #footer {
     padding-top: 48px;
     width: 100%;
