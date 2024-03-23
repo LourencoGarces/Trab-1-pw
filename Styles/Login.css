@@ -1,12 +1,28 @@
 /*
-Style for h1
+Style for h1 Títulos
 */
 h1 {
-    color: rgb(24, 23, 23);
-    text-align: left;
+  color: #f2a31c; /* Cor do texto laranja escuro */
+  text-align: center;
+  padding: 10px; /* Aumentei o padding para destacar mais */
+  font-family: "Roboto", sans-serif; /* Um tipo de letra mais moderno e sem serifa */
+  font-size: 3.5em; /* Tamanho da letra aumentado para 2.5 vezes o tamanho padrão */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra suave para destacar o texto */
+}/*
+Style for h2 subtítulos
+*/
+  h2 {
+    color: rgb(84, 141, 233);
+    text-align: center;
     padding: 5px;
+    font-size: 2.5em; /* Tamanho da letra aumentado para 2.5 vezes o tamanho padrão */
     font-family: "Times New Roman", Times, serif;
   }
+  /*
+Style for h3 subtítulos menores
+*/
+
+
   /*
   Style for img
   */
