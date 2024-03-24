@@ -19,5 +19,7 @@ function redirectToRegister() {
 // Adds an event listener for the Log In button
 document.querySelector('.LogIn').addEventListener('click', redirectToLogin);
 
-// Adds an event listener for the Register button
-document.querySelector('.Register').addEventListener('click', redirectToRegister);
+// Adds an event listener for the sidebar toggle button
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+    document.getElementById('sidebar').classList.toggle('active');
+}); 
