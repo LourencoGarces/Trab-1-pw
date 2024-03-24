@@ -1,0 +1,6 @@
+Mano já meti no git
+pega e tenta "acabar" o log in e o register, e tenta usar o js para dar interação aos botões 
+podes ver no que eu fiz no index como exemplo
+Quando acabares diz que eu pego daí para fazer mais coisas como a barra da esquerda e a página dos produtos
+e tenta pegar na nav do index e meter em ambas as paginas de login e register
+ao inves de usar o botão back clicaremos no titulo e volta para o index page
