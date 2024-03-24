@@ -144,16 +144,6 @@
     margin: 1%;
 }
 
-/* Styles for footer */
-#footer {
-    /* Add padding to top */
-    padding-top: 48px;
-    /* Set width to 100% */
-    width: 100%;
-    /* Hide overflow */
-    overflow: hidden;
-} 
-
 /* Styling for the card container */
 .card {
     width: 200px; /* Set width */
@@ -201,3 +191,13 @@
 .card:hover .back {
     opacity: 1; /* Show the back side on hover */
 }
+
+/* Styles for footer */
+#footer {
+    /* Add padding to top */
+    padding-top: 48px;
+    /* Set width to 100% */
+    width: 100%;
+    /* Hide overflow */
+    overflow: hidden;
+} 
