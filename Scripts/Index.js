@@ -19,5 +19,26 @@ function redirectToRegister() {
 // Adds an event listener for the Log In button
 document.querySelector('.LogIn').addEventListener('click', redirectToLogin);
 
-// Adds an event listener for the Register button
-document.querySelector('.Register').addEventListener('click', redirectToRegister);
+// Adds an event listener for the sidebar toggle button
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+    // Toggle the 'active' class of the sidebar to show it
+    document.getElementById('sidebar').classList.toggle('active');
+}); 
+
+// Function to close the sidebar
+function closeSidebar() {
+    // Check if the sidebar is active
+    if (document.getElementById('sidebar').classList.contains('active')) {
+        // If sidebar is active, remove the 'active' class to hide it
+        document.getElementById('sidebar').classList.remove('active');
+    }
+}
+
+// Event listener to handle clicks outside of the sidebar
+document.body.addEventListener('click', function(event) {
+    // Check if the clicked element is not inside the sidebar or the sidebar toggle button
+    if (!event.target.closest('#sidebar') && !event.target.closest('#sidebarToggle')) {
+        // If clicked outside of the sidebar, close the sidebar
+        closeSidebar();
+    }
+});
