@@ -1,4 +1,141 @@
-/*
+/* Sidebar Styles */
+.sidebar {
+  /* Set sidebar height to full height of the viewport */
+  height: 100%;
+  /* Set sidebar width */
+  width: 250px;
+  /* Fix the sidebar position */
+  position: fixed;
+  /* Position sidebar at the top-left corner of the viewport */
+  top: 0;
+  left: -250px; /* Initially hide sidebar by positioning it outside the viewport */
+  /* Set background color */
+  background-color: #333;
+  /* Hide horizontal overflow content */
+  overflow-x: hidden;
+  /* Smooth transition effect for sidebar */
+  transition: 0.5s;
+  /* Add padding to top to avoid overlapping with fixed navbar */
+  padding-top: 60px;
+  /* Ensure the sidebar appears above other content */
+  z-index: 1000;
+}
+  
+/* Sidebar link styles */
+.sidebar a {
+  /* Add padding to sidebar links */
+  padding: 10px 15px;
+  /* Remove default link decoration */
+  text-decoration: none;
+  /* Set font size */
+  font-size: 20px;
+  /* Set text color */
+  color: white;
+  /* Display links as block elements */
+  display: block;
+  /* Smooth transition effect for links */
+  transition: 0.3s;
+}
+  
+/* Sidebar link hover effect */
+.sidebar a:hover {
+  /* Change background color on hover */
+  background-color: #7e3f3f;
+}
+  
+/* Show sidebar when active class is applied */
+.sidebar.active {
+  left: 0;
+}
+  
+/* Content Area Styles */
+.content {
+  /* Add margin to the content area to avoid overlapping with sidebar */
+  margin-left: 250px;
+  /* Add padding inside the content area */
+  padding: 20px;
+}
+  
+/* Styles for sidebar icon */
+.sidebaricon {
+  /* Set width of sidebar icon */
+  width: 15%;
+  /* Add margin to the sidebar icon */
+  margin-left: 4%;
+}
+  
+/* Styles for search container */
+#divBusca {
+  /* Add border with border radius */
+  border: solid 1px;
+  border-radius: 15px;
+   /* Set width of search container */
+  width: 50%;
+}
+  
+/* Styles for search input */
+#txtBusca {
+  /* Float search input to the left */
+  float: left;
+  /* Set transparent background */
+  background-color: transparent;
+  /* Add padding to the left of search input */
+  padding-left: 5px;
+  /* Set font style to italic */
+  font-style: italic;
+  /* Set font size */
+  font-size: 18px;
+  /* Remove border from search input */
+  border: none;
+  /* Set height to auto */
+  height: auto;
+  /* Set width to 95% */
+  width: 95%;
+}
+  
+/* Styles for icon button */
+.iconButton {
+  /* Remove border and background */
+  border: none;
+  background: none;
+  /* Set cursor to pointer */
+  cursor: pointer;
+  /* Remove padding */
+  padding: 0;
+  /* Set width */
+  width: 10%;
+  /* Add margin to the left */
+  margin-left: 4%;
+}
+
+/* Styles for profile logo */
+.logoProfile {
+  /* Set width to 100% */
+  width: 100%;
+}
+  /* Styles for card logo */
+.logoCard {
+  /* Set width to 100% */
+  width: 100%;
+}
+
+  /* Styles for login button */
+.LogIn {
+  /* Set width to 45% */
+  width: 45%;
+  /* Add margin */
+  margin: 1%;
+}
+
+/* Styles for register button */
+.Register {
+  /* Set width to 45% */
+  width: 45%;
+  /* Add margin */
+  margin: 1%;
+}
+
+  /*
 Style for h1 Títulos
 */
 h1 {
