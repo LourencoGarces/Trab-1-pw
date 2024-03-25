@@ -43,6 +43,19 @@ function redirectToRegister() {
 // Adds an event listener for the Log In button
 document.querySelector('.LogIn').addEventListener('click', redirectToLogin);
 
+// Add event listener for the Register button
+document.querySelector('.Register').addEventListener('click', redirectToRegister);
+
+var closeButton = document.querySelector('.btn-close');
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = "none"; // Hide the modal
+}
+
+// Add event listener to the close button
+closeButton.addEventListener("click", closeModal);
+
 // autenticacao.js for Login.html
 
 function fazerLogin() {
