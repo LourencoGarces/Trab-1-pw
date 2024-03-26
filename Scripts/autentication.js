@@ -118,3 +118,20 @@ function fazerRegistro() {
     window.location.href = 'Login.html'; // Redirecionar para a página de login
 }
 
+// autenticacao.js for Forgot.html
+
+function fazerForgotPassword() {
+    // Obter o email do campo de entrada
+    var email = document.getElementById("email").value;
+
+    // Verificar se o campo de email está preenchido
+    if (email.trim() === '') {
+        alert("Por favor, insira seu email.");
+        return;
+    }
+
+    // Aqui você pode adicionar lógica adicional, como enviar um email de recuperação de senha
+    // Por enquanto, apenas exibiremos uma mensagem de sucesso
+    alert("Um email de recuperação de senha foi enviado para " + email);
+}
+

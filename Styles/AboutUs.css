@@ -1,0 +1,68 @@
+/*Style for body
+
+*/
+body {
+    /* Define altura total da página */
+    height: 100vh;
+    /* Define um gradiente linear como plano de fundo */
+    background: linear-gradient(to left, 
+                    rgb(255, 204, 153) 0%, 
+                    rgb(252, 177, 103) 40.00%, 
+                    rgb(153, 204, 255) 50.00%, 
+                    rgb(83, 162, 240) 70.00%);
+  }
+  /*
+Style for h1 Títulos
+*/
+h1 {
+    color: #ffffff; /* Cor do texto laranja escuro */
+    text-align: center;
+    padding: 10px; /* Aumentei o padding para destacar mais */
+    font-family: "Roboto", sans-serif; /* Um tipo de letra mais moderno e sem serifa */
+    font-size: 3.25em; /* Tamanho da letra aumentado para 2.5 vezes o tamanho padrão */
+    text-shadow: 2px 2px 4px rgba(9, 9, 9, 0.989); /* Sombra suave para destacar o texto */
+    /* Add margin */
+    margin: 1%;
+  }/*
+  Style for h2 subtítulos
+  */
+    h2 {
+      color: rgb(255, 255, 255);
+      text-align: center;
+      padding: 5px;
+      font-size: 2.60em; /* Tamanho da letra aumentado para 2.5 vezes o tamanho padrão */
+      font-family: "Times New Roman", Times, serif;
+      text-shadow: 2px 2px 4px rgb(9, 9, 9);
+      /* Add margin */
+    margin: 1%;
+    }
+    /*
+  Style for h3 subtítulos menores
+  */
+    h3 {
+        color: rgb(14, 14, 14);
+        text-align: left;
+        padding: 2px;
+        font-family: "Times New Roman", Times, serif;
+        text-shadow: 2px 2px 4px rgba(152, 150, 150, 0.5);
+        /* Add margin */
+      
+    }
+    h4 {
+        color: rgb(14, 14, 14);
+        text-align: left;
+        padding: 2px;
+        font-family: "Times New Roman", Times, serif;
+        text-shadow: 2px 2px 4px rgba(152, 150, 150, 0.5);
+        /* Add margin */
+      
+    }
+    h5 {
+        color: rgb(14, 14, 14);
+        text-align: left;
+        padding: 2px;
+        font-family: "Times New Roman", Times, serif;
+        text-shadow: 2px 2px 4px rgba(152, 150, 150, 0.5);
+        /* Add margin */
+      
+    }
