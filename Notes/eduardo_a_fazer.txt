@@ -4,3 +4,8 @@ podes ver no que eu fiz no index como exemplo
 Quando acabares diz que eu pego daí para fazer mais coisas como a barra da esquerda e a página dos produtos
 e tenta pegar na nav do index e meter em ambas as paginas de login e register
 ao inves de usar o botão back clicaremos no titulo e volta para o index page
+
+Ele já está melhor, mas podes ver se dá para melhor a nível de código
+Tenta é tirar os breacks e meter margens
+E usar o JavaScript para mudar do login para o register e vice versa
+Como eu fiz no modal
