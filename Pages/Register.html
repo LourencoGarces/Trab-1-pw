@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/Styles/Register.css">
   <!-- Including JS -->
   <script src="/Scripts/autentication.js"></script>
+  <script src="/Scripts/redirect.js"></script>  
 </head>
 <body>
     <!-- Sidebar -->
@@ -121,9 +122,9 @@
             <!-- Profile Form -->
             <div class="formulario bg-light">
               <!-- Profile Image -->
-              <a href="Index.html">
-                <img src="/Assets/logoMarca.png"  class="center" width="390" title="Profile Picture">
-              </a>
+             
+                <img src="/Assets/logoMarca.png"  onclick="redirectToIndex()" class="center" width="390" title="Profile Picture">
+          
               <!-- Register Form -->
               <form id="registerForm" action="#" method="post"> 
                 <!-- Email Input -->
