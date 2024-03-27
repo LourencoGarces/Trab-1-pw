@@ -91,7 +91,6 @@ function fazerLogin() {
     alert("Credenciais inválidas. Por favor, tente novamente.");
 }
 
-
 // autenticacao.js for Register.html
 
 function fazerRegistro() {
@@ -134,4 +133,3 @@ function fazerForgotPassword() {
     // Por enquanto, apenas exibiremos uma mensagem de sucesso
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
-
