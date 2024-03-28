@@ -131,17 +131,17 @@
 /* Styles for login button */
 .LogIn {
     /* Set width to 45% */
-    width: 45%;
+    width: 80%;
     /* Add margin */
-    margin: 1%;
+    margin: 2%;
 }
 
 /* Styles for register button */
 .Register {
     /* Set width to 45% */
-    width: 45%;
+    width: 80%;
     /* Add margin */
-    margin: 1%;
+    margin: 2%;
 }
 
 /* Styling for the card container */
@@ -191,17 +191,10 @@
 .card:hover .back {
     opacity: 1; /* Show the back side on hover */
 }
-body {
-    /* Define altura total da página */
-    height: 100vh;
-    /* Define um gradiente linear como plano de fundo */
-    background: linear-gradient(to left, 
-                    rgb(255, 204, 153) 0%, 
-                    rgb(252, 177, 103) 40.00%, 
-                    rgb(153, 204, 255) 50.00%, 
-                    rgb(83, 162, 240) 70.00%);
-  }
 
+body {
+    background-color: #f8f9fa;
+}
 
 /* Styles for footer */
 #footer {
