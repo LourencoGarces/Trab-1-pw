@@ -131,17 +131,17 @@
 /* Styles for login button */
 .LogIn {
     /* Set width to 45% */
-    width: 45%;
+    width: 80%;
     /* Add margin */
-    margin: 1%;
+    margin: 2%;
 }
 
 /* Styles for register button */
 .Register {
     /* Set width to 45% */
-    width: 45%;
+    width: 80%;
     /* Add margin */
-    margin: 1%;
+    margin: 2%;
 }
 
 /* Styling for the card container */
