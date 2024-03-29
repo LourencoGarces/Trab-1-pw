@@ -33,3 +33,8 @@ h1 {
   padding: 5px;
   font-family: "Times New Roman", Times, serif;
 }
+
+.BrandLogo {
+  width: 100%;
+  height: 100%;
+}
