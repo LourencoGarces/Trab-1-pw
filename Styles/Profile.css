@@ -2,33 +2,34 @@
 Style for the container
 */
 .container {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 200; 
-  }
-  /*
-  Style for the profile-content
-  */
-  
-  .profile-content {
-    margin-top: 30px;
-  }
-  /*
-  Style for the profile-img
-  */
-  
-  .center{display:block;
-          margin-left:auto;
-          margin-right:auto;}
-  /*
-  Style for the profile-h1
-  */
-    
-    h1 {
-      color: rgb(24, 23, 23);
-      text-align: left;
-      padding: 5px;
-      font-family: "Times New Roman", Times, serif;
-    }
-  
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 200; 
+}
+
+/*
+Style for the profile-content
+*/
+.profile-content {
+  margin-top: 30px;
+}
+
+/*
+Style for the profile-img
+*/
+.center{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/*
+Style for the profile-h1
+*/
+h1 {
+  color: rgb(24, 23, 23);
+  text-align: left;
+  padding: 5px;
+  font-family: "Times New Roman", Times, serif;
+}
