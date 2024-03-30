@@ -135,43 +135,49 @@
   /* Add margin */
   margin: 1%;
 }
-
 /*Style for body*/
 body {
-  /* Define altura total da página */
+  /* Set total height of the page */
   height: 100vh;
-  /* Define um gradiente linear como plano de fundo */
+  /* Set a linear gradient as background */
   background: linear-gradient(to left, 
                     rgb(255, 204, 153) 0%, 
                     rgb(252, 177, 103) 40.00%, 
                     rgb(153, 204, 255) 50.00%, 
                     rgb(83, 162, 240) 70.00%);
 }
+/* Styles for brand logo */
+.center {
+  /* Set width to 350% */
+  width: 100%;
+}
 
-/*Style for h1 Títulos*/
+
+/*Style for h1 Titles*/
 h1 {
-  color: #ffffff; /* Cor do texto laranja escuro */
+  color: #ffffff; /* Dark orange text color */
   text-align: center;
-  padding: 10px; /* Aumentei o padding para destacar mais */
-  font-family: "Roboto", sans-serif; /* Um tipo de letra mais moderno e sem serifa */
-  font-size: 3.25em; /* Tamanho da letra aumentado para 2.5 vezes o tamanho padrão */
-  text-shadow: 2px 2px 4px rgba(9, 9, 9, 0.989); /* Sombra suave para destacar o texto */
+  padding: 10px; /* Increased padding for more emphasis */
+  font-family: "Roboto", sans-serif; /* Modern sans-serif font */
+  font-size: 3.25em; /* Font size increased to 2.5 times the default size */
+  text-shadow: 2px 2px 4px rgba(9, 9, 9, 0.989); /* Soft shadow to highlight text */
   /* Add margin */
   margin: 1%;
 }
-/*Style for h2 subtítulos*/
+
+/*Style for h2 Subtitles*/
 h2 {
   color: rgb(255, 255, 255);
   text-align: center;
   padding: 5px;
-  font-size: 2.60em; /* Tamanho da letra aumentado para 2.5 vezes o tamanho padrão */
+  font-size: 2.60em; /* Font size increased to 2.5 times the default size */
   font-family: "Times New Roman", Times, serif;
   text-shadow: 2px 2px 4px rgb(9, 9, 9);
   /* Add margin */
   margin: 1%;
 }
 
-/*Style for h3 subtítulos menores*/
+/*Style for h3 Minor Subtitles*/
 h3 {
   color: rgb(14, 14, 14);
   text-align: left;
@@ -180,6 +186,7 @@ h3 {
   text-shadow: 2px 2px 4px rgba(152, 150, 150, 0.5); 
 }
 
+/*Style for h4 */
 h4 {
   color: rgb(14, 14, 14);
   text-align: left;
@@ -189,6 +196,7 @@ h4 {
   /* Add margin */
 }
 
+/*Style for h5 */
 h5 {
   color: rgb(14, 14, 14);
   text-align: left;
@@ -204,7 +212,7 @@ img {
 }
 
 /*Style for the btn*/
-.btn{
+.btn {
   padding: 10px 10px; 
   margin: 10px; 
 }
@@ -215,7 +223,7 @@ img {
   max-width: 1050px; 
 }
 
-    /*Style for the table*/
+/*Style for the table*/
 table {
   border-collapse: collapse;
   width: 100%; 
@@ -225,7 +233,7 @@ table {
 }
 
 /*footer Copyrigth*/
-  footer {
+footer {
   color: #141313; 
   padding: 1px; 
   text-align: left; 
