@@ -56,73 +56,66 @@ function closeModal() {
 // Add event listener to the close button
 closeButton.addEventListener("click", closeModal);
 
-// autenticacao.js for Login.html
-
+// Function to perform login
 function fazerLogin() {
-     // Get values from email and password fields
-    var email = document.getElementById("email").value;
-    var senha = document.getElementById("password").value;
+    // Get input values
+    var email = document.getElementById("loginEmail").value;
+    var password = document.getElementById("loginPassword").value;
 
-     // Check if fields are filled in if (email.trim() === '' || senha.trim() === '')
-    if (email.trim() === '' || senha.trim() === '') {
-        alert("Por favor, preencha todos os campos.");
-        return;
+    // Get registered users from localStorage
+    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+    // Find user with matching email and password
+    var user = registeredUsers.find(function(user) {
+        return user.email === email && user.password === password;
+    });
+
+    if (user) {
+        alert("Login successful!");
+        // Redirect to profile page
+        window.location.href = "profile.html";
+    } else {
+        alert("Invalid email or password!");
     }
-
-    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
-    // Make a request to the server using
-    var credenciaisUsuarios = {
-        "eduardo@gmail.com": "123",
-        "lourenco@gmail.com": "123"
-        // other user credentials here...
-    };
-
-    // Check if user's email is present in credentials
-    if (email in credenciaisUsuarios) 
-    {
-    // Check if password matches stored password                            
-    if (senha === credenciaisUsuarios[email]) 
-    {
-                    alert("Login bem-sucedido!");
-    // Redirect user to the destination page after login
-    window.location.href = 'Profile.html'; 
-                    return; 
-    }
-    
-
-    // If control flow reached here, credentials are invalid
-    alert("Credenciais inválidas. Por favor, tente novamente.");
-}
 }
 
-// autenticacao.js for Register.html
-
+// Function to perform registration
 function fazerRegistro() {
-    // Get values from registration form fields
-    var email = document.getElementById("email").value;
-    var nome = document.getElementById("name").value;
-    var contacto = document.getElementById("contact").value;
-    var senha = document.getElementById("password").value;
-    var retypePassword = document.getElementById("retypepassword").value;
+    // Get input values
+    var email = document.getElementById("registerEmail").value;
+    var name = document.getElementById("registerName").value;
+    var contact = document.getElementById("registerContact").value;
+    var password = document.getElementById("registerPassword").value;
+    var retypePassword = document.getElementById("registerRetypePassword").value;
 
-   // Check if fields are filled
-    if (email.trim() === '' || nome.trim() === '' || contacto.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
-        alert("Por favor, preencha todos os campos.");
+    // Verify if password matches retype password
+    if (password !== retypePassword) {
+        alert("Passwords do not match!");
         return;
     }
 
- // Check if passwords match
-    if (senha !== retypePassword) {
-        alert("As senhas não coincidem. Por favor, verifique.");
+    // Get registered users from localStorage
+    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+    // Check if email is already registered
+    var existingUser = registeredUsers.find(function(user) {
+        return user.email === email;
+    });
+
+    if (existingUser) {
+        alert("Email already registered!");
         return;
     }
 
-    alert("Registro bem-sucedido!");
-    window.location.href = 'Login.html'; // Redirecionar para a página de login
+    // Register new user
+    var newUser = { email: email, name: name, contact: contact, password: password };
+    registeredUsers.push(newUser);
+    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+    alert("Registration successful!");
 }
 
 // autenticacao.js for Forgot.html
-
 function fazerForgotPassword() {
    // Get email from the input field
     var email = document.getElementById("email").value;
