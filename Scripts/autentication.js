@@ -59,55 +59,59 @@ closeButton.addEventListener("click", closeModal);
 // autenticacao.js for Login.html
 
 function fazerLogin() {
-    // Obter valores dos campos de e-mail e senha
+     // Get values from email and password fields
     var email = document.getElementById("email").value;
     var senha = document.getElementById("password").value;
 
-    // Verificar se os campos estão preenchidos
+     // Check if fields are filled in if (email.trim() === '' || senha.trim() === '')
     if (email.trim() === '' || senha.trim() === '') {
         alert("Por favor, preencha todos os campos.");
         return;
     }
 
-    // Unicos feitos que podem entrar para já
+    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
+    // Make a request to the server using
     var credenciaisUsuarios = {
         "eduardo@gmail.com": "123",
         "lourenco@gmail.com": "123"
-        // ....
+        // other user credentials here...
     };
 
-    // Verificar se o e-mail do usuário está presente nas credenciais
-    if (email in credenciaisUsuarios) {
-        // Verificar se a senha corresponde à senha armazenada
-        if (senha === credenciaisUsuarios[email]) {
-            alert("Login bem-sucedido!");
-            // Redirecionar o usuário para a página de destino após o login
-            window.location.href = 'Profile.html'; 
-            return; 
-        }
+    // Check if user's email is present in credentials
+    if (email in credenciaisUsuarios) 
+    {
+    // Check if password matches stored password                            
+    if (senha === credenciaisUsuarios[email]) 
+    {
+                    alert("Login bem-sucedido!");
+    // Redirect user to the destination page after login
+    window.location.href = 'Profile.html'; 
+                    return; 
     }
+    
 
-    // Se o fluxo de controle chegou aqui, as credenciais são inválidas
+    // If control flow reached here, credentials are invalid
     alert("Credenciais inválidas. Por favor, tente novamente.");
+}
 }
 
 // autenticacao.js for Register.html
 
 function fazerRegistro() {
-    // Obter valores dos campos do formulário de registro
+    // Get values from registration form fields
     var email = document.getElementById("email").value;
     var nome = document.getElementById("name").value;
     var contacto = document.getElementById("contact").value;
     var senha = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypepassword").value;
 
-    // Verificar se os campos estão preenchidos
+   // Check if fields are filled
     if (email.trim() === '' || nome.trim() === '' || contacto.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
         alert("Por favor, preencha todos os campos.");
         return;
     }
 
-    // Verificar se as senhas coincidem
+ // Check if passwords match
     if (senha !== retypePassword) {
         alert("As senhas não coincidem. Por favor, verifique.");
         return;
@@ -120,7 +124,7 @@ function fazerRegistro() {
 // autenticacao.js for Forgot.html
 
 function fazerForgotPassword() {
-    // Obter o email do campo de entrada
+   // Get email from the input field
     var email = document.getElementById("email").value;
 
     // Verificar se o campo de email está preenchido
@@ -128,9 +132,6 @@ function fazerForgotPassword() {
         alert("Por favor, insira seu email.");
         return;
     }
-
-    // Aqui você pode adicionar lógica adicional, como enviar um email de recuperação de senha
-    // Por enquanto, apenas exibiremos uma mensagem de sucesso
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
 
