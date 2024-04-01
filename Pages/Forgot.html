@@ -12,23 +12,15 @@
 <body>
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
-    <!-- Mobile Phones -->
+    <!-- Sidebar Links -->
     <a href="#">Telemóveis</a>
-    <!-- Smart Watches -->
     <a href="#">Smart Watches</a>
-    <!-- Airpods -->
     <a href="#">Airpods</a>
-    <!-- iPads -->
     <a href="#">Ipads</a>
-    <!-- Computers -->
     <a href="#">Computadores</a>
-    <!-- Laptops -->
     <a href="#">Laptops</a>
-    <!-- Chargers -->
     <a href="#">Carregadores</a>
-    <!-- TVs -->
     <a href="#">Televisões</a>
-    <!-- Speakers -->
     <a href="#">Colunas</a>
   </div>
   <!-- Header -->
@@ -44,9 +36,9 @@
               <!-- Brand Logo (Clickable) -->
               <a href="Index.html" class="navbar-brand">Smart Buyer</a>
           </div>
-          <div class="container  d-flex justify-content-end align-items-star">
+          <div class="container d-flex justify-content-end align-items-center">
+              <!-- Search Input -->
               <div id="divBusca">
-                  <!-- Search Input -->
                   <input type="text" id="txtBusca" placeholder="Buscar..."/>
                   <!-- Search Icon -->
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -68,28 +60,32 @@
                       <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
                   </svg>
               </button>
-              <!-- Modal for adding a new task -->
+              <!-- Modal -->
               <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-body"></div>
-                              <div class="row">
-                                  <div class="col-md-10">
-                                      <p>Por favor, faça login ou registre-se para continuar.</p>
-                                  </div>
-                                  <div class="col-md-2">
-                                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                              </div>         
-                              <div class="row">
-                                  <button class="btn border LogIn">Log In</button>
-                                  <button class="btn border Register">Register</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>            
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body"></div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <p>Por favor, faça login ou registre-se para continuar.</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>         
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn border LogIn">Log In</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn border Register">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
               </div>
-          
+          </div>
       </nav>
   </header>
   <!-- Page Heading -->
@@ -99,7 +95,7 @@
     <div class="row">              
       <!-- Profile Section -->
       <div class="col-md-2">
-        <!-- Log In Title -->
+        <!-- Forgot Password Title -->
         <h2>Forgot Password:</h2>
       </div>
       <div class="col-md-4">
@@ -108,47 +104,45 @@
       <!-- Create Account Section -->
       <div class="formulario bg-light">
         <h3>Se não tem conta por favor cadastre-se!</h3>
-        <div class="d-flex justify-content-center align-items-center">
-        <a href="Register.html" class="btn btn-secondary">Criar Conta</a>
-    </div>
-</div>
-      </div>      
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="Register.html" class="btn btn-secondary">Criar Conta</a>
+          </div>
+        </div>
+      </div>    
+    </div>  
       <!-- Nested Container -->
       <div class="container">
         <div class="col-md-5">
-          <div class="row">
-            
+          <div class="row">            
             <!-- Profile Form -->
             <div class="formulario bg-light">
-              <!-- Profile Image -->
-              
-                <img src="/Assets/logoMarca.png"  onclick="redirectToLogin()" class="center"  title="Logo Brand">
-              
-              <!-- Login Form -->
-              <form id="loginForm" action="#" method="post"> 
+              <!-- Profile Image -->              
+              <img src="/Assets/logoMarca.png"  onclick="redirectToLogin()" class="center"  title="Logo Brand">
+              <!-- Forgot Password Form -->
+              <form id="forgotPasswordForm" action="#" method="post"> 
                 <div class="mb-3">
-                <!-- Email Input -->
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-              </div>
+                  <!-- Email Input -->
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
                 <div class="mb-3">
-                  <!-- Password Input -->
+                  <!-- Last Password Input -->
                   <label for="pwd">Last Password:</label>
                   <input type="password" class="form-control" id="last_password" placeholder="Enter password" name="password">
                 </div>
                 <div class="mb-3">
-                  <!-- Password Input -->
+                  <!-- New Password Input -->
                   <label for="pwd">New Password:</label>
                   <input type="password" class="form-control" id="new_password" placeholder="Enter password" name="password">
                 </div>
                 <div class="mb-3">
-                  <!-- Password Input -->
+                  <!-- Retype New Password Input -->
                   <label for="pwd">Retype-New Password:</label>
                   <input type="password" class="form-control" id="retype_new_password" placeholder="Enter password" name="password">
                 </div>
-                <!-- Login Button -->
+                <!-- Forgot Password Button -->
                 <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" onclick="fazerForgotPassword()" class="btn btn-secondary">Verificação</button>
+                  <button type="button" onclick="forgotPassword()" class="btn btn-secondary">Verificação</button>
                 </div>
               </form>
             </div>
