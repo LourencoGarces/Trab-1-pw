@@ -2,7 +2,7 @@
 document.getElementById('sidebarToggle').addEventListener('click', function() {
     // Toggle the 'active' class of the sidebar to show it
     document.getElementById('sidebar').classList.toggle('active');
-});
+}); 
 
 // Function to close the sidebar
 function closeSidebar() {
@@ -24,6 +24,18 @@ document.body.addEventListener('click', function(event) {
 
 // Reference to the modal and the close button
 var modal = document.getElementById("myModal"); // Get the modal by its ID
+
+// Add a click event to the profile button to open the modal
+document.getElementById("profileButton").addEventListener("click", function() {
+    modal.style.display = "block"; // Set the modal style to 'block' to show it
+});
+
+// Adds an event listener for the Log In button
+document.querySelector('.LogIn').addEventListener('click', redirectToLogin);
+
+// Add event listener for the Register button
+document.querySelector('.Register').addEventListener('click', redirectToRegister);
+
 var closeButton = document.querySelector('.btn-close');
 
 // Function to close the modal
