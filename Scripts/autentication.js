@@ -2,7 +2,7 @@
 document.getElementById('sidebarToggle').addEventListener('click', function() {
     // Toggle the 'active' class of the sidebar to show it
     document.getElementById('sidebar').classList.toggle('active');
-}); 
+});
 
 // Function to close the sidebar
 function closeSidebar() {
@@ -24,11 +24,15 @@ document.body.addEventListener('click', function(event) {
 
 // Reference to the modal and the close button
 var modal = document.getElementById("myModal"); // Get the modal by its ID
+var closeButton = document.querySelector('.btn-close');
 
-// Add a click event to the profile button to open the modal
-document.getElementById("profileButton").addEventListener("click", function() {
-    modal.style.display = "block"; // Set the modal style to 'block' to show it
-});
+// Function to close the modal
+function closeModal() {
+    modal.style.display = "none"; // Hide the modal
+}
+
+// Add event listener to the close button
+closeButton.addEventListener("click", closeModal);
 
 // Function to redirect to the login page
 function redirectToLogin() {
@@ -40,24 +44,13 @@ function redirectToRegister() {
     window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
 }
 
-// Adds an event listener for the Log In button
-document.querySelector('.LogIn').addEventListener('click', redirectToLogin);
-
-// Add event listener for the Register button
-document.querySelector('.Register').addEventListener('click', redirectToRegister);
-
-var closeButton = document.querySelector('.btn-close');
-
-// Function to close the modal
-function closeModal() {
-    modal.style.display = "none"; // Hide the modal
+// Function to redirect to the profile page
+function redirectToProfile() {
+    window.location.href = "profile.html"; // Replace "profile.html" with the URL of your profile page
 }
 
-// Add event listener to the close button
-closeButton.addEventListener("click", closeModal);
-
 // Function to perform login
-function fazerLogin() {
+function Login() {
     // Get input values
     var email = document.getElementById("loginEmail").value;
     var password = document.getElementById("loginPassword").value;
@@ -73,14 +66,14 @@ function fazerLogin() {
     if (user) {
         alert("Login successful!");
         // Redirect to profile page
-        window.location.href = "profile.html";
+        redirectToProfile();
     } else {
         alert("Invalid email or password!");
     }
 }
 
 // Function to perform registration
-function fazerRegistro() {
+function Register() {
     // Get input values
     var email = document.getElementById("registerEmail").value;
     var name = document.getElementById("registerName").value;
@@ -115,8 +108,8 @@ function fazerRegistro() {
     alert("Registration successful!");
 }
 
-// autenticacao.js for Forgot.html
-function fazerForgotPassword() {
+// Function to handle forgot password
+function ForgotPassword() {
    // Get email from the input field
     var email = document.getElementById("email").value;
 
@@ -126,20 +119,4 @@ function fazerForgotPassword() {
         return;
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
-}
-
-
-// When the user clicks anywhere outside 
-// Function to redirect to the register page
-function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
-}
-// Function to redirect to the index page
-function redirectToIndex() {
-    window.location.href = "Index.html"; // Replace "Index.html" with the URL of your index page
-}
-
-// Function to redirect to the login page
-function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
