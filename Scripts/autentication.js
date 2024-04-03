@@ -136,17 +136,18 @@ function fazerForgotPassword() {
 }
 
 
-// When the user clicks anywhere outside 
-// Function to redirect to the register page
+// When the user clicks anywhere outside
+
+// Function to redirect to the Register.html
 function redirectToRegister() {
     window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
 }
-// Function to redirect to the index page
+// Function to redirect to the Index.html
 function redirectToIndex() {
     window.location.href = "Index.html"; // Replace "Index.html" with the URL of your index page
 }
 
-// Function to redirect to the login page
+// Function to redirect to the Login.html
 function redirectToLogin() {
     window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
