@@ -3,18 +3,19 @@
 /* Styles for login button */
 .LogIn {
   /* Set width to 45% */
-  width: 45%;
+  width: 80%;
   /* Add margin */
-  margin: 1%;
+  margin: 2%;
 }
 
 /* Styles for register button */
 .Register {
   /* Set width to 45% */
-  width: 45%;
+  width: 80%;
   /* Add margin */
-  margin: 1%;
+  margin: 2%;
 }
+
 /*Style for body*/
 body {
   /* Set total height of the page */
@@ -26,12 +27,12 @@ body {
                     rgb(153, 204, 255) 50.00%, 
                     rgb(83, 162, 240) 70.00%);
 }
+
 /* Styles for brand logo */
 .center {
   /* Set width to 350% */
   width: 100%;
 }
-
 
 /*Style for h1 Titles*/
 h1 {

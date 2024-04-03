@@ -14,23 +14,15 @@
 <body>
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
-    <!-- Mobile Phones -->
+    <!-- Sidebar Links -->
     <a href="#">Telemóveis</a>
-    <!-- Smart Watches -->
     <a href="#">Smart Watches</a>
-    <!-- Airpods -->
     <a href="#">Airpods</a>
-    <!-- iPads -->
     <a href="#">Ipads</a>
-    <!-- Computers -->
     <a href="#">Computadores</a>
-    <!-- Laptops -->
     <a href="#">Laptops</a>
-    <!-- Chargers -->
     <a href="#">Carregadores</a>
-    <!-- TVs -->
     <a href="#">Televisões</a>
-    <!-- Speakers -->
     <a href="#">Colunas</a>
   </div>
   <!-- Header -->
@@ -72,25 +64,30 @@
               </button>
               <!-- Modal -->
               <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-body"></div>
-                              <div class="row">
-                                  <div class="col-md-10">
-                                      <p>Por favor, faça login ou registre-se para continuar.</p>
-                                  </div>
-                                  <div class="col-md-2">
-                                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                              </div>         
-                              <div class="row">
-                                  <button class="btn border LogIn">Log In</button>
-                                  <button class="btn border Register">Register</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>            
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body"></div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <p>Por favor, faça login ou registre-se para continuar.</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>         
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn border LogIn">Log In</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn border Register">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
               </div>
+          </div>
       </nav>
   </header>
   <!-- Page Heading -->
@@ -126,32 +123,32 @@
               <form id="registerForm" action="#" method="post"> 
                 <!-- Email Input -->
                 <div class="mb-3">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-              </div>
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="registerEmail" placeholder="Enter email" name="email">
+                </div>
                 <div class="mb-3">
                   <!-- Name Input -->
                   <label for="name">Nome:</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                  <input type="text" class="form-control" id="registerName" placeholder="Enter name" name="name">
                 </div>
                 <div class="mb-3">
                   <!-- Contact Input -->
                   <label for="contact">Contacto:</label>
-                  <input type="text" class="form-control" id="contact" placeholder="Enter contact" name="contact">
+                  <input type="text" class="form-control" id="registerContact" placeholder="Enter contact" name="contact">
                 </div>
                 <div class="mb-3">
                   <!-- Password Input -->
                   <label for="password">Password:</label>
-                  <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                  <input type="password" class="form-control" id="registerPassword" placeholder="Enter password" name="password">
                 </div>
                 <div class="mb-3">
                   <!-- Retype Password Input -->
                   <label for="retypepassword">Retype-Password:</label>
-                  <input type="password" class="form-control" id="retypepassword" placeholder="Enter password" name="retypepassword">
+                  <input type="password" class="form-control" id="registerRetypePassword" placeholder="Enter password" name="retypepassword">
                 </div>
                 <!-- Register Button JS -->
                 <div class="d-flex justify-content-center align-items-center">
-                  <button type="button" onclick="fazerRegistro()" class="btn btn-secondary">Registrar</button>
+                  <button type="button" onclick="Register()" class="btn btn-secondary">Registrar</button>
                 </div>            
               </form>
             </div>

@@ -30,16 +30,6 @@ document.getElementById("profileButton").addEventListener("click", function() {
     modal.style.display = "block"; // Set the modal style to 'block' to show it
 });
 
-// Function to redirect to the login page
-function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
-}
-
-// Function to redirect to the register page
-function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
-}
-
 // Adds an event listener for the Log In button
 document.querySelector('.LogIn').addEventListener('click', redirectToLogin);
 
@@ -56,18 +46,59 @@ function closeModal() {
 // Add event listener to the close button
 closeButton.addEventListener("click", closeModal);
 
-// autenticacao.js for Login.html
+// Function to redirect to the login page
+function redirectToLogin() {
+    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
+}
 
-function fazerLogin() {
-     // Get values from email and password fields
-    var email = document.getElementById("email").value;
-    var senha = document.getElementById("password").value;
+// Function to redirect to the register page
+function redirectToRegister() {
+    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
+}
 
-     // Check if fields are filled in if (email.trim() === '' || senha.trim() === '')
-    if (email.trim() === '' || senha.trim() === '') {
-        alert("Por favor, preencha todos os campos.");
+// Function to redirect to the profile page
+function redirectToProfile() {
+    window.location.href = "profile.html"; // Replace "profile.html" with the URL of your profile page
+}
+
+// Function to perform login
+function Login() {
+    // Get input values
+    var email = document.getElementById("loginEmail").value;
+    var password = document.getElementById("loginPassword").value;
+
+    // Get registered users from localStorage
+    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+    // Find user with matching email and password
+    var user = registeredUsers.find(function(user) {
+        return user.email === email && user.password === password;
+    });
+
+    if (user) {
+        alert("Login successful!");
+        // Redirect to profile page
+        redirectToProfile();
+    } else {
+        alert("Invalid email or password!");
+    }
+}
+
+// Function to perform registration
+function Register() {
+    // Get input values
+    var email = document.getElementById("registerEmail").value;
+    var name = document.getElementById("registerName").value;
+    var contact = document.getElementById("registerContact").value;
+    var password = document.getElementById("registerPassword").value;
+    var retypePassword = document.getElementById("registerRetypePassword").value;
+
+    // Verify if password matches retype password
+    if (password !== retypePassword) {
+        alert("Passwords do not match!");
         return;
     }
+
 
 
     // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
@@ -79,23 +110,20 @@ function fazerLogin() {
         // other user credentials here...
     };
 
-    // Check if user's email is present in credentials
-    if (email in credenciaisUsuarios) 
-    {
-    // Check if password matches stored password                            
-    if (senha === credenciaisUsuarios[email]) 
-    {
-                    alert("Login bem-sucedido!");
-    // Redirect user to the destination page after login
-    window.location.href = 'Profile.html'; 
-                    return; 
-    }
-    
+    // Get registered users from localStorage
+    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+
+    // Check if email is already registered
+    var existingUser = registeredUsers.find(function(user) {
+        return user.email === email;
+    });
+
 
     // If control flow reached here, credentials are invalid
     alert("Credenciais inválidas. Por favor, tente novamente.");
 }
-}
+
 
 // autenticacao.js for Register.html
 
@@ -110,22 +138,21 @@ function fazerRegistro() {
    // Check if fields are filled
     if (email.trim() === '' || nome.trim() === ''  || senha.trim() === '' || retypePassword.trim() === '') {
         alert("Por favor, preencha  os campos indicados por favor.");
+    if (existingUser) {
+        alert("Email already registered!");
         return;
     }
 
- // Check if passwords match
-    if (senha !== retypePassword) {
-        alert("As senhas não coincidem. Por favor, verifique.");
-        return;
-    }
+    // Register new user
+    var newUser = { email: email, name: name, contact: contact, password: password };
+    registeredUsers.push(newUser);
+    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
 
-    alert("Registro bem-sucedido!");
-    window.location.href = 'Login.html'; // Redirecionar para a página de login
+    alert("Registration successful!");
 }
 
-// autenticacao.js for Forgot.html
-
-function fazerForgotPassword() {
+// Function to handle forgot password
+function ForgotPassword() {
    // Get email from the input field
     var email = document.getElementById("email").value;
 
@@ -136,6 +163,7 @@ function fazerForgotPassword() {
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
+
 
 
 // When the user clicks anywhere outside
