@@ -69,11 +69,13 @@ function fazerLogin() {
         return;
     }
 
+
     // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
     // Make a request to the server using
     var credenciaisUsuarios = {
         "eduardo@gmail.com": "123",
-        "lourenco@gmail.com": "123"
+        "lourenco@gmail.com": "123",
+        "admin@gmail.com": "123"
         // other user credentials here...
     };
 
@@ -106,8 +108,8 @@ function fazerRegistro() {
     var retypePassword = document.getElementById("retypepassword").value;
 
    // Check if fields are filled
-    if (email.trim() === '' || nome.trim() === '' || contacto.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
-        alert("Por favor, preencha todos os campos.");
+    if (email.trim() === '' || nome.trim() === ''  || senha.trim() === '' || retypePassword.trim() === '') {
+        alert("Por favor, preencha  os campos indicados por favor.");
         return;
     }
 
