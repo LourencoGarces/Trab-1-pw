@@ -150,6 +150,7 @@ function fazerRegistro() {
 
     alert("Registration successful!");
 }
+}
 
 // Function to handle forgot password
 function ForgotPassword() {
