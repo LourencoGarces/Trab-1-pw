@@ -99,14 +99,45 @@ function Register() {
         return;
     }
 
+
+
+    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
+    // Make a request to the server using
+    var credenciaisUsuarios = {
+        "eduardo@gmail.com": "123",
+        "lourenco@gmail.com": "123",
+        "admin@gmail.com": "123"
+        // other user credentials here...
+    };
+
     // Get registered users from localStorage
     var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
 
     // Check if email is already registered
     var existingUser = registeredUsers.find(function(user) {
         return user.email === email;
     });
 
+
+    // If control flow reached here, credentials are invalid
+    alert("Credenciais inválidas. Por favor, tente novamente.");
+}
+
+
+// autenticacao.js for Register.html
+
+function fazerRegistro() {
+    // Get values from registration form fields
+    var email = document.getElementById("email").value;
+    var nome = document.getElementById("name").value;
+    var contacto = document.getElementById("contact").value;
+    var senha = document.getElementById("password").value;
+    var retypePassword = document.getElementById("retypepassword").value;
+
+   // Check if fields are filled
+    if (email.trim() === '' || nome.trim() === ''  || senha.trim() === '' || retypePassword.trim() === '') {
+        alert("Por favor, preencha  os campos indicados por favor.");
     if (existingUser) {
         alert("Email already registered!");
         return;
@@ -131,4 +162,22 @@ function ForgotPassword() {
         return;
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
+}
+
+
+
+// When the user clicks anywhere outside
+
+// Function to redirect to the Register.html
+function redirectToRegister() {
+    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
+}
+// Function to redirect to the Index.html
+function redirectToIndex() {
+    window.location.href = "Index.html"; // Replace "Index.html" with the URL of your index page
+}
+
+// Function to redirect to the Login.html
+function redirectToLogin() {
+    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
