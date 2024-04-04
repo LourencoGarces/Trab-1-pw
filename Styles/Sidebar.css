@@ -92,7 +92,8 @@
     /* Set width to 95% */
     width: 95%;
 }
-  /* Styles for icon button */
+
+/* Styles for icon button */
 .iconButton {
     /* Remove border and background */
     border: none;
@@ -107,13 +108,13 @@
     margin-left: 4%;
 }
 
-  /* Styles for profile logo */
+/* Styles for profile logo */
 .logoProfile {
     /* Set width to 100% */
     width: 100%;
 }
 
-  /* Styles for card logo */
+/* Styles for card logo */
 .logoCard {
     /* Set width to 100% */
     width: 100%;

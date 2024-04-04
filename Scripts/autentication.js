@@ -138,6 +138,7 @@ function fazerRegistro() {
    // Check if fields are filled
     if (email.trim() === '' || nome.trim() === ''  || senha.trim() === '' || retypePassword.trim() === '') {
         alert("Por favor, preencha  os campos indicados por favor.");
+    }
     if (existingUser) {
         alert("Email already registered!");
         return;
@@ -181,3 +182,4 @@ function redirectToIndex() {
 function redirectToLogin() {
     window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
+
