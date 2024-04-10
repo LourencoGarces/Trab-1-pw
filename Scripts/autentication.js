@@ -1,3 +1,21 @@
+/*
+
+Document about all autentication in this project
+Here we have the following functions:
+
+1. Redirect to login page
+2. Redirect to register page
+3. Close sidebar
+4. Close sidebar on click outside
+5. Open sidebar on clicK
+6. Redirect to index page
+7. Redirect to profile page
+8. Redirect to logout page
+
+*/
+
+
+
 // Adds an event listener for the sidebar toggle button
 document.getElementById('sidebarToggle').addEventListener('click', function() {
     // Toggle the 'active' class of the sidebar to show it
@@ -57,40 +75,50 @@ function closeModal() {
 closeButton.addEventListener("click", closeModal);
 
 // autenticacao.js for Login.html
+// autenticacao.js for Login.html
 
 function fazerLogin() {
-     // Get values from email and password fields
+    // Get values from email and password fields
     var email = document.getElementById("email").value;
     var senha = document.getElementById("password").value;
 
-     // Check if fields are filled in if (email.trim() === '' || senha.trim() === '')
+    var credencialAdmin = {
+        "admin@besmartbuyer.pt": "Admin"
+        // other user credentials here...
+    };
+
+    // Check if fields are filled
     if (email.trim() === '' || senha.trim() === '') {
         alert("Por favor, preencha todos os campos.");
         return;
     }
 
+    // Get stored user from localStorage
+    var storedUser = JSON.parse(localStorage.getItem(email));
 
-    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
-    // Make a request to the server using
-    var credenciaisUsuarios = {
-        "eduardo@gmail.com": "123",
-        "lourenco@gmail.com": "123",
-        "admin@gmail.com": "123"
-        // other user credentials here...
-    };
+    // Check if user exists
+    if (storedUser) {
+        // Check if password matches stored password
+        if (senha === storedUser.password) {
+            alert("Login bem-sucedido!");
 
-    // Check if user's email is present in credentials
-    if (email in credenciaisUsuarios) 
-    {
-    // Check if password matches stored password                            
-    if (senha === credenciaisUsuarios[email]) 
-    {
-                    alert("Login bem-sucedido!");
-    // Redirect user to the destination page after login
-    window.location.href = 'Profile.html'; 
-                    return; 
+                window.location.href = 'Profile.html'; // Redirect to normal user profile
+            
+            return;
+        }
     }
-    
+    // Check if admin email is present in credentials
+if (email in credencialAdmin) 
+{
+// Check if password matches stored password                            
+if (senha === credencialAdmin[email]) 
+{
+                alert("Login bem-sucedido! Entrou no modo Priveligiado");
+// Redirect user to the destination page after login
+window.location.href = 'ProfileAdmin.html'; 
+                return; 
+}
+
 
     // If control flow reached here, credentials are invalid
     alert("Credenciais inválidas. Por favor, tente novamente.");
@@ -107,27 +135,43 @@ function fazerRegistro() {
     var senha = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypepassword").value;
 
-   // Check if fields are filled
-    if (email.trim() === '' || nome.trim() === ''  || senha.trim() === '' || retypePassword.trim() === '') {
-        alert("Por favor, preencha  os campos indicados por favor.");
+     // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
+    // Make a request to the server using
+    
+
+    // Check if fields are filled
+    if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
+        alert("Por favor, preencha todos os campos.");
         return;
     }
 
- // Check if passwords match
+    // Check if passwords match
     if (senha !== retypePassword) {
         alert("As senhas não coincidem. Por favor, verifique.");
         return;
     }
 
+    // Store user data in localStorage
+    var user = {
+        email: email,
+        nome: nome,
+        contacto: contacto,
+        password: senha,
+        role: "user" // Define o papel do usuário como "user"
+    };
+    
+
+    localStorage.setItem(email, JSON.stringify(user));
+
     alert("Registro bem-sucedido!");
     window.location.href = 'Login.html'; // Redirecionar para a página de login
-}
+
 }
 
 // autenticacao.js for Forgot.html
 
 function fazerForgotPassword() {
-   // Get email from the input field
+    // Get email from the input field
     var email = document.getElementById("email").value;
 
     // Verificar se o campo de email está preenchido
@@ -137,6 +181,9 @@ function fazerForgotPassword() {
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
+
+// autentication.js for Perfil.html here
+
 
 
 // When the user clicks anywhere outside

@@ -1,3 +1,23 @@
+/*
+
+Document about all  in Index.js for this  project
+-->Here we have the following functions:
+
+1.  .getElementById()
+2.  closeSidebar()
+3.  addEventListener
+4.  redirectToLogin()
+5.  redirectToRegister()
+6.  querySelectorLogin
+7.  querySelectorRegister
+8.  closeModal()
+9.  addEventListener()
+*/
+
+
+
+
+
 // Adds an event listener for the sidebar toggle button
 document.getElementById('sidebarToggle').addEventListener('click', function() {
     // Toggle the 'active' class of the sidebar to show it
