@@ -1,3 +1,21 @@
+/*
+
+Document about all autentication in this project
+Here we have the following functions:
+
+1. Redirect to login page
+2. Redirect to register page
+3. Close sidebar
+4. Close sidebar on click outside
+5. Open sidebar on clicK
+6. Redirect to index page
+7. Redirect to profile page
+8. Redirect to logout page
+
+*/
+
+
+
 // Adds an event listener for the sidebar toggle button
 document.getElementById('sidebarToggle').addEventListener('click', function() {
     // Toggle the 'active' class of the sidebar to show it
@@ -30,6 +48,16 @@ document.getElementById("profileButton").addEventListener("click", function() {
     modal.style.display = "block"; // Set the modal style to 'block' to show it
 });
 
+// Function to redirect to the login page
+function redirectToLogin() {
+    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
+}
+
+// Function to redirect to the register page
+function redirectToRegister() {
+    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
+}
+
 // Adds an event listener for the Log In button
 document.querySelector('.LogIn').addEventListener('click', redirectToLogin);
 
@@ -46,84 +74,56 @@ function closeModal() {
 // Add event listener to the close button
 closeButton.addEventListener("click", closeModal);
 
-// Function to redirect to the login page
-function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
-}
+// autenticacao.js for Login.html
+// autenticacao.js for Login.html
 
-// Function to redirect to the register page
-function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
-}
+function fazerLogin() {
+    // Get values from email and password fields
+    var email = document.getElementById("email").value;
+    var senha = document.getElementById("password").value;
 
-// Function to redirect to the profile page
-function redirectToProfile() {
-    window.location.href = "profile.html"; // Replace "profile.html" with the URL of your profile page
-}
-
-// Function to perform login
-function Login() {
-    // Get input values
-    var email = document.getElementById("loginEmail").value;
-    var password = document.getElementById("loginPassword").value;
-
-    // Get registered users from localStorage
-    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-
-    // Find user with matching email and password
-    var user = registeredUsers.find(function(user) {
-        return user.email === email && user.password === password;
-    });
-
-    if (user) {
-        alert("Login successful!");
-        // Redirect to profile page
-        redirectToProfile();
-    } else {
-        alert("Invalid email or password!");
-    }
-}
-
-// Function to perform registration
-function Register() {
-    // Get input values
-    var email = document.getElementById("registerEmail").value;
-    var name = document.getElementById("registerName").value;
-    var contact = document.getElementById("registerContact").value;
-    var password = document.getElementById("registerPassword").value;
-    var retypePassword = document.getElementById("registerRetypePassword").value;
-
-    // Verify if password matches retype password
-    if (password !== retypePassword) {
-        alert("Passwords do not match!");
-        return;
-    }
-
-
-
-    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
-    // Make a request to the server using
-    var credenciaisUsuarios = {
-        "eduardo@gmail.com": "123",
-        "lourenco@gmail.com": "123",
-        "admin@gmail.com": "123"
+    var credencialAdmin = {
+        "admin@besmartbuyer.pt": "Admin"
         // other user credentials here...
     };
 
-    // Get registered users from localStorage
-    var registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    // Check if fields are filled
+    if (email.trim() === '' || senha.trim() === '') {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
 
+    // Get stored user from localStorage
+    var storedUser = JSON.parse(localStorage.getItem(email));
 
-    // Check if email is already registered
-    var existingUser = registeredUsers.find(function(user) {
-        return user.email === email;
-    });
+    // Check if user exists
+    if (storedUser) {
+        // Check if password matches stored password
+        if (senha === storedUser.password) {
+            alert("Login bem-sucedido!");
+
+                window.location.href = 'Profile.html'; // Redirect to normal user profile
+            
+            return;
+        }
+    }
+    // Check if admin email is present in credentials
+if (email in credencialAdmin) 
+{
+// Check if password matches stored password                            
+if (senha === credencialAdmin[email]) 
+{
+                alert("Login bem-sucedido! Entrou no modo Priveligiado");
+// Redirect user to the destination page after login
+window.location.href = 'ProfileAdmin.html'; 
+                return; 
+}
 
 
     // If control flow reached here, credentials are invalid
     alert("Credenciais inválidas. Por favor, tente novamente.");
 }
-
+}
 
 // autenticacao.js for Register.html
 
@@ -135,26 +135,44 @@ function fazerRegistro() {
     var senha = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypepassword").value;
 
-   // Check if fields are filled
-    if (email.trim() === '' || nome.trim() === ''  || senha.trim() === '' || retypePassword.trim() === '') {
-        alert("Por favor, preencha  os campos indicados por favor.");
-    }
-    if (existingUser) {
-        alert("Email already registered!");
+     // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
+    // Make a request to the server using
+    
+
+    // Check if fields are filled
+    if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
+        alert("Por favor, preencha todos os campos.");
         return;
     }
 
-    // Register new user
-    var newUser = { email: email, name: name, contact: contact, password: password };
-    registeredUsers.push(newUser);
-    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+    // Check if passwords match
+    if (senha !== retypePassword) {
+        alert("As senhas não coincidem. Por favor, verifique.");
+        return;
+    }
 
-    alert("Registration successful!");
+    // Store user data in localStorage
+    var user = {
+        email: email,
+        nome: nome,
+        contacto: contacto,
+        password: senha,
+        role: "user" // Define o papel do usuário como "user"
+    };
+    
+
+    localStorage.setItem(email, JSON.stringify(user));
+
+    alert("Registro bem-sucedido!");
+    window.location.href = 'Login.html'; // Redirecionar para a página de login
+
 }
 
-// Function to handle forgot password
-function ForgotPassword() {
-   // Get email from the input field
+
+// autenticacao.js for Forgot.html
+
+function fazerForgotPassword() {
+    // Get email from the input field
     var email = document.getElementById("email").value;
 
     // Verificar se o campo de email está preenchido
@@ -164,6 +182,8 @@ function ForgotPassword() {
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
+
+// autentication.js for Perfil.html here
 
 
 
@@ -182,4 +202,3 @@ function redirectToIndex() {
 function redirectToLogin() {
     window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
-
