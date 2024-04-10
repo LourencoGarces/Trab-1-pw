@@ -167,6 +167,7 @@ function fazerRegistro() {
     window.location.href = 'Login.html'; // Redirecionar para a página de login
 
 }
+}
 
 // autenticacao.js for Forgot.html
 
