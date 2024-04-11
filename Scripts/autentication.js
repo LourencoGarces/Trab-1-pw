@@ -188,32 +188,35 @@ function redirectToLogin() {
     window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
 
+// Event listener triggered when the DOM content has fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Retrieve logged-in user's email from localStorage (assuming user is already authenticated)
+    // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
     var loggedInUserEmail = localStorage.getItem('loggedInUser');
 
+    // Check if a logged-in user email exists
     if (loggedInUserEmail) {
-
-        if(window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1) {
-            // Redirect to login page if no user is logged in
+        // Redirect to the index page if the current page is the login or registration page
+        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1) {
             window.location.href = 'Index.html';
         }
 
-        // Retrieve user data from localStorage based on email
+        // Retrieve user data from localStorage based on the logged-in user's email
         var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
 
+        // Check if user data exists
         if (userData) {
             // Display user information on the profile page
             var profileContainer = document.getElementById('profileContainer');
             profileContainer.innerHTML = `
                 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
                     <div class="card p-4"> 
-                        <div class=" image d-flex flex-column justify-content-center align-items-center"> 
+                        <div class="image d-flex flex-column justify-content-center align-items-center"> 
                             <button class="btn btn-secondary"> <img src=${userData.img} height="100" width="100" /></button> 
                             <span class="name mt-3">${userData.nome}</span> 
-                            <div class=" d-flex mt-2"> 
+                            <div class="d-flex mt-2"> 
                                 <button class="btn1 btn-dark">Edit Profile</button> 
-                            </div> <div class="text mt-3"> 
+                            </div> 
+                            <div class="text mt-3"> 
                                 <span>Description</span> 
                             </div> 
                             <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
@@ -230,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <i class="fa fa-linkedin"></i>
                                 </span> 
                             </div> 
-                            <div class=" px-2 rounded mt-4 date "> 
+                            <div class="px-2 rounded mt-4 date "> 
                                 <span class="join">Criado a ${userData.created_at}</span> 
                             </div>
                         </div>
@@ -238,13 +241,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         } else {
-            console.error('User data not found.');
+            console.error('User data not found.'); // Log an error if user data is not found
         }
     } else {
-        console.error('No user logged in.');
+        console.error('No user logged in.'); // Log an error if no user is logged in
 
-        if(window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
-            // Redirect to login page if no user is logged in
+        // Redirect to the login page if the current page is not the login or registration page
+        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
             window.location.href = 'Login.html';
         }
     }
