@@ -21,11 +21,7 @@ body {
   /* Set total height of the page */
   height: 100vh;
   /* Set a linear gradient as background */
-  background: linear-gradient(to left, 
-                    rgb(255, 204, 153) 0%, 
-                    rgb(252, 177, 103) 40.00%, 
-                    rgb(153, 204, 255) 50.00%, 
-                    rgb(83, 162, 240) 70.00%);
+  background: white
 }
 
 /* Styles for brand logo */
@@ -36,7 +32,7 @@ body {
 
 /*Style for h1 Titles*/
 h1 {
-  color: #ffffff; /* Dark orange text color */
+  color: #0e0d0d; /* Dark orange text color */
   text-align: center;
   padding: 10px; /* Increased padding for more emphasis */
   font-family: "Roboto", sans-serif; /* Modern sans-serif font */
@@ -48,7 +44,7 @@ h1 {
 
 /*Style for h2 Subtitles*/
 h2 {
-  color: rgb(255, 255, 255);
+  color: rgb(9, 9, 9);
   text-align: center;
   padding: 5px;
   font-size: 2.60em; /* Font size increased to 2.5 times the default size */
