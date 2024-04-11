@@ -71,3 +71,35 @@ function closeModal() {
 
 // Add event listener to the close button
 closeButton.addEventListener("click", closeModal);
+
+// Function to update button visibility based on login status
+function updateButtonVisibility() {
+    const isLoggedIn = localStorage.getItem('loggedInUser') !== null;
+    const logoutButton = document.getElementById('logoutButton');
+
+    if (isLoggedIn) {
+        logoutButton.style.display = 'block';
+    } else {
+        logoutButton.style.display = 'none';
+    }
+}
+
+// Event listener to handle login/logout changes
+window.addEventListener('storage', function(event) {
+    if (event.key === 'loggedInUser') {
+        updateButtonVisibility();
+    }
+});
+
+// Event listener for the Log Out button
+document.getElementById('logoutButton').addEventListener('click', function() {
+    // Remove the loggedInUser from localStorage
+    localStorage.removeItem('loggedInUser');
+
+    // Optionally perform any other cleanup or redirection
+    alert('You have been logged out.');
+    window.location.href = 'Login.html'; // Redirect to login page after logout
+});
+
+// Initial call to update button visibility on page load
+updateButtonVisibility();
