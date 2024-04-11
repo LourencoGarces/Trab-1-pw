@@ -75,13 +75,12 @@ closeButton.addEventListener("click", closeModal);
 // autenticacao.js for Login.html
 
 function fazerLogin() {
-    // Get values from email and password fields
     var email = document.getElementById("email").value;
     var senha = document.getElementById("password").value;
 
     var credencialAdmin = {
         "admin@besmartbuyer.pt": "Admin"
-        // other user credentials here...
+        // Add other admin credentials here...
     };
 
     // Check if fields are filled
@@ -90,32 +89,21 @@ function fazerLogin() {
         return;
     }
 
-    // Get stored user from localStorage
+    // Retrieve user data from localStorage based on email
     var storedUser = JSON.parse(localStorage.getItem(email));
 
-    // Check if user exists
-    if (storedUser) {
-        // Check if password matches stored password
-        if (senha === storedUser.password) {
-            alert("Login bem-sucedido!");
-
-                window.location.href = 'Profile.html'; // Redirect to normal user profile
-            
-            return;
-        }
-    }
-
-    // Check if admin email is present in credentials
-    if (email in credencialAdmin) {
-        // Check if password matches stored password                            
-        if (senha === credencialAdmin[email]) 
-        {
-            alert("Login bem-sucedido! Entrou no modo Priveligiado");
-            // Redirect user to the destination page after login
+    // Check if user exists and password matches
+    if (storedUser && senha === storedUser.password) {
+        alert("Login bem-sucedido!");
+        if (email in credencialAdmin) {
+            alert("Login bem-sucedido! Entrou no modo Privilegiado");
+            localStorage.setItem('loggedInUser', email); // Set logged-in user
             window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile
-            return; 
+        } else {
+            localStorage.setItem('loggedInUser', email); // Set logged-in user
+            window.location.href = 'Profile.html'; // Redirect to user profile
         }
-        // If control flow reached here, credentials are invalid
+    } else {
         alert("Credenciais inválidas. Por favor, tente novamente.");
     }
 }
@@ -133,7 +121,6 @@ function fazerRegistro() {
     // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
     // Make a request to the server using
     
-
     // Check if fields are filled
     if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
         alert("Por favor, preencha todos os campos.");
@@ -146,19 +133,31 @@ function fazerRegistro() {
         return;
     }
 
+    // Capture current date
+    var currentDate = new Date();
+
+    // Extract day, month, and year
+    var day = currentDate.getDate(); // Get day (1-31)
+    var month = currentDate.getMonth() + 1; // Get month (0-11); January is 0, so we add 1
+    var year = currentDate.getFullYear(); // Get full year (e.g., 2024)
+
+    // Create a formatted date string (e.g., "11/04/2024" for day/month/year)
+    var formattedDate = `${day}/${month}/${year}`;
+
     // Store user data in localStorage
     var user = {
         email: email,
         nome: nome,
         contacto: contacto,
         password: senha,
-        role: "user" // Define o papel do usuário como "user"
+        role: "user", // Define o papel do usuário como "user"
+        img: "../Assets/Generic-Profile-Image.png",
+        created_at: formattedDate
     };
     
     localStorage.setItem(email, JSON.stringify(user));
     alert("Registro bem-sucedido!");
     window.location.href = 'Login.html'; // Redirecionar para a página de login
-
 }
 
 // autenticacao.js for Forgot.html
@@ -188,3 +187,65 @@ function redirectToIndex() {
 function redirectToLogin() {
     window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve logged-in user's email from localStorage (assuming user is already authenticated)
+    var loggedInUserEmail = localStorage.getItem('loggedInUser');
+
+    if (loggedInUserEmail) {
+
+        if(window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1) {
+            // Redirect to login page if no user is logged in
+            window.location.href = 'Index.html';
+        }
+
+        // Retrieve user data from localStorage based on email
+        var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
+
+        if (userData) {
+            // Display user information on the profile page
+            var profileContainer = document.getElementById('profileContainer');
+            profileContainer.innerHTML = `
+                <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
+                    <div class="card p-4"> 
+                        <div class=" image d-flex flex-column justify-content-center align-items-center"> 
+                            <button class="btn btn-secondary"> <img src=${userData.img} height="100" width="100" /></button> 
+                            <span class="name mt-3">${userData.nome}</span> 
+                            <div class=" d-flex mt-2"> 
+                                <button class="btn1 btn-dark">Edit Profile</button> 
+                            </div> <div class="text mt-3"> 
+                                <span>Description</span> 
+                            </div> 
+                            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
+                                <span>
+                                    <i class="fa fa-twitter"></i>
+                                </span> 
+                                <span>
+                                    <i class="fa fa-facebook-f"></i>
+                                </span> 
+                                <span>
+                                    <i class="fa fa-instagram"></i>
+                                </span> 
+                                <span>
+                                    <i class="fa fa-linkedin"></i>
+                                </span> 
+                            </div> 
+                            <div class=" px-2 rounded mt-4 date "> 
+                                <span class="join">Criado a ${userData.created_at}</span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            console.error('User data not found.');
+        }
+    } else {
+        console.error('No user logged in.');
+
+        if(window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
+            // Redirect to login page if no user is logged in
+            window.location.href = 'Login.html';
+        }
+    }
+});
