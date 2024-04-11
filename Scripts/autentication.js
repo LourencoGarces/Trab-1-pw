@@ -14,8 +14,6 @@ Here we have the following functions:
 
 */
 
-
-
 // Adds an event listener for the sidebar toggle button
 document.getElementById('sidebarToggle').addEventListener('click', function() {
     // Toggle the 'active' class of the sidebar to show it
@@ -75,7 +73,6 @@ function closeModal() {
 closeButton.addEventListener("click", closeModal);
 
 // autenticacao.js for Login.html
-// autenticacao.js for Login.html
 
 function fazerLogin() {
     // Get values from email and password fields
@@ -107,22 +104,20 @@ function fazerLogin() {
             return;
         }
     }
+
     // Check if admin email is present in credentials
-if (email in credencialAdmin) 
-{
-// Check if password matches stored password                            
-if (senha === credencialAdmin[email]) 
-{
-                alert("Login bem-sucedido! Entrou no modo Priveligiado");
-// Redirect user to the destination page after login
-window.location.href = 'ProfileAdmin.html'; 
-                return; 
-}
-
-
-    // If control flow reached here, credentials are invalid
-    alert("Credenciais inválidas. Por favor, tente novamente.");
-}
+    if (email in credencialAdmin) {
+        // Check if password matches stored password                            
+        if (senha === credencialAdmin[email]) 
+        {
+            alert("Login bem-sucedido! Entrou no modo Priveligiado");
+            // Redirect user to the destination page after login
+            window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile
+            return; 
+        }
+        // If control flow reached here, credentials are invalid
+        alert("Credenciais inválidas. Por favor, tente novamente.");
+    }
 }
 
 // autenticacao.js for Register.html
@@ -135,7 +130,7 @@ function fazerRegistro() {
     var senha = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypepassword").value;
 
-     // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
+    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
     // Make a request to the server using
     
 
@@ -160,14 +155,11 @@ function fazerRegistro() {
         role: "user" // Define o papel do usuário como "user"
     };
     
-
     localStorage.setItem(email, JSON.stringify(user));
-
     alert("Registro bem-sucedido!");
     window.location.href = 'Login.html'; // Redirecionar para a página de login
 
 }
-
 
 // autenticacao.js for Forgot.html
 
@@ -182,12 +174,6 @@ function fazerForgotPassword() {
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
-
-// autentication.js for Perfil.html here
-
-
-
-// When the user clicks anywhere outside
 
 // Function to redirect to the Register.html
 function redirectToRegister() {

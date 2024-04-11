@@ -14,10 +14,6 @@ Document about all  in Index.js for this  project
 9.  addEventListener()
 */
 
-
-
-
-
 // Adds an event listener for the sidebar toggle button
 document.getElementById('sidebarToggle').addEventListener('click', function() {
     // Toggle the 'active' class of the sidebar to show it
