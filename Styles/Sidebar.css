@@ -21,7 +21,7 @@
     z-index: 1000;
 }
 
-  /* Sidebar link styles left icon */
+/* Sidebar link styles left icon */
 .sidebar a {
     /* Add padding to sidebar links */
     padding: 10px 15px;
@@ -37,18 +37,18 @@
     transition: 0.5s;
 }
 
-  /* Sidebar link hover effect */
+/* Sidebar link hover effect */
 .sidebar a:hover {
     /* Change background color on hover */
     background-color: #77b5f7;
 }
 
-  /* Show sidebar when active class is applied */
+/* Show sidebar when active class is applied */
 .sidebar.active {
     left: 0;
 }
 
-  /* Content Area Styles */
+/* Content Area Styles */
 .content {
     /* Add margin to the content area to avoid overlapping with sidebar */
     margin-left: 250px;
@@ -56,7 +56,7 @@
     padding: 20px;
 }
 
-  /* Styles for sidebar icon */
+/* Styles for sidebar icon */
 .sidebaricon {
     /* Set width of sidebar icon */
     width: 15%;
@@ -64,7 +64,7 @@
     margin-left: 4%;
 }
 
-  /* Styles for search container */
+/* Styles for search container */
 #divBusca {
     /* Add border with border radius */
     border: solid 1px;
@@ -73,7 +73,7 @@
     width: 50%;
 }
 
-  /* Styles for search input */
+/* Styles for search input */
 #txtBusca {
     /* Float search input to the left */
     float: left;
