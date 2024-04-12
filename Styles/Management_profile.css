@@ -1,0 +1,69 @@
+/* Styles for brand logo */
+.logoMarca {
+    /* Set width to 100% */
+    width: 100%;
+    /* Set height to 60% */
+    height: 60%;
+}
+
+/* Styles for login button */
+.LogIn {
+    /* Set width to 45% */
+    width: 80%;
+    /* Add margin */
+    margin: 2%;
+}
+
+/* Styles for register button */
+.Register {
+    /* Set width to 45% */
+    width: 80%;
+    /* Add margin */
+    margin: 2%;
+}
+
+body{
+    background-color:#f2f6fc;
+    color:#69707a;
+}
+
+.img-account-profile {
+    height: 10rem;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+    font-weight: 500;
+}
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+
+.nav-borders .nav-link {
+    color: #69707a;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.btn-danger-soft {
+    color: #000;
+    background-color: #f1e0e3;
+    border-color: #f1e0e3;
+}
