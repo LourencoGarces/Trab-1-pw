@@ -206,46 +206,76 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check if user data exists
         if (userData) {
             // Display user information on the profile page
-            var profileContainer = document.getElementById('profileContainer');
-            profileContainer.innerHTML = `
-                <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
-                    <div class="card p-4"> 
-                        <div class="image d-flex flex-column justify-content-center align-items-center"> 
-                            <button class="btn btn-secondary"> <img src=${userData.img} height="100" width="100" /></button> 
-                            <span class="name mt-3">${userData.nome}</span> 
-                            <div class="d-flex mt-2"> 
-                                <button class="btn1 btn-dark">Edit Profile</button> 
-                            </div> 
-                            <div class="text mt-3"> 
-                                <span>Description</span> 
-                            </div> 
-                            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
-                                <span>
-                                    <i class="fa fa-twitter"></i>
-                                </span> 
-                                <span>
-                                    <i class="fa fa-facebook-f"></i>
-                                </span> 
-                                <span>
-                                    <i class="fa fa-instagram"></i>
-                                </span> 
-                                <span>
-                                    <i class="fa fa-linkedin"></i>
-                                </span> 
-                            </div> 
-                            <div class="px-2 rounded mt-4 date "> 
-                                <span class="join">Criado a ${userData.created_at}</span> 
-                            </div>
+            var Management_container = document.getElementById('Management_container');
+            Management_container.innerHTML = `
+            <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Profile picture card-->
+                    <div class="card ">
+                        <div class="card-header">Foto de Perfil</div>
+                        <div class="card-body text-center">
+                            <!-- Profile picture image-->
+                            <img class="img-account-profile rounded-circle " src="${userData.img}" alt="">
+                            <!-- Profile picture help block-->
+                            <div class="small font-italic text-muted mb-4">JPG ou PNG menor que 5 MB</div>
+                            <!-- Profile picture upload button-->
+                            <button class="btn border" type="button">Carregar imagem</button>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-8">
+                    <!-- Account details card-->
+                    <div class="card md-4">
+                        <div class="card-header">Detalhes da conta</div>
+                        <div class="card-body">
+                            <form>
+                                <!-- Form Group (username)-->
+                                <div>
+                                    <label class="small" for="inputUsername">Nome de Utilizador</label>
+                                    <input class="form-control" id="inputUsername" type="text" placeholder="${userData.nome}">
+                                </div>
+                                <!-- Form Row-->
+                                <div class="row">
+                                    <!-- Form Group (first name)-->
+                                    <div class="col-md-6">
+                                        <label class="small" for="inputFirstName">Primeiro nome</label>
+                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Primeiro nome">
+                                    </div>
+                                    <!-- Form Group (last name)-->
+                                    <div class="col-md-6">
+                                        <label class="small" for="inputLastName">Sobrenome</label>
+                                        <input class="form-control" id="inputLastName" type="text" placeholder="Sobrenome">
+                                    </div>
+                                </div>
+                                <!-- Form Group (email address)-->
+                                <div>
+                                    <label class="small" for="inputEmailAddress">Email</label>
+                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="${userData.email}">
+                                </div>
+                                <!-- Form Row-->
+                                <div class="row">
+                                    <!-- Form Group (phone number)-->
+                                    <div class="col-md-6">
+                                        <label class="small" for="inputPhone">Número de Telefone</label>
+                                        <input class="form-control mb-3" id="inputPhone" type="tel" placeholder="Número de Telefone" >
+                                    </div>
+                                </div>
+                                <!-- Save changes button-->
+                                <button class="btn border" type="button">Salvar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             `;
         } else {
             console.error('User data not found.'); // Log an error if user data is not found
         }
     } else {
         console.error('No user logged in.'); // Log an error if no user is logged in
-
         // Redirect to the login page if the current page is not the login or registration page
         if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
             window.location.href = 'Login.html';

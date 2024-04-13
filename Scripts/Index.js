@@ -76,15 +76,18 @@ closeButton.addEventListener("click", closeModal);
 function updateButtonVisibility() {
     const isLoggedIn = localStorage.getItem('loggedInUser') !== null;
     const logoutButton = document.getElementById('logoutButton');
+    const profileButton = document.getElementById('ProfileButton');
 
     if (isLoggedIn) {
         logoutButton.style.display = 'block';
+        profileButton.style.display = 'block';
     } else {
         logoutButton.style.display = 'none';
+        profileButton.style.display = 'none';
     }
 }
 
-// Event listener to handle login/logout changes
+// Event listener to handle changes in local storage
 window.addEventListener('storage', function(event) {
     if (event.key === 'loggedInUser') {
         updateButtonVisibility();
@@ -97,9 +100,11 @@ document.getElementById('logoutButton').addEventListener('click', function() {
     localStorage.removeItem('loggedInUser');
 
     // Optionally perform any other cleanup or redirection
-    alert('You have been logged out.');
+    alert('A sair da conta.');
     window.location.href = 'Login.html'; // Redirect to login page after logout
 });
 
 // Initial call to update button visibility on page load
-updateButtonVisibility();
+document.addEventListener('DOMContentLoaded', function() {
+    updateButtonVisibility();
+});
