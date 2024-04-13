@@ -93,31 +93,30 @@
     width: 95%;
 }
 
-/* Styles for icon button */
+.header-container {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    width: 30%;
+    margin-left: 3%;
+}
+
 .iconButton {
-    /* Remove border and background */
     border: none;
     background: none;
-    /* Set cursor to pointer */
     cursor: pointer;
-    /* Remove padding */
     padding: 0;
-    /* Set width */
-    width: 10%;
-    /* Add margin to the left */
-    margin-left: 4%;
+    width: 10%; /* Set desired width */
+    margin-right: 5%; /* Adjust negative margin to reduce spacing */
 }
 
-/* Styles for profile logo */
-.logoProfile {
-    /* Set width to 100% */
-    width: 100%;
+.logoProfile, .logoCard {
+    width: 100%; /* Set width for logo buttons */
 }
 
-/* Styles for card logo */
-.logoCard {
-    /* Set width to 100% */
+.profile img {
     width: 100%;
+    border-radius: 50%; /* Makes the image round */
+    cursor: pointer;
 }
 
 /* Styles for brand logo */

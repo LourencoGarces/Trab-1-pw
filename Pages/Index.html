@@ -55,7 +55,7 @@
                     </svg>
                 </div>
             </div>
-            <div>
+            <div class="header-container">
                 <!-- Profile Button -->
                 <button class="iconButton" id="profileButton">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoProfile bi-person" viewBox="0 0 16 16">
@@ -71,32 +71,36 @@
                 </button>
                 <!-- Log Out Button -->
                 <button id="logoutButton" style="display: none;">Log Out</button>
-                <!-- Modal -->
-                <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body"></div>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p>Por favor, faça login ou registre-se para continuar.</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                </div>         
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn border LogIn">Log In</button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn border Register">Register</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>            
+                <!-- Profile img -->
+                <div class="profile iconButton">
+                    <a href="Mangement_Profile.html">
+                        <img src="../Assets/Generic-Profile-Image.png" alt="Profile Picture">
+                    </a>
                 </div>
-            </div>
+            </div>            
+            <!-- Modal -->
+            <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p>Por favor, faça login ou registre-se para continuar.</p>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                        </div>         
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn border LogIn">Log In</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn border Register">Register</button>
+                            </div>                                
+                        </div>
+                    </div>
+                </div>            
+            </div>            
         </nav>
     </header>
     <!-- Main content -->
@@ -271,7 +275,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
     </footer>

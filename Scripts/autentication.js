@@ -101,7 +101,7 @@ function fazerLogin() {
             window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile
         } else {
             localStorage.setItem('loggedInUser', email); // Set logged-in user
-            window.location.href = 'Profile.html'; // Redirect to user profile
+            window.location.href = 'Index.html'; // Redirect to user Main page
         }
     } else {
         alert("Credenciais inválidas. Por favor, tente novamente.");
