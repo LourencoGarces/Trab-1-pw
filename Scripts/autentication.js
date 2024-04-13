@@ -148,6 +148,8 @@ function fazerRegistro() {
     var user = {
         email: email,
         nome: nome,
+        primeiroNome: "",
+        ultimoNome: "",
         contacto: contacto,
         password: senha,
         role: "user", // Define o papel do usuário como "user"
@@ -252,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <!-- Form Group (email address)-->
                                 <div>
                                     <label class="small" for="inputEmailAddress">Email</label>
-                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="${userData.email}">
+                                    <label class="form-control" for="inputEmailAddress">${userData.email}</label>
                                 </div>
                                 <!-- Form Row-->
                                 <div class="row">
@@ -263,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <!-- Save changes button-->
-                                <button class="btn border" type="button">Salvar</button>
+                                <button class="btn border" id="inputSave" type="button">Save</button>
                             </form>
                         </div>
                     </div>
