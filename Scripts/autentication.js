@@ -244,12 +244,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <!-- Form Group (first name)-->
                                     <div class="col-md-6">
                                         <label class="small" for="inputFirstName">Primeiro nome</label>
-                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Primeiro nome">
+                                        <input class="form-control" id="inputFirstName" type="text" placeholder="${userData.primeiroNome}">
                                     </div>
                                     <!-- Form Group (last name)-->
                                     <div class="col-md-6">
                                         <label class="small" for="inputLastName">Sobrenome</label>
-                                        <input class="form-control" id="inputLastName" type="text" placeholder="Sobrenome">
+                                        <input class="form-control" id="inputLastName" type="text" placeholder="${userData.ultimoNome}">
                                     </div>
                                 </div>
                                 <!-- Form Group (email address)-->
@@ -262,11 +262,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <!-- Form Group (phone number)-->
                                     <div class="col-md-6">
                                         <label class="small" for="inputPhone">Número de Telefone</label>
-                                        <input class="form-control mb-3" id="inputPhone" type="tel" placeholder="Número de Telefone" >
+                                        <input class="form-control mb-3" id="inputPhone" type="tel" placeholder="${userData.contacto}" >
                                     </div>
                                 </div>
                                 <!-- Save changes button-->
-                                <button class="btn border" id="inputSave" type="button">Save</button>
+                                <button class="btn border" id="inputSave" type="button" onclick="redirectToManagement_Profile()">Save</button>
                             </form>
                         </div>
                     </div>
@@ -285,3 +285,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// Function to redirect to the Management_Profile.html
+function redirectToManagement_Profile() {
+    window.location.href = "Management_Profile.html";
+}

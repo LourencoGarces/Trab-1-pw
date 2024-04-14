@@ -21,11 +21,19 @@ function saveUpdatedData(username, firstName, lastName, phone) {
         // Retrieving user data from localStorage
         var userData = JSON.parse(localStorage.getItem(loggedInUserEmail)) || {};
 
-        // Updating data with new values
-        userData.nome = username;
-        userData.primeiroNome = firstName;
-        userData.ultimoNome = lastName;
-        userData.contacto = phone;
+        // Update data only if the input fields are not empty
+        if (username.trim() !== '') {
+            userData.nome = username;
+        }
+        if (firstName.trim() !== '') {
+            userData.primeiroNome = firstName;
+        }
+        if (lastName.trim() !== '') {
+            userData.ultimoNome = lastName;
+        }
+        if (phone.trim() !== '') {
+            userData.contacto = phone;
+        }
 
         // Saving updated data back to localStorage
         localStorage.setItem(loggedInUserEmail, JSON.stringify(userData));
