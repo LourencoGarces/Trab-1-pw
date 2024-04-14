@@ -1,8 +1,6 @@
 /*
-
 Document about all autentication in this project
 Here we have the following functions:
-
 1. Redirect to login page
 2. Redirect to register page
 3. Close sidebar
@@ -11,7 +9,6 @@ Here we have the following functions:
 6. Redirect to index page
 7. Redirect to profile page
 8. Redirect to logout page
-
 */
 
 // Adds an event listener for the sidebar toggle button
@@ -46,14 +43,19 @@ document.getElementById("profileButton").addEventListener("click", function() {
     modal.style.display = "block"; // Set the modal style to 'block' to show it
 });
 
+// Function to redirect to the Index.html
+function redirectToIndex() {
+    window.location.href = "Index.html"; 
+}
+
 // Function to redirect to the login page
 function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
+    window.location.href = "Login.html"; 
 }
 
 // Function to redirect to the register page
 function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
+    window.location.href = "Register.html"; 
 }
 
 // Adds an event listener for the Log In button
@@ -72,9 +74,8 @@ function closeModal() {
 // Add event listener to the close button
 closeButton.addEventListener("click", closeModal);
 
-// autenticacao.js for Login.html
-
-function fazerLogin() {
+// autentication.js for Login.html
+function loginUser() {
     var email = document.getElementById("email").value;
     var senha = document.getElementById("password").value;
 
@@ -108,9 +109,8 @@ function fazerLogin() {
     }
 }
 
-// autenticacao.js for Register.html
-
-function fazerRegistro() {
+// autentication.js for Register.html
+function registerUser() {
     // Get values from registration form fields
     var email = document.getElementById("email").value;
     var nome = document.getElementById("name").value;
@@ -152,42 +152,27 @@ function fazerRegistro() {
         ultimoNome: "",
         contacto: contacto,
         password: senha,
-        role: "user", // Define o papel do usuário como "user"
+        role: "user", // Set the user role as 'user'
         img: "../Assets/Generic-Profile-Image.png",
         created_at: formattedDate
     };
     
     localStorage.setItem(email, JSON.stringify(user));
     alert("Registro bem-sucedido!");
-    window.location.href = 'Login.html'; // Redirecionar para a página de login
+    window.location.href = 'Login.html'; //Redirect to the login page
 }
 
-// autenticacao.js for Forgot.html
-
-function fazerForgotPassword() {
+// autentication.js for Forgot.html
+function forgotPassword() {
     // Get email from the input field
     var email = document.getElementById("email").value;
 
-    // Verificar se o campo de email está preenchido
+    // Check if the email field is empty
     if (email.trim() === '') {
         alert("Por favor, insira seu email.");
         return;
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
-}
-
-// Function to redirect to the Register.html
-function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
-}
-// Function to redirect to the Index.html
-function redirectToIndex() {
-    window.location.href = "Index.html"; // Replace "Index.html" with the URL of your index page
-}
-
-// Function to redirect to the Login.html
-function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
 
 // Event listener triggered when the DOM content has fully loaded

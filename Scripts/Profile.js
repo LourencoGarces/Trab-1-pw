@@ -39,10 +39,10 @@ function saveUpdatedData(username, firstName, lastName, phone) {
         localStorage.setItem(loggedInUserEmail, JSON.stringify(userData));
 
         console.log('Data updated and saved in localStorage:', userData);
-        alert('Data updated successfully!');
+        alert('Dados atualizados!');
     } else {
         console.error('No user logged in.');
-        alert('Error: No user logged in.');
+        alert('Error: Não há Utilizadores associados.');
     }
 }
 
@@ -55,21 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const file = event.target.files[0];
 
         if (file) {
-            // Verifica se o arquivo é uma imagem
+            // Check if the file is an image
             if (file.type.startsWith('image/')) {
                 const reader = new FileReader();
 
                 reader.onload = (e) => {
                     const base64Image = e.target.result;
 
-                    // Atualiza a imagem de perfil na página
+                    // Update the profile image on the page
                     profileImage.src = base64Image;
 
-                    // Atualiza a imagem no localStorage
+                    // Update the image stored in localStorage
                     updateProfileImageInLocalStorage(base64Image);
                 };
 
-                // Lê o arquivo como uma URL de dados (data URL)
+                // Read a file as a data URL
                 reader.readAsDataURL(file);
             } else {
                 alert('Por favor, selecione um arquivo de imagem válido (JPG ou PNG).');

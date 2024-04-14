@@ -1,8 +1,6 @@
 /*
-
 Document about all  in Index.js for this  project
 -->Here we have the following functions:
-
 1.  .getElementById()
 2.  closeSidebar()
 3.  addEventListener
@@ -48,12 +46,12 @@ document.getElementById("profileButton").addEventListener("click", function() {
 
 // Function to redirect to the login page
 function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
+    window.location.href = "Login.html"; 
 }
 
 // Function to redirect to the register page
 function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
+    window.location.href = "Register.html";
 }
 
 // Adds an event listener for the Log In button
