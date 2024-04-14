@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if a logged-in user email exists
     if (loggedInUserEmail) {
         // Redirect to the index page if the current page is the login or registration page
-        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1) {
+        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1 || window.location.pathname.indexOf('/Forgot.html') > -1) {
             window.location.href = 'Index.html';
         }
 
@@ -264,8 +264,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     } else {
         console.error('No user logged in.'); // Log an error if no user is logged in
-        // Redirect to the login page if the current page is not the login or registration page
-        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
+        // Redirect to the login page if the current page is not the login or registration page or the forgot password page
+        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1 && window.location.pathname.indexOf('/Forgot') === -1) {
             window.location.href = 'Login.html';
         }
     }
