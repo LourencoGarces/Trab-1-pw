@@ -219,11 +219,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="card-header">Foto de Perfil</div>
                         <div class="card-body text-center">
                             <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle " src="${userData.img}" alt="">
+                            <img class="img-account-profile rounded-circle" id="profileImage" src="${userData.img}" alt="Foto de Perfil">
                             <!-- Profile picture help block-->
                             <div class="small font-italic text-muted mb-4">JPG ou PNG menor que 5 MB</div>
                             <!-- Profile picture upload button-->
-                            <button class="btn border" type="button">Carregar imagem</button>
+                            <input type="file" id="imageUploadInput" style="display: none;" accept="image/png, image/jpeg">
+                            <button id="uploadImageButton" class="btn border" type="button">Carregar Imagem</button>
                         </div>
                     </div>
                 </div>

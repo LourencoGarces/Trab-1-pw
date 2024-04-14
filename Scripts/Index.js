@@ -108,3 +108,37 @@ document.getElementById('logoutButton').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     updateButtonVisibility();
 });
+
+// Event listener triggered when the DOM content has fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
+    var loggedInUserEmail = localStorage.getItem('loggedInUser');
+
+    // Check if a logged-in user email exists
+    if (loggedInUserEmail) {
+        // Redirect to the index page if the current page is the login or registration page
+        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1) {
+            window.location.href = 'Index.html';
+        }
+
+        // Retrieve user data from localStorage based on the logged-in user's email
+        var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
+
+        // Check if user data exists
+        if (userData) {
+            // Display user information on the profile page
+            var ProfileImage = document.getElementById('ProfileImage');
+            ProfileImage.innerHTML = `
+            <img src="${userData.img}" alt="Profile Picture" >
+            `;
+        } else {
+            console.error('User data not found.'); // Log an error if user data is not found
+        }
+    } else {
+        console.error('No user logged in.'); // Log an error if no user is logged in
+        // Redirect to the login page if the current page is not the login or registration page
+        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
+            window.location.href = 'Login.html';
+        }
+    }
+});
