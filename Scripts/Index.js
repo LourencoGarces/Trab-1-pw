@@ -1,8 +1,6 @@
 /*
-
 Document about all  in Index.js for this  project
 -->Here we have the following functions:
-
 1.  .getElementById()
 2.  closeSidebar()
 3.  addEventListener
@@ -48,12 +46,12 @@ document.getElementById("profileButton").addEventListener("click", function() {
 
 // Function to redirect to the login page
 function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
+    window.location.href = "Login.html"; 
 }
 
 // Function to redirect to the register page
 function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
+    window.location.href = "Register.html";
 }
 
 // Adds an event listener for the Log In button
@@ -108,3 +106,60 @@ document.getElementById('logoutButton').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     updateButtonVisibility();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
+    var loggedInUserEmail = localStorage.getItem('loggedInUser');
+
+    // Check if a logged-in user email exists
+    if (loggedInUserEmail) {
+        // Retrieve user data from localStorage based on the logged-in user's email
+        var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
+            if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1 || window.location.pathname.indexOf('/Forgot.html') > -1) {
+                window.location.href = 'Index.html';
+            }
+
+        // Check if user data exists
+        if (userData) {
+            // Check if the logged-in user is an admin
+            var isAdmin = userData.role === 'admin'; // Assuming 'role' identifies admin status
+
+            // Determine which page to redirect based on user role
+            if (isAdmin) {
+                 // Display user information on the profile page
+                var ProfileButton = document.getElementById('ProfileButton');
+                ProfileButton.innerHTML = `
+                <a href="ProfileAdmin.html" id="ProfileImage">
+                <img src="${userData.img}" alt="Profile Picture" >
+                    </a>
+                `;
+            } else {
+                 // Display user information on the profile page
+                var ProfileButton = document.getElementById('ProfileButton');
+                ProfileButton.innerHTML = `
+                <a href="Management_Profile.html" id="ProfileImage">
+                <img src="${userData.img}" alt="Profile Picture" >
+                    </a>
+                `;
+            }
+        } else {
+            console.error('User data not found.'); // Log an error if user data is not found
+        }
+    } else {
+        console.error('No user logged in.'); // Log an error if no user is logged in
+        // Redirect to the login page if the current page is not the login or registration page
+        if (!isLoginPage() && !isRegisterPage()) {
+            window.location.href = 'Login.html';
+        }
+    }
+});
+
+// Helper function to check if the current page is the login page
+function isLoginPage() {
+    return window.location.pathname.indexOf('/Login.html') !== -1;
+}
+
+// Helper function to check if the current page is the registration page
+function isRegisterPage() {
+    return window.location.pathname.indexOf('/Register.html') !== -1;
+}

@@ -1,8 +1,6 @@
 /*
-
 Document about all autentication in this project
 Here we have the following functions:
-
 1. Redirect to login page
 2. Redirect to register page
 3. Close sidebar
@@ -11,7 +9,6 @@ Here we have the following functions:
 6. Redirect to index page
 7. Redirect to profile page
 8. Redirect to logout page
-
 */
 
 // Adds an event listener for the sidebar toggle button
@@ -46,14 +43,19 @@ document.getElementById("profileButton").addEventListener("click", function() {
     modal.style.display = "block"; // Set the modal style to 'block' to show it
 });
 
+// Function to redirect to the Index.html
+function redirectToIndex() {
+    window.location.href = "Index.html"; 
+}
+
 // Function to redirect to the login page
 function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
+    window.location.href = "Login.html"; 
 }
 
 // Function to redirect to the register page
 function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
+    window.location.href = "Register.html"; 
 }
 
 // Adds an event listener for the Log In button
@@ -72,54 +74,49 @@ function closeModal() {
 // Add event listener to the close button
 closeButton.addEventListener("click", closeModal);
 
-// autenticacao.js for Login.html
-
-function fazerLogin() {
+// autentication.js for Login.html
+function loginUser() {
     var email = document.getElementById("email").value;
-    var senha = document.getElementById("password").value;
-
-    var credencialAdmin = {
-        "admin@besmartbuyer.pt": "Admin"
-        // Add other admin credentials here...
-    };
+    var password = document.getElementById("password").value;
 
     // Check if fields are filled
-    if (email.trim() === '' || senha.trim() === '') {
-        alert("Por favor, preencha todos os campos.");
+    if (email.trim() === '' || password.trim() === '') {
+        alert("Please fill in all fields.");
         return;
     }
 
     // Retrieve user data from localStorage based on email
-    var storedUser = JSON.parse(localStorage.getItem(email));
+    var userData = JSON.parse(localStorage.getItem(email));
 
     // Check if user exists and password matches
-    if (storedUser && senha === storedUser.password) {
-        alert("Login bem-sucedido!");
-        if (email in credencialAdmin) {
-            alert("Login bem-sucedido! Entrou no modo Privilegiado");
+    if (userData && password === userData.password) {
+        alert("Login successful!");
+
+        // Check the role of the user
+        if (userData.role === 'admin') {
+            alert("Login successful! You are logged in as an administrator.");
             localStorage.setItem('loggedInUser', email); // Set logged-in user
-            window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile
+            window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile page
+        } else if (userData.role === 'user') {
+            alert("Login successful! You are logged in as a user.");
+            localStorage.setItem('loggedInUser', email); // Set logged-in user
+            window.location.href = 'Index.html'; // Redirect to user main page
         } else {
-            localStorage.setItem('loggedInUser', email); // Set logged-in user
-            window.location.href = 'Index.html'; // Redirect to user Main page
+            alert("Unknown role for this user.");
         }
     } else {
-        alert("Credenciais inválidas. Por favor, tente novamente.");
+        alert("Invalid credentials. Please try again.");
     }
 }
 
-// autenticacao.js for Register.html
-
-function fazerRegistro() {
+// autentication.js for Register.html
+function registerUser() {
     // Get values from registration form fields
     var email = document.getElementById("email").value;
     var nome = document.getElementById("name").value;
     var contacto = document.getElementById("contact").value;
     var senha = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypepassword").value;
-
-    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
-    // Make a request to the server using
     
     // Check if fields are filled
     if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
@@ -133,6 +130,12 @@ function fazerRegistro() {
         return;
     }
 
+    // List of admin emails
+    var adminEmails = ["admin@besmartbuyer.pt" /* Add more admin emails here*/];
+
+    // Check if the entered email is in the list of admin emails
+    var isAdmin = adminEmails.includes(email);
+
     // Capture current date
     var currentDate = new Date();
 
@@ -144,6 +147,9 @@ function fazerRegistro() {
     // Create a formatted date string (e.g., "11/04/2024" for day/month/year)
     var formattedDate = `${day}/${month}/${year}`;
 
+    // Define user role based on admin status
+    var role = isAdmin ? "admin" : "user";
+
     // Store user data in localStorage
     var user = {
         email: email,
@@ -152,42 +158,27 @@ function fazerRegistro() {
         ultimoNome: "",
         contacto: contacto,
         password: senha,
-        role: "user", // Define o papel do usuário como "user"
+        role: role, // Set the user role based on admin status
         img: "../Assets/Generic-Profile-Image.png",
         created_at: formattedDate
     };
     
     localStorage.setItem(email, JSON.stringify(user));
     alert("Registro bem-sucedido!");
-    window.location.href = 'Login.html'; // Redirecionar para a página de login
+    window.location.href = 'Login.html'; // Redirect to the login page
 }
 
-// autenticacao.js for Forgot.html
-
-function fazerForgotPassword() {
+// autentication.js for Forgot.html
+function forgotPassword() {
     // Get email from the input field
     var email = document.getElementById("email").value;
 
-    // Verificar se o campo de email está preenchido
+    // Check if the email field is empty
     if (email.trim() === '') {
         alert("Por favor, insira seu email.");
         return;
     }
     alert("Um email de recuperação de senha foi enviado para " + email);
-}
-
-// Function to redirect to the Register.html
-function redirectToRegister() {
-    window.location.href = "Register.html"; // Replace "Register.html" with the URL of your register page
-}
-// Function to redirect to the Index.html
-function redirectToIndex() {
-    window.location.href = "Index.html"; // Replace "Index.html" with the URL of your index page
-}
-
-// Function to redirect to the Login.html
-function redirectToLogin() {
-    window.location.href = "Login.html"; // Replace "Login.html" with the URL of your login page
 }
 
 // Event listener triggered when the DOM content has fully loaded
@@ -198,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if a logged-in user email exists
     if (loggedInUserEmail) {
         // Redirect to the index page if the current page is the login or registration page
-        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1) {
+        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1 || window.location.pathname.indexOf('/Forgot.html') > -1) {
             window.location.href = 'Index.html';
         }
 
@@ -219,11 +210,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="card-header">Foto de Perfil</div>
                         <div class="card-body text-center">
                             <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle " src="${userData.img}" alt="">
+                            <img class="img-account-profile rounded-circle" id="profileImage" src="${userData.img}" alt="Foto de Perfil">
                             <!-- Profile picture help block-->
                             <div class="small font-italic text-muted mb-4">JPG ou PNG menor que 5 MB</div>
                             <!-- Profile picture upload button-->
-                            <button class="btn border" type="button">Carregar imagem</button>
+                            <input type="file" id="imageUploadInput" style="display: none;" accept="image/png, image/jpeg">
+                            <button id="uploadImageButton" class="btn border" type="button">Carregar Imagem</button>
                         </div>
                     </div>
                 </div>
@@ -243,12 +235,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <!-- Form Group (first name)-->
                                     <div class="col-md-6">
                                         <label class="small" for="inputFirstName">Primeiro nome</label>
-                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Primeiro nome">
+                                        <input class="form-control" id="inputFirstName" type="text" placeholder="${userData.primeiroNome}">
                                     </div>
                                     <!-- Form Group (last name)-->
                                     <div class="col-md-6">
                                         <label class="small" for="inputLastName">Sobrenome</label>
-                                        <input class="form-control" id="inputLastName" type="text" placeholder="Sobrenome">
+                                        <input class="form-control" id="inputLastName" type="text" placeholder="${userData.ultimoNome}">
                                     </div>
                                 </div>
                                 <!-- Form Group (email address)-->
@@ -261,11 +253,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <!-- Form Group (phone number)-->
                                     <div class="col-md-6">
                                         <label class="small" for="inputPhone">Número de Telefone</label>
-                                        <input class="form-control mb-3" id="inputPhone" type="tel" placeholder="Número de Telefone" >
+                                        <input class="form-control mb-3" id="inputPhone" type="tel" placeholder="${userData.contacto}" >
                                     </div>
                                 </div>
                                 <!-- Save changes button-->
-                                <button class="btn border" id="inputSave" type="button">Save</button>
+                                <button class="btn border" id="inputSave" type="button" onclick="redirectToManagement_Profile()">Save</button>
                             </form>
                         </div>
                     </div>
@@ -278,9 +270,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     } else {
         console.error('No user logged in.'); // Log an error if no user is logged in
-        // Redirect to the login page if the current page is not the login or registration page
-        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
+        // Redirect to the login page if the current page is not the login or registration page or the forgot password page
+        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1 && window.location.pathname.indexOf('/Forgot') === -1) {
             window.location.href = 'Login.html';
         }
     }
 });
+
+// Function to redirect to the Management_Profile.html
+function redirectToManagement_Profile() {
+    window.location.href = "Management_Profile.html";
+}
