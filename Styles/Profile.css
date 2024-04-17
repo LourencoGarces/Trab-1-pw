@@ -1,38 +1,29 @@
-/*
-Style for the container
-*/
+/* Style for the container */
 .container {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  height: 200; /* Specify the height of the container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 200px; /* Specify the height of the container */
 }
 
 /* Styles for brand logo */
 .center {
-  /* Set width to 350% */
-  width: 100%;
+  width: 100%; /* Set width to 100% */
 }
 
-/*
-Style for the profile-content
-*/
+/* Style for the profile-content */
 .profile-content {
   margin-top: 30px; /* Add margin on top */
 }
 
-/*
-Style for the profile-img
-*/
-.center{
-  display:block; /* Set display property to block */
-  margin-left:auto; /* Set left margin to auto */
-  margin-right:auto; /* Set right margin to auto */
+/* Style for the profile-img */
+.center {
+  display: block; /* Set display property to block */
+  margin-left: auto; /* Set left margin to auto */
+  margin-right: auto; /* Set right margin to auto */
 }
 
-/*
-Style for the profile-h1
-*/
+/* Style for the profile-h1 */
 h1 {
   color: rgb(24, 23, 23); /* Set text color */
   text-align: left; /* Align text to the left */
@@ -45,11 +36,13 @@ h1 {
   height: 100%; /* Set height to 100% */
 }
 
+/* Global CSS reset */
 * {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
+/* Style for the card */
 .card {
   width: 350px;
   background-color: #efefef;
@@ -58,74 +51,87 @@ h1 {
   transition: all 0.5s;
 }
 
+/* Image hover effect */
 .image img {
-  transition: all 0.5s
+  transition: all 0.5s;
 }
 
 .card:hover .image img {
-  transform: scale(1.5)
+  transform: scale(1.5); /* Scale image on hover */
 }
 
+/* Style for button */
 .btn {
   height: 140px;
   width: 140px;
-  border-radius: 50%
+  border-radius: 50%; /* Make button circular */
 }
 
+/* Style for name */
 .name {
   font-size: 22px;
-  font-weight: bold
+  font-weight: bold;
 }
 
+/* Style for idd */
 .idd {
   font-size: 14px;
-  font-weight: 600
+  font-weight: 600;
 }
 
+/* Style for idd1 */
 .idd1 {
-  font-size: 12px
+  font-size: 12px;
 }
 
+/* Style for number */
 .number {
   font-size: 22px;
-  font-weight: bold
+  font-weight: bold;
 }
 
+/* Style for follow */
 .follow {
   font-size: 12px;
   font-weight: 500;
-  color: #444444
+  color: #444444;
 }
 
+/* Style for button 1 */
 .btn1 {
   height: 40px;
   width: 150px;
   border: none;
   background-color: #000;
   color: #aeaeae;
-  font-size: 15px
+  font-size: 15px;
 }
 
+/* Style for text span */
 .text span {
   font-size: 13px;
   color: #545454;
-  font-weight: 500
+  font-weight: 500;
 }
 
+/* Style for icons */
 .icons i {
-  font-size: 19px
+  font-size: 19px;
 }
 
-hr .new1 {
-  border: 1px solid
+/* Style for hr with class new1 */
+hr.new1 {
+  border: 1px solid; /* Solid border */
 }
 
+/* Style for join */
 .join {
   font-size: 14px;
   color: #a0a0a0;
-  font-weight: bold
+  font-weight: bold;
 }
 
+/* Style for date */
 .date {
-  background-color: #ccc
+  background-color: #ccc; /* Gray background color */
 }
