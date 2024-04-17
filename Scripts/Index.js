@@ -107,36 +107,59 @@ document.addEventListener('DOMContentLoaded', function() {
     updateButtonVisibility();
 });
 
-// Event listener triggered when the DOM content has fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
     var loggedInUserEmail = localStorage.getItem('loggedInUser');
 
     // Check if a logged-in user email exists
     if (loggedInUserEmail) {
-        // Redirect to the index page if the current page is the login or registration page
-        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1) {
-            window.location.href = 'Index.html';
-        }
-
         // Retrieve user data from localStorage based on the logged-in user's email
         var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
+            if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1 || window.location.pathname.indexOf('/Forgot.html') > -1) {
+                window.location.href = 'Index.html';
+            }
 
         // Check if user data exists
         if (userData) {
-            // Display user information on the profile page
-            var ProfileImage = document.getElementById('ProfileImage');
-            ProfileImage.innerHTML = `
-            <img src="${userData.img}" alt="Profile Picture" >
-            `;
+            // Check if the logged-in user is an admin
+            var isAdmin = userData.role === 'admin'; // Assuming 'role' identifies admin status
+
+            // Determine which page to redirect based on user role
+            if (isAdmin) {
+                 // Display user information on the profile page
+                var ProfileButton = document.getElementById('ProfileButton');
+                ProfileButton.innerHTML = `
+                <a href="ProfileAdmin.html" id="ProfileImage">
+                <img src="${userData.img}" alt="Profile Picture" >
+                    </a>
+                `;
+            } else {
+                 // Display user information on the profile page
+                var ProfileButton = document.getElementById('ProfileButton');
+                ProfileButton.innerHTML = `
+                <a href="Management_Profile.html" id="ProfileImage">
+                <img src="${userData.img}" alt="Profile Picture" >
+                    </a>
+                `;
+            }
         } else {
             console.error('User data not found.'); // Log an error if user data is not found
         }
     } else {
         console.error('No user logged in.'); // Log an error if no user is logged in
         // Redirect to the login page if the current page is not the login or registration page
-        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1) {
+        if (!isLoginPage() && !isRegisterPage()) {
             window.location.href = 'Login.html';
         }
     }
 });
+
+// Helper function to check if the current page is the login page
+function isLoginPage() {
+    return window.location.pathname.indexOf('/Login.html') !== -1;
+}
+
+// Helper function to check if the current page is the registration page
+function isRegisterPage() {
+    return window.location.pathname.indexOf('/Register.html') !== -1;
+}

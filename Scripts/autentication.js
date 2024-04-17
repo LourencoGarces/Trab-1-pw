@@ -77,35 +77,35 @@ closeButton.addEventListener("click", closeModal);
 // autentication.js for Login.html
 function loginUser() {
     var email = document.getElementById("email").value;
-    var senha = document.getElementById("password").value;
-
-    var credencialAdmin = {
-        "admin@besmartbuyer.pt": "Admin"
-        // Add other admin credentials here...
-    };
+    var password = document.getElementById("password").value;
 
     // Check if fields are filled
-    if (email.trim() === '' || senha.trim() === '') {
-        alert("Por favor, preencha todos os campos.");
+    if (email.trim() === '' || password.trim() === '') {
+        alert("Please fill in all fields.");
         return;
     }
 
     // Retrieve user data from localStorage based on email
-    var storedUser = JSON.parse(localStorage.getItem(email));
+    var userData = JSON.parse(localStorage.getItem(email));
 
     // Check if user exists and password matches
-    if (storedUser && senha === storedUser.password) {
-        alert("Login bem-sucedido!");
-        if (email in credencialAdmin) {
-            alert("Login bem-sucedido! Entrou no modo Privilegiado");
+    if (userData && password === userData.password) {
+        alert("Login successful!");
+
+        // Check the role of the user
+        if (userData.role === 'admin') {
+            alert("Login successful! You are logged in as an administrator.");
             localStorage.setItem('loggedInUser', email); // Set logged-in user
-            window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile
+            window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile page
+        } else if (userData.role === 'user') {
+            alert("Login successful! You are logged in as a user.");
+            localStorage.setItem('loggedInUser', email); // Set logged-in user
+            window.location.href = 'Index.html'; // Redirect to user main page
         } else {
-            localStorage.setItem('loggedInUser', email); // Set logged-in user
-            window.location.href = 'Index.html'; // Redirect to user Main page
+            alert("Unknown role for this user.");
         }
     } else {
-        alert("Credenciais inválidas. Por favor, tente novamente.");
+        alert("Invalid credentials. Please try again.");
     }
 }
 
@@ -117,9 +117,6 @@ function registerUser() {
     var contacto = document.getElementById("contact").value;
     var senha = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypepassword").value;
-
-    // Only hardcoded users can currently login - replace this with a real database check when implementing authentication
-    // Make a request to the server using
     
     // Check if fields are filled
     if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
@@ -133,6 +130,12 @@ function registerUser() {
         return;
     }
 
+    // List of admin emails
+    var adminEmails = ["admin@besmartbuyer.pt" /* Add more admin emails here*/];
+
+    // Check if the entered email is in the list of admin emails
+    var isAdmin = adminEmails.includes(email);
+
     // Capture current date
     var currentDate = new Date();
 
@@ -144,6 +147,9 @@ function registerUser() {
     // Create a formatted date string (e.g., "11/04/2024" for day/month/year)
     var formattedDate = `${day}/${month}/${year}`;
 
+    // Define user role based on admin status
+    var role = isAdmin ? "admin" : "user";
+
     // Store user data in localStorage
     var user = {
         email: email,
@@ -152,14 +158,14 @@ function registerUser() {
         ultimoNome: "",
         contacto: contacto,
         password: senha,
-        role: "user", // Set the user role as 'user'
+        role: role, // Set the user role based on admin status
         img: "../Assets/Generic-Profile-Image.png",
         created_at: formattedDate
     };
     
     localStorage.setItem(email, JSON.stringify(user));
     alert("Registro bem-sucedido!");
-    window.location.href = 'Login.html'; //Redirect to the login page
+    window.location.href = 'Login.html'; // Redirect to the login page
 }
 
 // autentication.js for Forgot.html
