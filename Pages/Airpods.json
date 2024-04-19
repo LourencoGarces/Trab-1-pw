@@ -1,0 +1,35 @@
+[
+    {
+        "PolignoE": "/Assets/Airpods/polygon-1.png"
+    },
+    {
+        "Titulo1": "/Assets/Airpods/Produtos Be Smart Buyer.png"
+    },
+    {
+        "PolignoD": "/Assets/Airpods/Polygon 2.png"
+    },
+    {
+        "Airpods": "/Assets/Airpods/airpodstitulo.png","Titulo": "AirPods"
+    },
+    {
+        "AppleAirPods": "/Assets/Airpods/AppleAirpods.png","Detalhe1":" Apple AirPods"
+    },
+    {
+        "AuricularesGooglePixel": "/Assets/Airpods/AuricularesGooglePixel.png","Detalhe2":"Auriculares Google Pixel"
+    },
+    {
+        "AuricularesSony": "/Assets/Airpods/AuricularesSony.png","Detalhe3":"Auriculares Sony"
+    },
+    {
+        "HuaweiFreebuds": "/Assets/Airpods/HuaweiFreebuds.png","Detalhe4":"Huawei Freebuds"
+    },
+    {
+        "SamsungGalaxyBuds": "/Assets/Airpods/SamsungGalaxyBuds.png","Detalhe5":"Samsung Galaxy Buds"
+    },
+    {
+        "XiaomiAirbuds": "/Assets/Airpods/XiaomiAirbuds.png","Detalhe6":"Xiaomi Airbuds"
+    },
+    {
+        "PolignoB": "/Assets/Airpods/polygon-8.png"
+    }
+]

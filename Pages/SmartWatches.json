@@ -1,0 +1,35 @@
+[ {
+    "PolignoE": "/Assets/Smart Watch/polygon-1.png"
+},
+    {
+        "Titulo1": "/Assets/Smart Watch/Produtos Be Smart Buyer.png"
+    },
+   
+    {
+        "PolignoD": "/Assets/Smart Watch/Polygon 2.png"
+    },
+    {
+        "Smartwatches": "/Assets/Smart Watch/Smart Watch.png","Titulo":"Smartwatches"
+    },
+    {
+        "AppleWatch": "/Assets/Smart Watch/Apple Watch.png","Detalhe1":"Apple Watch"
+    },
+    {
+        "GalaxyWatch": "/Assets/Smart Watch/Galaxy Watch.png","Detalhe2":"Galaxy Watch"
+    },
+    {
+        "GarminWatch": "/Assets/Smart Watch/Garmin Watch.png","Detalhe3":"Garmin Watch"
+    },
+    {
+        "HuaweiWatch": "/Assets/Smart Watch/Huawei Watch.png","Detalhe4":"Huawei Watch"
+    },
+    {
+        "PixelWatch": "/Assets/Smart Watch/Pixel Watch.png","Detalhe5":"Pixel Watch"
+    },
+    {
+        "XioamiWatch": "/Assets/Smart Watch/Xiaomi Watch.png","Detalhe6":"Xiaomi Watch"
+    },
+    {
+        "PolignoB": "/Assets/Smart Watch/polygon-8.png"
+    }
+]

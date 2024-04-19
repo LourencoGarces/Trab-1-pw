@@ -1,0 +1,36 @@
+[
+    {
+        "PolignoE": "/Assets/Acessórios/polygon-1.png"
+    },
+    {
+        "Titulo1":"/Assets/Acessórios/Produtos Be Smart Buyer.png"
+    },
+    {
+        "PolignoD": "/Assets/Acessórios/Polygon 2.png"
+    },
+    
+    {
+        "Assesorios": "/Assets/Acessórios/assesórios.png","Titulo":"Assesórios"
+    },
+    {
+        "Capas": "/Assets/Acessórios/capas.png","Detalhe1":"Capas"
+    },
+    {
+        "Peliculas": "/Assets/Acessórios/peliculas.png","Detalhe2":"Peliculas"
+    },
+    {
+        "Carregadores": "/Assets/Acessórios/carregadores.png","Detalhe3":"Carregadores"
+    },
+    {
+        "Cabos": "/Assets/Acessórios/Cabos.jpg","Detalhe4":"Cabos"
+    },
+    {
+        "Powerbanks": "/Assets/Acessórios/powerbanks.png","Detalhe5":"Powerbanks"
+    },
+    {
+        "MaisAssesorios": "/Assets/Acessórios/maisassesórios.png","Detalhe6":"Mais Assesórios"
+    },
+    {
+        "PolignoB": "/Assets/Acessórios/polygon-8.png"
+    }
+]

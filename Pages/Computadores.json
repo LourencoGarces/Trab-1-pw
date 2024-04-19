@@ -1,0 +1,34 @@
+[{
+    "PolignoE": "/Assets/Computadores/polygon-1.png"
+},
+    {
+        "Titulo1": "/Assets/Computadores/Produtos Be Smart Buyer.png"
+    },
+    {
+        "PolignoD": "/Assets/Computadores/Polygon 2.png"
+    },
+    {
+        "Computadores": "/Assets/Computadores/computadores.png","Titulo":"Computadores"
+    },
+    {
+        "ChromeBooks": "/Assets/Computadores/ChromeBooks.png","Detalhe1":"ChromeBooks"
+    },
+    {
+        "iMac": "/Assets/Computadores/iMac.png","Detalhe2":"iMac"
+    },
+    {
+        "MacPro": "/Assets/Computadores/Mac Pro.png","Detalhe3":"Mac Pro"
+    },
+    {
+        "Mackbook": "/Assets/Computadores/Mackbook.png","Detalhe4":"Mackbook"
+    },
+    {
+        "MicrosoftSurface": "/Assets/Computadores/Microsoft Surface.png","Detalhe5":"Microsoft Surface"
+    },
+    {
+        "PortateisGaming": "/Assets/Computadores/Portáteis Gaming.png","Detalhe6":"Portáteis Gaming"
+    },
+    {
+        "PolignoB": "/Assets/Computadores/Polygon 2.png"
+    }
+]
