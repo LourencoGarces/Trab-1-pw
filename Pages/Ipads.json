@@ -1,0 +1,32 @@
+[
+    {
+        "PolignoE": "/Assets/Ipads/polygon-1.png"
+    },
+    {
+        "Titulo1": "/Assets/Ipads/Produtos Be Smart Buyer.png"
+    },
+    {
+        "PolignoD": "/Assets/Ipads/Polygon 2.png"
+    },
+    {
+        "Ipads": "/Assets/Ipads/ipadstitulo.png","Titulo":"Ipads"
+    },
+    {
+        "IpadApple": "/Assets/Ipads/Ipads1.png","Detalhe1":"Ipad Apple"
+    },
+    {
+        "TabletLenovo": "/Assets/Ipads/TabletLenovo.png","Detalhe2":"Tablet Lenovo"
+    },
+    {
+        "TabletOppo": "/Assets/Ipads/TabletOppo.png","Detalhe3":"Tablet Oppo"
+    },
+    {
+        "TabletXiaomi": "/Assets/Ipads/TabletXiaomi.png","Detalhe4":"TabletXiaomi"
+    },
+    {
+        "TabletAsus": "/Assets/Ipads/asus.png","Detalhe5":"Tablet Asus"
+    }, 
+    {
+        "PolignoB": "/Assets/Ipads/Polygon-8.png"
+    }
+]
