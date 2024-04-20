@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap MockupTodos Computadores</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/Scripts/MockUpProdutos.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="categoria4">
+        </div>
+    </div>
+<script>
+   
+function carregaMockupComputadores(titulo, detalhe, elemento){
+    document.getElementById("mtitulo").innerHTML=titulo;
+    document.getElementById("mdetalhe").innerHTML=detalhe;
+    document.getElementById("mImagem").src 
+=elemento.parentNode.parentNode.firstElementChild.getAttribute("src")
+    console.log(elemento.parentNode.parentNode.firstElementChild.getAttribute("src"))
+  }
+
+  const isImageUrl = (url) => {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+};
+
+const atualizarMockupComputadores = async (categoria4) => {
+    let strHtml = ``;
+    const response = await fetch('Computadores.json');
+    const lv = await response.json();
+    for (const artigo of lv) {
+        const artigoSemUndefined = Object.fromEntries(
+            Object.entries(artigo).filter(([_, v]) => v !== undefined)
+        );
+
+        // Verifica se há imagens definidas e se são URLs de imagem válidas antes de renderizar a tag <div> da coluna
+        if ((artigoSemUndefined.PolignoE && isImageUrl(artigoSemUndefined.PolignoE)) || 
+            (artigoSemUndefined.Titulo1 && isImageUrl(artigoSemUndefined.Titulo1)) || 
+            (artigoSemUndefined.Titulo && isImageUrl(artigoSemUndefined.Titulo)) || 
+            (artigoSemUndefined.PolignoD && isImageUrl(artigoSemUndefined.PolignoD))||
+            (artigoSemUndefined.Computadores && isImageUrl(artigoSemUndefined.Computadores))||
+            (artigoSemUndefined.ChromeBooks && isImageUrl(artigoSemUndefined.ChromeBooks))||
+            (artigoSemUndefined.iMac && isImageUrl(artigoSemUndefined.iMac))||
+            (artigoSemUndefined.MacPro && isImageUrl(artigoSemUndefined.MacPro))||
+            (artigoSemUndefined. Mackbook && isImageUrl(artigoSemUndefined.Mackbook))||
+            (artigoSemUndefined.MicrosoftSurface && isImageUrl(artigoSemUndefined.MicrosoftSurface))||
+            (artigoSemUndefined.PortateisGaming&& isImageUrl(artigoSemUndefined.PortateisGaming))||
+            (artigoSemUndefined.Detalhe1)||
+            (artigoSemUndefined.Detalhe2)||
+            (artigoSemUndefined.Detalhe3)||
+            (artigoSemUndefined.Detalhe4)||
+            (artigoSemUndefined.Detalhe5)||
+            (artigoSemUndefined.Detalhe6)||
+            (artigoSemUndefined.PolignoB && isImageUrl(artigoSemUndefined.PolignoB)))
+            {
+            
+            strHtml += `
+            <div class="col-md-2"><a href="Index.html">
+                    ${artigoSemUndefined.PolignoE && isImageUrl(artigoSemUndefined.PolignoE) ? `<img src="${artigoSemUndefined.PolignoE}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.Titulo1 && isImageUrl(artigoSemUndefined.Titulo1) ? `<img src="${artigoSemUndefined.Titulo1}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.PolignoD && isImageUrl(artigoSemUndefined.PolignoD) ? `<img src="${artigoSemUndefined.PolignoD}" class="img-fluid">` : ''}
+                    </a>
+                    </div>
+                    <div class="col-md-5">
+                        ${artigoSemUndefined.Computadores && isImageUrl(artigoSemUndefined.Computadores) ? `<img src="${artigoSemUndefined.Computadores}" class="img-fluid">` : ''}
+                </div>
+                <div class="col-md-2"><a href="Index.html">
+                    ${artigoSemUndefined.PolignoE && isImageUrl(artigoSemUndefined.PolignoE) ? `<img src="${artigoSemUndefined.PolignoE}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.Titulo1 && isImageUrl(artigoSemUndefined.Titulo1) ? `<img src="${artigoSemUndefined.Titulo1}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.PolignoD && isImageUrl(artigoSemUndefined.PolignoD) ? `<img src="${artigoSemUndefined.PolignoD}" class="img-fluid">` : ''}
+                    </a>
+                    </div>
+                <div class="col-md-1">
+                    ${artigoSemUndefined.ChromeBooks && isImageUrl(artigoSemUndefined.ChromeBooks ) ? `<img src="${artigoSemUndefined.ChromeBooks }" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.iMac && isImageUrl(artigoSemUndefined.iMac) ? `<img src="${artigoSemUndefined.iMac}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.MacPro && isImageUrl(artigoSemUndefined.MacPro) ? `<img src="${artigoSemUndefined.MacPro}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.Mackbook && isImageUrl(artigoSemUndefined.Mackbook) ? `<img src="${artigoSemUndefined.Mackbook}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.MicrosoftSurface && isImageUrl(artigoSemUndefined.MicrosoftSurface) ? `<img src="${artigoSemUndefined.MicrosoftSurface}" class="img-fluid">` : ''}
+                    ${artigoSemUndefined.PortateisGaming && isImageUrl(artigoSemUndefined.PortateisGaming) ? `<img src="${artigoSemUndefined.PortateisGaming}" class="img-fluid">` : ''}
+                    </div>
+                    <div class="col-md-1">
+                        ${artigoSemUndefined.Detalhe1 ? `<p>${artigoSemUndefined.Detalhe1}</p>` : ''}
+                        ${artigoSemUndefined.Detalhe2 ? `<p>${artigoSemUndefined.Detalhe2}</p>` : ''}
+                        ${artigoSemUndefined.Detalhe3 ? `<p>${artigoSemUndefined.Detalhe3}</p>` : ''}
+                        ${artigoSemUndefined.Detalhe4 ? `<p>${artigoSemUndefined.Detalhe4}</p>` : ''}
+                        ${artigoSemUndefined.Detalhe5 ? `<p>${artigoSemUndefined.Detalhe5}</p>` : ''}
+                        ${artigoSemUndefined.Detalhe6 ? `<p>${artigoSemUndefined.Detalhe6}</p>` : ''}
+                    </div>
+                    
+            `;
+        }
+    }
+
+    document.getElementById("categoria4").innerHTML = strHtml;
+}
+
+
+atualizarMockupComputadores();
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

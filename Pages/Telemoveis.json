@@ -1,0 +1,35 @@
+[{
+    "PolignoE": "/Assets/Telemóveis/polygon-1.png"
+},
+    {
+        "Titulo1": "/Assets/Telemóveis/Produtos Be Smart Buyer.png"
+    },
+    {
+        "PolignoD": "/Assets/Telemóveis/Polygon 2.png"
+    },
+   
+    {
+        "Telemoveis": "/Assets/Telemóveis/Telemóveis.png","Titulo":"Telemóveis"
+    },
+    {
+        "Huawei": "/Assets/Telemóveis/Huawei.png","Detalhe1":"Huawei"
+    },
+    {
+        "Iphone": "/Assets/Telemóveis/Iphone.png","Detalhe2":"Iphone"
+    },
+    {
+        "GooglePixel": "/Assets/Telemóveis/google Pixel.png","Detalhe3":"Google Pixel"
+    },
+    {
+        "Recondicionados": "/Assets/Telemóveis/Recondicionados.png","Detalhe4":"Recondicionados"
+    },
+    {
+        "Samsung": "/Assets/Telemóveis/Samsung.png","Detalhe5":"Samsung"
+    },
+    {
+        "Xiaomi": "/Assets/Telemóveis/Xiaomi.png","Detalhe6":"Xiaomi"
+    }, 
+    {
+        "PolignoB": "/Assets/Telemóveis/polygon-8.png"
+    }
+]

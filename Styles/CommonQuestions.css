@@ -1,0 +1,21 @@
+.body {
+    background-image: url('/Assets/Mock\ Up\ Produtos\ Be\ Smart\ Buyer\ \(2\).png');
+}
+/* Estilo personalizado para os cards */
+.card {
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 14px;
+}
+

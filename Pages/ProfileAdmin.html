@@ -33,14 +33,30 @@
                         <!-- Products Dropdown -->
                         <li>
                             <a href="#submenu1" class="nav-link px-0 align-middle"  data-bs-toggle="collapse" id="listProducts">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="nav-link px-0 align-middle">Lista de Produtos</span></a>
+                                <i class="fs-4 bi-bootstrap"></i> <span class="nav-link px-0 align-middle">Lista de Produtos</span>
+                            </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <!-- Submenu Items -->
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Telemóveis</span></a>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="showProductList()">Todos os produtos</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Ipads</span></a>
+                                    <a href="#" class="nav-link" onclick="showProductListCategory('Telemóveis')">Telemóveis</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="showProductListCategory('Ipads')">Ipads</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="showProductListCategory('Smart Watches')">Smart Watches</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="showProductListCategory('Airpods')">Airpods</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="showProductListCategory('Computadores')">Computadores</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="showProductListCategory('Acessórios')">Acessórios</a>
                                 </li>
                             </ul>
                         </li>
@@ -93,8 +109,8 @@
                                 <input type="number" class="form-control" id="productPrice" step="0.01" required>
                             </div>
                             <div class="mb-3">
-                                <label for="productCategory" class="form-label">Categoria:</label>
-                                <input type="text" class="form-control" id="productCategory" required>
+                                <label for="productCategory1" class="form-label">Categoria:</label>      
+                                <div id="productCategory"></div>                      
                             </div>
                             <div class="mb-3">
                                 <label for="productImage" class="form-label">Imagem:</label>
@@ -103,6 +119,10 @@
                             </div>                            
                             <button type="submit" class="btn btn-primary">Adicionar Produto</button>
                         </form>
+                    </div>
+                    <!-- edit Product Form Section -->
+                    <div id="editProductSection" style="display: none;">
+                        <!-- Form to edit product details dynamic-->
                     </div>
                 </div>
             </div>
