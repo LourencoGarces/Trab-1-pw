@@ -93,9 +93,7 @@ function redirectToRegister() {
 document.querySelector(".LogIn").addEventListener("click", redirectToLogin);
 
 // Add event listener for the Register button
-document
-    .querySelector(".Register")
-    .addEventListener("click", redirectToRegister);
+document.querySelector(".Register").addEventListener("click", redirectToRegister);
 
 var closeButton = document.querySelector(".btn-close");
 
@@ -143,6 +141,7 @@ document.getElementById("logoutButton").addEventListener("click", function () {
 document.addEventListener("DOMContentLoaded", function () {
     updateButtonVisibility();
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
@@ -208,10 +207,8 @@ function isRegisterPage() {
 function carregaMockup(titulo, detalhe, elemento){
     document.getElementById("mtitulo").innerHTML=titulo;
     document.getElementById("mdetalhe").innerHTML=detalhe;
-    document.getElementById("mImagem").src 
-=elemento.parentNode.parentNode.firstElementChild.getAttribute("src")
+    document.getElementById("mImagem").src=elemento.parentNode.parentNode.firstElementChild.getAttribute("src")
     console.log(elemento.parentNode.parentNode.firstElementChild.getAttribute("src"))
-  }
+}
 
 
-  

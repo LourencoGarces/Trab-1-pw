@@ -331,3 +331,121 @@ const saveUpdatedProduct = (productId) => {
     // Show the product list after editing
     showProductList();
 };
+
+const listarProdutos = async () => {
+    let strHtml = ``
+    //alert("aaaa")
+    const response = await fetch('http://localhost:4242/api/pgs/produtos')
+    const lv = await response.json()
+    for (const artigo of lv) {
+        strHtml += `
+            <tr>
+                <td>${artigo.id}</td>
+                <td>${artigo.nome}</td>
+                <td>${artigo.descricao}</td>
+                <td>${artigo.preco}</td>
+                <td>${artigo.fabricante}</td>
+                <td>${artigo.Foto}</td>
+                <td>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#upModal" onclick="preparaEditCarro(${artigo.id})"><i class="fa fa-pencil"></i> Editar</button>
+                    <button type='button' class='btn btn-danger' onclick="apagaCarro(${artigo.id})"><i class="fa fa-trash"></i> Apagar</button>
+                </td>
+            </tr>
+                `
+    }
+    document.getElementById("editProductSection").innerHTML = strHtml;
+}
+listarProdutos();
+
+const novoProduto= async () => {
+    var dados = {
+        id: document.getElementById("mId").value,
+        nome: document.getElementById("mNome").value,
+        descricao: document.getElementById("mDescricao").value,
+        preco: document.getElementById("mPreco").value,
+        fabricante: document.getElementById("mFabricante").value,
+    };
+    //alert(dados.Marca) //alert(dados.Detalhes) //alert(dados.Foto)
+    fetch('http://localhost:4242/api/pgs/produtos/create', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(dados)
+    })
+    .then(response => {
+        // Verifica se a resposta foi bem sucedida
+        if (!response.ok) {
+            throw new Error('Erro ao obter os dados');
+        }
+        // Converte a resposta para JSON
+        return response.json();
+    })
+    .then(() => {
+        listarProdutos(); // Atualiza a tabela após adicionar um novo carro
+    });
+};
+
+
+const apagaProduto = async (id) => {
+    fetch("http://localhost:4242/api/pgs/produtos/delete/" + id, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    })
+    .then((response) => {
+        // Verifica se a resposta foi bem sucedida
+        if (!response.ok) {
+        throw new Error("Erro ao obter os dados");
+        }
+        return response;
+    })
+    .then((data) => {
+        // Faz algo com os dados
+        //console.log(data);
+        resposta = "O carro foi apagado com sucesso!";
+        alert(resposta);
+        listarProdutos();
+    })
+    .catch((error) => {
+        // Captura qualquer erro de rede ou tratamento de erro
+        console.error("Houve um erro:", error);
+    })
+    .then(() => {
+        listarProdutos(); // Atualiza a tabela após adicionar um novo carro
+    });
+};
+
+const preparaEditProdutos = async (id) => {
+    //alert("aaaa")            
+    const response = await fetch('http://localhost:4242/api/pgs/produtos/'+id)
+    const artigo = await response.json()           
+    document.getElementById("muId").value = artigo.id;
+    document.getElementById("muNome").value = artigo.nome;
+    document.getElementById("muDescricao").value = artigo.descricao;
+    document.getElementById("muPreco").value = artigo.preco;
+    document.getElementById("muFabricante").value = artigo.fabricante;
+    };
+
+const atualizaProduto = async () => {
+    var dados = {
+    id: document.getElementById("muId").value,
+    nome: document.getElementById("muNome").value,
+    descricao: document.getElementById("muDescricao").value,
+    preco: document.getElementById("muPreco").value,
+    fabricante: document.getElementById("muFabricante").value,
+    };
+    fetch("http://localhost:4242/api/pgs/produtos/update", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dados),
+    })
+    .then((response) => {
+        // Verifica se a resposta foi bem sucedida
+        if (!response.ok) {
+        throw new Error("Erro ao obter os dados");
+        }
+        // Converte a resposta para JSON
+        return response.json();
+    })
+    .then(() => {
+        listarProdutos(); // Atualiza a tabela após adicionar um novo carro
+    });
+};
