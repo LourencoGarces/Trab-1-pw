@@ -1,0 +1,9 @@
+const express = require('express');
+const publicRouter = express.Router();
+
+// Defina suas rotas públicas aqui
+publicRouter.get('/', (req, res) => {
+    res.sendFile('Index.html', { root: '.' });
+});
+
+module.exports = publicRouter;

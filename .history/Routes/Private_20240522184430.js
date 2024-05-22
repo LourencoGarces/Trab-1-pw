@@ -1,20 +1,11 @@
 const express = require('express');
 const privateRouter = express.Router();
 
-// Route for the profile management page
-privateRouter.get('/Management_profile', (req, res) => {
-    const filePath = 'Management_Profile.html';
-    console.log('Sending file:', filePath); // Adiciona um log para depuração
-    res.sendFile(filePath, { root: '.' });
+// Define uma rota para a página HTML
+privateRouter.get('/gerirProdutos', (req, res) => {
+    // Envie o arquivo HTML como resposta para a solicitação HTTP
+    res.sendFile('ProfileAdmin.html', { root: '.' });
 });
-
-// Route for the profile administration page
-privateRouter.get('/ProfileAdmin', (req, res) => {
-    const filePath = 'ProfileAdmin.html';
-    console.log('Sending file:', filePath); // Adiciona um log para depuração
-    res.sendFile(filePath, { root: '.' });
-});
-
 
 // Route for the profile management page
 privateRouter.get('/Management_profile', (req, res) => {

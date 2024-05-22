@@ -3,21 +3,6 @@ const privateRouter = express.Router();
 
 // Route for the profile management page
 privateRouter.get('/Management_profile', (req, res) => {
-    const filePath = 'Management_Profile.html';
-    console.log('Sending file:', filePath); // Adiciona um log para depuração
-    res.sendFile(filePath, { root: '.' });
-});
-
-// Route for the profile administration page
-privateRouter.get('/ProfileAdmin', (req, res) => {
-    const filePath = 'ProfileAdmin.html';
-    console.log('Sending file:', filePath); // Adiciona um log para depuração
-    res.sendFile(filePath, { root: '.' });
-});
-
-
-// Route for the profile management page
-privateRouter.get('/Management_profile', (req, res) => {
     res.sendFile('Management_Profile.html', { root: '.' });
 });
 

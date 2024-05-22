@@ -23,12 +23,11 @@ app.use(express.static('Pages'))
 
 
 app.use('/', publicRouter);
-app.use('/Private/', privateRouter);
-app.use('/Api/Local/', routerLocal);
-app.use('/Api/Pgs/', routerPgs);
+app.use('/private/', privateRouter);
+app.use('/api/local/', routerLocal);
+app.use('/api/pgs/', routerPgs);
 
 const port = process.env.SERVER_PORT || 4242;
 app.listen(port, () => {
     console.log('Express server listening on port', port)
-    console.log('Port open', port)
 });
