@@ -29,6 +29,12 @@
     background-color: #f0f0f0; /* Set background color */
     position: relative; /* Set position */
     perspective: 1000px; /* Add perspective for 3D effect */
+    margin-bottom: 40%;
+}
+
+.card-img{
+    width: 100%;
+    height: 100%;
 }
 
 /* Styling for the inner part of the card */
