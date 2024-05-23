@@ -7,6 +7,7 @@ const express = require('express');
 const routerLocal = require('./Routes/Local/Index');
 const routerPgs = require('./Routes/Pgs/Index');
 const publicRouter = require('./Routes/Public');
+const routerPgs = require('./Routes/Pgs/Products');
 const privateRouter = require('./Routes/Private');
 
 const app = express();
@@ -25,7 +26,6 @@ app.use('/Pages/', publicRouter);
 app.use('/Private/', privateRouter);
 app.use('/Api/Local/', routerLocal);
 app.use('/Api/Pgs/', routerPgs);
-
 
 const port = process.env.SERVER_PORT || 4242;
 app.listen(port, () => {

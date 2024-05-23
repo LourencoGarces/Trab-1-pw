@@ -4,45 +4,59 @@ const { PrismaClient } = require('@prisma/client');
 const publicRouter = express.Router();
 const prisma = new PrismaClient();
 
+// Define uma rota para a página HTML
 publicRouter.get('/', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Index.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'Index.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
+// Route for the about us page
 publicRouter.get('/about_us', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'AboutUs.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'AboutUs.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
+// Route for the common questions page
 publicRouter.get('/common_questions', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'CommonQuestions.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'CommonQuestions.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
+// Route for the contacts page
 publicRouter.get('/contacts', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Contacts.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'Contacts.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
+// Route for the help page
 publicRouter.get('/help', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Help.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'Help.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
+// Route for the index page
+publicRouter.get('/', (req, res) => {
+    const filePath = path.join(__dirname, 'Pages', 'Index.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
+    res.sendFile(filePath);
+});
+
+// Route for the login page
 publicRouter.get('/login', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Login.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'Login.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
+// Route for the register page
 publicRouter.get('/register', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Register.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'Register.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 

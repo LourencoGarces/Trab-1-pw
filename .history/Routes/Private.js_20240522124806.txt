@@ -1,0 +1,9 @@
+const express = require('express');
+const privateRouter = express.Router();
+
+// Defina suas rotas privadas aqui
+privateRouter.get('/gerirProdutos', (req, res) => {
+    res.sendFile('ProfileAdmin.html', { root: '.' });
+});
+
+module.exports = privateRouter;

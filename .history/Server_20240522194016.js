@@ -21,11 +21,9 @@ app.use(express.static('Pages'))
 
 // Rotas principais
 app.use('/', publicRouter);
-app.use('/Pages/', publicRouter);
 app.use('/Private/', privateRouter);
 app.use('/Api/Local/', routerLocal);
 app.use('/Api/Pgs/', routerPgs);
-
 
 const port = process.env.SERVER_PORT || 4242;
 app.listen(port, () => {

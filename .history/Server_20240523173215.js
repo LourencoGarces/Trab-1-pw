@@ -7,6 +7,7 @@ const express = require('express');
 const routerLocal = require('./Routes/Local/Index');
 const routerPgs = require('./Routes/Pgs/Index');
 const publicRouter = require('./Routes/Public');
+const routerPgs = require('./Routes/Pgs/Products');
 const privateRouter = require('./Routes/Private');
 
 const app = express();

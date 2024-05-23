@@ -1,49 +1,48 @@
 const express = require('express');
-const path = require('path');
 const { PrismaClient } = require('@prisma/client');
 const publicRouter = express.Router();
 const prisma = new PrismaClient();
 
+
+// Define uma rota para a página HTML
 publicRouter.get('/', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Index.html');
-    console.log('Sending file:', filePath);
-    res.sendFile(filePath);
+    // Envie o arquivo HTML como resposta para a solicitação HTTP
+    res.sendFile('Index.html', { root: '.' });
 });
 
+// Route for the about us page
 publicRouter.get('/about_us', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'AboutUs.html');
-    console.log('Sending file:', filePath);
-    res.sendFile(filePath);
+    res.sendFile('AboutUs.html', { root: '.' });
 });
 
+// Route for the common questions page
 publicRouter.get('/common_questions', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'CommonQuestions.html');
-    console.log('Sending file:', filePath);
-    res.sendFile(filePath);
+    res.sendFile('CommonQuestions.html', { root: '.' });
 });
 
+// Route for the contacts page
 publicRouter.get('/contacts', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Contacts.html');
-    console.log('Sending file:', filePath);
-    res.sendFile(filePath);
+    res.sendFile('Contacts.html', { root: '.' });
 });
 
+// Route for the help page
 publicRouter.get('/help', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Help.html');
-    console.log('Sending file:', filePath);
-    res.sendFile(filePath);
+    res.sendFile('Help.html', { root: '.' });
 });
 
+// Route for the index page
+publicRouter.get('/', (req, res) => {
+    res.sendFile('Index.html', { root: '.' });
+});
+
+// Route for the login page
 publicRouter.get('/login', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Login.html');
-    console.log('Sending file:', filePath);
-    res.sendFile(filePath);
+    res.sendFile('Login.html', { root: '.' });
 });
 
+// Route for the register page
 publicRouter.get('/register', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Register.html');
-    console.log('Sending file:', filePath);
-    res.sendFile(filePath);
+    res.sendFile('Register.html', { root: '.' });
 });
 
 // Example POST route for user registration
