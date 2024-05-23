@@ -4,6 +4,7 @@ const { PrismaClient } = require('@prisma/client');
 const publicRouter = express.Router();
 const prisma = new PrismaClient();
 
+// Corrija os caminhos para usar __dirname e apontar corretamente para a pasta Pages
 publicRouter.get('/', (req, res) => {
     const filePath = path.join(__dirname, '..', '..', 'Pages', 'Index.html');
     console.log('Sending file:', filePath);

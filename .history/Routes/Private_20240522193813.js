@@ -1,20 +1,18 @@
 const express = require('express');
 const path = require('path');
-const { PrismaClient } = require('@prisma/client');
 const privateRouter = express.Router();
-const prisma = new PrismaClient();
 
 // Route for the profile management page
 privateRouter.get('/Management_profile', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'Management_Profile.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'Management_Profile.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
 // Route for the profile administration page
 privateRouter.get('/ProfileAdmin', (req, res) => {
-    const filePath = path.join(__dirname, '..', '..', 'Pages', 'ProfileAdmin.html');
-    console.log('Sending file:', filePath);
+    const filePath = path.join(__dirname, 'Pages', 'ProfileAdmin.html');
+    console.log('Sending file:', filePath); // Adiciona um log para depuração
     res.sendFile(filePath);
 });
 
