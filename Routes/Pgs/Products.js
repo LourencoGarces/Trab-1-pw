@@ -11,6 +11,4 @@ productsRouter.post('/create', controller.create); //criar um produto
 productsRouter.put('/update/:id', controller.update); //atualizar um produto
 productsRouter.delete('/delete/:id', controller.delete); //apagar um produto
 
-
-
 module.exports = productsRouter;

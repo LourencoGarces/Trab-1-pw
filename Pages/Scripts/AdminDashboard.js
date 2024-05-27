@@ -3,11 +3,9 @@ const productListSection = document.getElementById('productListSection');
 const addProductSection = document.getElementById('addProductSection');
 const productTableBody = document.getElementById('productTableBody');
 const addProductForm = document.getElementById('addProductForm');
-const productImageInput = document.getElementById('productImage');
-const productImagePreview = document.getElementById('productImagePreview');
-
 
 const categories = ["Telemóveis", "Ipads", "Smart Watches", "Airpods", "Computadores", "Acessórios"];
+
 // Dynamically populate product category dropdown
 document.addEventListener('DOMContentLoaded', function()
 {
@@ -21,92 +19,10 @@ document.addEventListener('DOMContentLoaded', function()
         `;
 });
 
-// Retrieve products from localStorage or initialize an empty array
-let products = JSON.parse(localStorage.getItem('products')) || [];
-
-// Function to save products to localStorage
-const saveProductsToLocalStorage = () => {
-    localStorage.setItem('products', JSON.stringify(products));
-};
-
-// Function to display product list based on category
-const showProductListCategory = (category) => {
-    // Clear existing table rows
-    productTableBody.innerHTML = '';
-
-    // Filter products based on the specified category
-    const filteredProducts = products.filter(product => product.category === category);
-
-    if (filteredProducts.length === 0) {
-        productTableBody.innerHTML = '<tr><td colspan="7">Não foram encontrados produtos desta categoria.</td></tr>';
-        productListSection.style.display = 'block';
-        addProductSection.style.display = 'none';
-        return;
-    }
-
-    // Sort filtered products by ID
-    filteredProducts.sort((a, b) => a.id - b.id);
-
-    // Populate table with filtered products
-    filteredProducts.forEach(product => {
-        const row = `
-            <tr>
-                <td>${product.id}</td>
-                <td>${product.name}</td>
-                <td>${product.description}</td>
-                <td>${product.price}</td>
-                <td>${product.category}</td>
-                <td><img src="${product.img}" alt="Product Image" style="max-width: 100px;"></td>
-                <td>
-                    <button class="btn btn-sm btn-warning" onclick="populateEditForm(${product.id})">Edit</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
-                </td>
-            </tr>
-        `;
-        productTableBody.innerHTML += row;
-    });
-
-    // Show product list section
-    productListSection.style.display = 'block';
-    addProductSection.style.display = 'none';
-    editProductSection.style.display = 'none';
-};
-
 // Function to display all products sorted by ID
 const showProductList = () => {
-    // Clear existing table rows
-    productTableBody.innerHTML = '';
 
-    // Check if there are no products
-    if (products.length === 0) {
-        productTableBody.innerHTML = '<tr><td colspan="7">Nenhum produto encontrado.</td></tr>';
-        productListSection.style.display = 'block';
-        addProductSection.style.display = 'none';
-        editProductSection.style.display = 'none';
-        return;
-    }
-
-    // Sort products by ID
-    products.sort((a, b) => a.id - b.id);
-
-    // Populate table with sorted products
-    products.forEach(product => {
-        const row = `
-            <tr>
-                <td>${product.id}</td>
-                <td>${product.name}</td>
-                <td>${product.description}</td>
-                <td>${product.price}</td>
-                <td>${product.category}</td>
-                <td><img src="${product.img}" alt="Product Image" style="max-width: 100px;"></td>
-                <td>
-                    <button class="btn btn-sm btn-warning" onclick="populateEditForm(${product.id})">Edit</button>
-                    <button class="btn btn-sm btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
-                </td>
-            </tr>
-        `;
-        productTableBody.innerHTML += row;
-    });
+    listarProdutos();
 
     // Show product list section
     productListSection.style.display = 'block';
@@ -345,7 +261,6 @@ const listarProdutos = async () => {
                 <td>${artigo.descricao}</td>
                 <td>${artigo.preco}</td>
                 <td>${artigo.fabricante}</td>
-                <td>${artigo.Foto}</td>
                 <td>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#upModal" onclick="preparaEditCarro(${artigo.id})"><i class="fa fa-pencil"></i> Editar</button>
                     <button type='button' class='btn btn-danger' onclick="apagaCarro(${artigo.id})"><i class="fa fa-trash"></i> Apagar</button>
@@ -384,7 +299,6 @@ const novoProduto= async () => {
     });
 };
 
-
 const apagaProduto = async (id) => {
     fetch("http://localhost:4242/api/pgs/produtos/delete/" + id, {
     method: "DELETE",
@@ -422,7 +336,7 @@ const preparaEditProdutos = async (id) => {
     document.getElementById("muDescricao").value = artigo.descricao;
     document.getElementById("muPreco").value = artigo.preco;
     document.getElementById("muFabricante").value = artigo.fabricante;
-    };
+};
 
 const atualizaProduto = async () => {
     var dados = {

@@ -110,63 +110,29 @@ function loginUser() {
 }
 
 // autentication.js for Register.html
-function registerUser() {
-    // Get values from registration form fields
-    var email = document.getElementById("email").value;
-    var nome = document.getElementById("name").value;
-    var contacto = document.getElementById("contact").value;
-    var senha = document.getElementById("password").value;
-    var retypePassword = document.getElementById("retypepassword").value;
-    
-    // Check if fields are filled
-    if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
-        alert("Por favor, preencha todos os campos.");
-        return;
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value;
+    const contact = document.getElementById('contact').value;
+    const password = document.getElementById('password').value;
+    const retypePassword = document.getElementById('retypePassword').value;
+
+    const response = await fetch('http://localhost:4242/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, contact, password, retypePassword})
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+        alert(result.message);
+        window.location.href = 'Login.html';
+    } else {
+        alert(result.message);
     }
-
-    // Check if passwords match
-    if (senha !== retypePassword) {
-        alert("As senhas não coincidem. Por favor, verifique.");
-        return;
-    }
-
-    // List of admin emails
-    var adminEmails = ["admin@besmartbuyer.pt" /* Add more admin emails here*/];
-
-    // Check if the entered email is in the list of admin emails
-    var isAdmin = adminEmails.includes(email);
-
-    // Capture current date
-    var currentDate = new Date();
-
-    // Extract day, month, and year
-    var day = currentDate.getDate(); // Get day (1-31)
-    var month = currentDate.getMonth() + 1; // Get month (0-11); January is 0, so we add 1
-    var year = currentDate.getFullYear(); // Get full year (e.g., 2024)
-
-    // Create a formatted date string (e.g., "11/04/2024" for day/month/year)
-    var formattedDate = `${day}/${month}/${year}`;
-
-    // Define user role based on admin status
-    var role = isAdmin ? "admin" : "user";
-
-    // Store user data in localStorage
-    var user = {
-        email: email,
-        nome: nome,
-        primeiroNome: "",
-        ultimoNome: "",
-        contacto: contacto,
-        password: senha,
-        role: role, // Set the user role based on admin status
-        img: "../Assets/Generic-Profile-Image.png",
-        created_at: formattedDate
-    };
-    
-    localStorage.setItem(email, JSON.stringify(user));
-    alert("Registro bem-sucedido!");
-    window.location.href = 'Login.html'; // Redirect to the login page
-}
+});
 
 // autentication.js for Forgot.html
 function forgotPassword() {
