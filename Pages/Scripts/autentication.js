@@ -195,23 +195,23 @@ function forgotPassword() {
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
 
-// Event listener triggered when the DOM content has fully loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
     var loggedInUserEmail = localStorage.getItem('loggedInUser');
-
+    debugger
     // Check if a logged-in user email exists
     if (loggedInUserEmail) {
         // Redirect to the index page if the current page is the login or registration page
         if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1 || window.location.pathname.indexOf('/Forgot.html') > -1) {
             window.location.href = 'Index.html';
         }
+        
 
-        // Retrieve user data from localStorage based on the logged-in user's email
-        var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
+        try {
+            // Fetch user data from the backend API
+            const response = await fetch(`http://localhost:4242/api/pgs/Users/email/${loggedInUserEmail}`);
+            const userData = await response.json();
 
-        // Check if user data exists
-        if (userData) {
             // Display user information on the profile page
             var Management_container = document.getElementById('Management_container');
             Management_container.innerHTML = `
@@ -244,19 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <label class="small" for="inputUsername">Nome de Utilizador</label>
                                     <input class="form-control" id="inputUsername" type="text" placeholder="${userData.nome}">
                                 </div>
-                                <!-- Form Row-->
-                                <div class="row">
-                                    <!-- Form Group (first name)-->
-                                    <div class="col-md-6">
-                                        <label class="small" for="inputFirstName">Primeiro nome</label>
-                                        <input class="form-control" id="inputFirstName" type="text" placeholder="${userData.primeiroNome}">
-                                    </div>
-                                    <!-- Form Group (last name)-->
-                                    <div class="col-md-6">
-                                        <label class="small" for="inputLastName">Sobrenome</label>
-                                        <input class="form-control" id="inputLastName" type="text" placeholder="${userData.ultimoNome}">
-                                    </div>
-                                </div>
                                 <!-- Form Group (email address)-->
                                 <div>
                                     <label class="small" for="inputEmailAddress">Email</label>
@@ -279,8 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
             `;
-        } else {
-            console.error('User data not found.'); // Log an error if user data is not found
+        } catch (error) {
+            console.error('Error fetching user data:', error);
         }
     } else {
         console.error('No user logged in.'); // Log an error if no user is logged in

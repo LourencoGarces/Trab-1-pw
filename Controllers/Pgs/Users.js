@@ -147,3 +147,24 @@ exports.login = async (req, res) => {
         res.status(500).json({ msg: "An error occurred. Please try again later." });
     }
 }
+
+// 
+exports.getUserByEmail = async (req, res) => {
+    const userEmail = req.params.email;
+
+    try {
+        const user = await prisma.Utilizador.findUnique({
+            where: { email: userEmail },
+        });
+
+        if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+        }
+
+        // Return user data
+        res.status(200).json(user);
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        res.status(500).json({ msg: "Internal server error" });
+    }
+};
