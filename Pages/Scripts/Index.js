@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if a logged-in user email exists
     if (loggedInUserEmail) {
         // Retrieve user data from localStorage based on the logged-in user's email
-        var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
+        /*var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
         if (
             window.location.pathname.indexOf("/Login.html") > -1 ||
             window.location.pathname.indexOf("/Register.html") > -1 ||
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         } else {
             console.error("User data not found."); // Log an error if user data is not found
-        }
+        }*/
     } else {
         console.error("No user logged in."); // Log an error if no user is logged in
         // Redirect to the login page if the current page is not the login or registration page

@@ -148,7 +148,7 @@ exports.login = async (req, res) => {
     }
 }
 
-// 
+// Get the User by Email
 exports.getUserByEmail = async (req, res) => {
     const userEmail = req.params.email;
 
@@ -166,5 +166,39 @@ exports.getUserByEmail = async (req, res) => {
     } catch (error) {
         console.error("Error fetching user data:", error);
         res.status(500).json({ msg: "Internal server error" });
+    }
+};
+
+// Update user contact and name by email
+exports.updateContactAndNameByEmail = async (req, res) => {
+    const { nome, contacto } = req.body;
+    const userEmail = req.body.email; // Assuming email is sent in the request body
+
+    try {
+        // Find the user by email
+        const user = await prisma.Utilizador.findUnique({
+            where: {
+                email: userEmail,
+            },
+        });
+
+        if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+        }
+
+        // Update contact and name fields
+        const updatedUser = await prisma.Utilizador.update({
+            where: {
+                email: userEmail,
+            },
+            data: {
+                nome,
+                contacto,
+            },
+        });
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(400).json({ msg: error.message });
     }
 };

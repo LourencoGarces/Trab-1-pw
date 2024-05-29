@@ -198,7 +198,7 @@ function forgotPassword() {
 document.addEventListener('DOMContentLoaded', async function() {
     // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
     var loggedInUserEmail = localStorage.getItem('loggedInUser');
-    debugger
+    
     // Check if a logged-in user email exists
     if (loggedInUserEmail) {
         // Redirect to the index page if the current page is the login or registration page
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                                     </div>
                                 </div>
                                 <!-- Save changes button-->
-                                <button class="btn border" id="inputSave" type="button" onclick="redirectToManagement_Profile()">Save</button>
+                                <button class="btn border" id="inputSave" type="button" onclick="updateUserData()">Save</button>
                             </form>
                         </div>
                     </div>
