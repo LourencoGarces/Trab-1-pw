@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 
-const routerLocal = require('./Routes/Local/Index');
+//const routerLocal = require('./Routes/Local/Index');
 const routerPgs = require('./Routes/Pgs/Index');
 const publicRouter = require('./Routes/Public');
 const privateRouter = require('./Routes/Private');
@@ -21,9 +21,8 @@ app.use(cors());
 app.use(express.static('Pages'))
 
 // Rotas principais
-//app.use('/', publicRouter);
-//app.use('/Pages/', publicRouter);
-//app.use('/Private/', privateRouter);
+app.use('/', publicRouter);
+app.use('/Private/', privateRouter);
 //app.use('/Api/Local/', routerLocal);
 app.use('/Api/Pgs/', routerPgs);
 

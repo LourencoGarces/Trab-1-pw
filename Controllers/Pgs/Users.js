@@ -43,10 +43,23 @@ exports.getById = async (req, res) => {
 }
 
 exports.create = async (req, res) => {
-    //apanhar os dados enviados
     const { nome, email, contacto, password, isAdmin } = req.body;
+
+    if (!nome || !email || !contacto || !password) {
+        return res.status(400).json({ msg: "All fields are required." });
+    }
+
     try {
-        //criar um novo utilizador
+        // Check if the email already exists
+        const existingUser = await prisma.Utilizador.findUnique({
+            where: { email: email },
+        });
+
+        if (existingUser) {
+            return res.status(400).json({ msg: "Email already in use." });
+        }
+
+        // Create a new user
         const utilizador = await prisma.Utilizador.create({
             data: {
                 nome,
@@ -56,9 +69,11 @@ exports.create = async (req, res) => {
                 isAdmin
             },
         });
-        //devolve o utilizador criado
+
+        // Return the created user
         res.status(201).json(utilizador);
     } catch (error) {
+        console.error(error);
         res.status(400).json({ msg: error.message });
     }
 }
@@ -103,5 +118,32 @@ exports.delete = async (req, res) => {
         res.status(200).send("ok");
     } catch (error) {
         res.status(400).json({ msg: error.message });
+    }
+}
+
+// Login user
+exports.login = async (req, res) => {
+    const { email, password } = req.body;
+    debugger
+    try {
+        // Find user by email
+        const user = await prisma.utilizador.findUnique({
+            where: { email: email },
+        });
+
+        if (!user) {
+            return res.status(400).json({ msg: "Invalid credentials" });
+        }
+
+        // Check if the password matches
+        if (password !== user.password) {
+            return res.status(400).json({ msg: "Invalid credentials" });
+        }
+
+        // Return success with user role
+        res.status(200).json({ msg: "Login successful", role: user.isAdmin ? 'admin' : 'user' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "An error occurred. Please try again later." });
     }
 }

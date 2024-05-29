@@ -75,7 +75,7 @@ function closeModal() {
 closeButton.addEventListener("click", closeModal);
 
 // autentication.js for Login.html
-function loginUser() {
+async function loginUser() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
@@ -85,54 +85,102 @@ function loginUser() {
         return;
     }
 
-    // Retrieve user data from localStorage based on email
-    var userData = JSON.parse(localStorage.getItem(email));
+    // Prepare user data to send to the server
+    var user = {
+        email: email,
+        password: password
+    };
 
-    // Check if user exists and password matches
-    if (userData && password === userData.password) {
-        alert("Login successful!");
+    try {
+        const response = await fetch('http://localhost:4242/Api/Pgs/Users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
 
-        // Check the role of the user
-        if (userData.role === 'admin') {
-            alert("Login successful! You are logged in as an administrator.");
-            localStorage.setItem('loggedInUser', email); // Set logged-in user
-            window.location.href = 'ProfileAdmin.html'; // Redirect to admin profile page
-        } else if (userData.role === 'user') {
-            alert("Login successful! You are logged in as a user.");
-            localStorage.setItem('loggedInUser', email); // Set logged-in user
-            window.location.href = 'Index.html'; // Redirect to user main page
+        const responseData = await response.json();
+
+        if (response.ok) {
+            alert("Login successful!");
+
+            // Redirect based on user role
+            if (responseData.role === 'admin') {
+                localStorage.setItem('loggedInUser', email);
+                window.location.href = 'ProfileAdmin.html';
+            } else if (responseData.role === 'user') {
+                localStorage.setItem('loggedInUser', email);
+                window.location.href = 'Index.html';
+            } else {
+                alert("Unknown role for this user.");
+            }
         } else {
-            alert("Unknown role for this user.");
+            alert(responseData.msg || "Invalid credentials. Please try again.");
         }
-    } else {
-        alert("Invalid credentials. Please try again.");
+    } catch (error) {
+        console.error(error);
+        alert("An error occurred while logging in. Please try again later.");
     }
 }
 
 // autentication.js for Register.html
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const name = document.getElementById('name').value;
-    const contact = document.getElementById('contact').value;
-    const password = document.getElementById('password').value;
-    const retypePassword = document.getElementById('retypePassword').value;
-
-    const response = await fetch('http://localhost:4242/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name, contact, password, retypePassword})
-    });
-
-    const result = await response.json();
-    if (response.ok) {
-        alert(result.message);
-        window.location.href = 'Login.html';
-    } else {
-        alert(result.message);
+async function registerUser() {
+    // Get values from registration form fields
+    var email = document.getElementById("email").value;
+    var nome = document.getElementById("name").value;
+    var contacto = document.getElementById("contact").value;
+    var senha = document.getElementById("password").value;
+    var retypePassword = document.getElementById("retypepassword").value;
+    
+    // Check if fields are filled
+    if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
+        alert("Por favor, preencha todos os campos.");
+        return;
     }
-});
+
+    // Check if passwords match
+    if (senha !== retypePassword) {
+        alert("As senhas não coincidem. Por favor, verifique.");
+        return;
+    }
+
+    // List of admin emails
+    var adminEmails = ["admin@besmartbuyer.pt" /* Add more admin emails here*/];
+
+    // Check if the entered email is in the list of admin emails
+    var isAdmin = adminEmails.includes(email);
+
+    // Store user data in the database
+    var user = {
+        email: email,
+        nome: nome,
+        contacto: contacto,
+        password: senha,
+        isAdmin: isAdmin
+    };
+
+    try {
+        const response = await fetch('http://localhost:4242/Api/Pgs/Users/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
+
+        if (!response.ok) {
+            const errorResponse = await response.json();
+            throw new Error(errorResponse.msg || 'Error registering user');
+        }
+
+        alert("Registro bem-sucedido!");
+        window.location.href = 'Login.html'; // Redirect to the login page
+    } catch (error) {
+        console.error(error);
+        alert(error.message); // Show the specific error message from the backend
+    }
+}
 
 // autentication.js for Forgot.html
 function forgotPassword() {

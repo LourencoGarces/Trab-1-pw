@@ -1,9 +1,6 @@
 const productsRouter = require('express').Router();
 const controller = require('../../Controllers/Pgs/Products');
 
-//testa a ligação à BD
-productsRouter.get('/testeConn', controller.testConnection);
-
 //CRUD para produtos
 productsRouter.get('/', controller.getAll); //le todos
 productsRouter.get('/:id', controller.getById); //le um produto indicado pelo id
