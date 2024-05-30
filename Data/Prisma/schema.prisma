@@ -58,7 +58,7 @@ model Precos {
 
 model A_seguir {
     id_seguir      Int      @id @default(autoincrement())
-    id_produto    Int      @unique
+    id_produto    Int      
     alerta_preco  Boolean
     id_utilizador  Int      
     id_lista       Int      
