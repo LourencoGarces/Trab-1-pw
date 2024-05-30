@@ -54,8 +54,6 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
     const { id, descricao } = req.body;
 
-    console.log(req.body)
-
     try {
         //procurar a categoria com id e atualizar os dados
         const categoria = await prisma.Categorias.update({

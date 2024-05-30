@@ -16,6 +16,7 @@ exports.getAll = async (req, res) => {
 exports.getById = async (req, res) => {
     //apanha o id enviado
     const id = req.params.id*1;
+    
     try {
         //procura o produto com o id
         const response = await prisma.Produtos.findUnique({
@@ -57,8 +58,6 @@ exports.create = async (req, res) => {
 //Atualizar um produto
 exports.update = async (req, res) => {
     const { id, nome, descricao, preco, fabricante, categoria} = req.body;
-
-    console.log(req.body)
 
     try {
         //procurar o produto com id e atualizar os dados

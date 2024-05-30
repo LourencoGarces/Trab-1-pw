@@ -1,18 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-//Testa a ligação
-exports.testConnection = async (req, res) => {
-    try {
-        await prisma.$connect();
-        res.send('Ligação bem-sucedida com o PostgreSQL!');
-    } catch (error) {
-        res.send('Erro ao conectar ao PostgreSQL:', error);
-    } finally {
-        await prisma.$disconnect();
-    }
-}
-
 //Devolve todos os utilizadores
 exports.getAll = async (req, res) => {
     try {
@@ -124,7 +112,7 @@ exports.delete = async (req, res) => {
 // Login user
 exports.login = async (req, res) => {
     const { email, password } = req.body;
-    debugger
+    
     try {
         // Find user by email
         const user = await prisma.utilizador.findUnique({
@@ -166,39 +154,5 @@ exports.getUserByEmail = async (req, res) => {
     } catch (error) {
         console.error("Error fetching user data:", error);
         res.status(500).json({ msg: "Internal server error" });
-    }
-};
-
-// Update user contact and name by email
-exports.updateContactAndNameByEmail = async (req, res) => {
-    const { nome, contacto } = req.body;
-    const userEmail = req.body.email; // Assuming email is sent in the request body
-
-    try {
-        // Find the user by email
-        const user = await prisma.Utilizador.findUnique({
-            where: {
-                email: userEmail,
-            },
-        });
-
-        if (!user) {
-            return res.status(404).json({ msg: "User not found" });
-        }
-
-        // Update contact and name fields
-        const updatedUser = await prisma.Utilizador.update({
-            where: {
-                email: userEmail,
-            },
-            data: {
-                nome,
-                contacto,
-            },
-        });
-
-        res.status(200).json(updatedUser);
-    } catch (error) {
-        res.status(400).json({ msg: error.message });
     }
 };
