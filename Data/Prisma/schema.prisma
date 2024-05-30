@@ -27,8 +27,8 @@ model Utilizador {
 
 model Avaliar {
     id_avaliacao   Int      @id @default(autoincrement())
-    id_utilizador  Int      @unique
-    id_produto     Int      @unique
+    id_utilizador  Int      
+    id_produto     Int      
     produto        String
     texto_comentario String
     data_avaliacao DateTime
