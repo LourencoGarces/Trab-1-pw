@@ -51,7 +51,7 @@ model Produtos {
 
 model Precos {
     id_preco      Int      @id @default(autoincrement())
-    id_produto    Int      @unique
+    id_produto    Int      
     data_preco    DateTime
     Produtos     Produtos @relation(fields: [id_produto], references: [id_produto])
 }
@@ -65,7 +65,6 @@ model A_seguir {
     Produtos     Produtos @relation(fields: [id_produto], references: [id_produto])
     Utilizador    Utilizador @relation(fields: [id_utilizador], references: [id_utilizador])
     Lista_seguidos Lista_seguidos @relation(fields: [id_lista], references: [id_lista])
-
 }
 
 model Lista_seguidos {
