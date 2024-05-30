@@ -195,6 +195,7 @@ function forgotPassword() {
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
 
+// Loading manager profile of normal user
 document.addEventListener('DOMContentLoaded', async function() {
     // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
     var loggedInUserEmail = localStorage.getItem('loggedInUser');

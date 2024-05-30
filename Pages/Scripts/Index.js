@@ -16,33 +16,28 @@ const produtos = [
     {
         nome: "iPhone 15 Pro",
         link: "https://www.apple.com/pt/iphone-15-pro/",
-        imagem: "../Assets/iphone.jpeg",
+        imagem: "Assets/iphone.jpeg",
         descricao: "iPhone 15 Processador A17  Em titânio iOS 17",
     },
     {
         nome: "Macbook Pro M3",
         link: "https://www.apple.com/pt/macbook-pro/",
-        imagem: "../Assets/transferir.jpeg",
+        imagem: "Assets/transferir.jpeg",
         descricao: "Macbook M3 Processador M3 Pro Em aluminio macOs 17.4.1",
     },
     {
         nome: "Apple Watch Series 9",
         link: "https://www.apple.com/pt/apple-watch-series-9/",
-        imagem: "../Assets/transferir (1).jpeg",
+        imagem: "Assets/transferir (1).jpeg",
         descricao: "Apple Watch Processador S9 SiP Em aluminio iOS 17",
     },
     {
         nome: "iPad Pro",
         link: "https://www.apple.com/pt/ipad-pro/",
-        imagem: "../Assets/transferir (3).jpeg",
+        imagem: "Assets/transferir (3).jpeg",
         descricao: "iPad Pro Processador M3 Pro Em aluminio iOS 17",
     },
 ];
-function pesquisarProdutos() {
-    //Redireciona para produtos da apple
-    // Redirecionar diretamente para o site da Apple
-    window.location.href = "CommonQuestions.html";
-}
 
 // Adds an event listener for the sidebar toggle button
 document.getElementById("sidebarToggle").addEventListener("click", function () {
@@ -142,58 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateButtonVisibility();
 });
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
-    var loggedInUserEmail = localStorage.getItem("loggedInUser");
-
-    // Check if a logged-in user email exists
-    if (loggedInUserEmail) {
-        // Retrieve user data from localStorage based on the logged-in user's email
-        /*var userData = JSON.parse(localStorage.getItem(loggedInUserEmail));
-        if (
-            window.location.pathname.indexOf("/Login.html") > -1 ||
-            window.location.pathname.indexOf("/Register.html") > -1 ||
-            window.location.pathname.indexOf("/Forgot.html") > -1
-        ) {
-            window.location.href = "Index.html";
-        }
-
-        // Check if user data exists
-        if (userData) {
-            // Check if the logged-in user is an admin
-            var isAdmin = userData.role === "admin"; // Assuming 'role' identifies admin status
-
-            // Determine which page to redirect based on user role
-            if (isAdmin) {
-                // Display user information on the profile page
-                var ProfileButton = document.getElementById("ProfileButton");
-                ProfileButton.innerHTML = `
-                <a href="ProfileAdmin.html" id="ProfileImage">
-                <img src="${userData.img}" alt="Profile Picture" >
-                    </a>
-                `;
-            } else {
-                // Display user information on the profile page
-                var ProfileButton = document.getElementById("ProfileButton");
-                ProfileButton.innerHTML = `
-                <a href="Management_Profile.html" id="ProfileImage">
-                <img src="${userData.img}" alt="Profile Picture" >
-                    </a>
-                `;
-            }
-        } else {
-            console.error("User data not found."); // Log an error if user data is not found
-        }*/
-    } else {
-        console.error("No user logged in."); // Log an error if no user is logged in
-        // Redirect to the login page if the current page is not the login or registration page
-        if (!isLoginPage() && !isRegisterPage()) {
-            window.location.href = "Login.html";
-        }
-    }
-});
-
 // Helper function to check if the current page is the login page
 function isLoginPage() {
     return window.location.pathname.indexOf("/Login.html") !== -1;
@@ -203,12 +146,3 @@ function isLoginPage() {
 function isRegisterPage() {
     return window.location.pathname.indexOf("/Register.html") !== -1;
 }
-
-function carregaMockup(titulo, detalhe, elemento){
-    document.getElementById("mtitulo").innerHTML=titulo;
-    document.getElementById("mdetalhe").innerHTML=detalhe;
-    document.getElementById("mImagem").src=elemento.parentNode.parentNode.firstElementChild.getAttribute("src")
-    console.log(elemento.parentNode.parentNode.firstElementChild.getAttribute("src"))
-}
-
-
