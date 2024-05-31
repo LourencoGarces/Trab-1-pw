@@ -83,7 +83,7 @@
                                     <th>Descrição</th>
                                     <th>Preço</th>
                                     <th>Fabricante</th>
-                                    <th>Foto</th>
+                                    <th>Categoria</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>                            
@@ -109,14 +109,13 @@
                                 <input type="number" class="form-control" id="productPrice" step="0.01" required>
                             </div>
                             <div class="mb-3">
+                                <label for="productManufacturer" class="form-label">Fabricante:</label>
+                                <input type="text" class="form-control" id="productManufacturer" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="productCategory1" class="form-label">Categoria:</label>      
                                 <div id="productCategory"></div>                      
                             </div>
-                            <div class="mb-3">
-                                <label for="productImage" class="form-label">Imagem:</label>
-                                <input type="file" class="form-control" id="productImage" accept="image/png, image/jpeg" required>
-                                <img id="productImagePreview" src="" alt="Product Image Preview" style="max-width: 200px;">
-                            </div>                            
                             <button type="submit" class="btn btn-primary">Adicionar Produto</button>
                         </form>
                     </div>
