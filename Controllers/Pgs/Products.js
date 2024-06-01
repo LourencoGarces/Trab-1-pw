@@ -1,19 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient()
 
-//Testa a ligação
-exports.testConnection = async (req, res) => {
-    try {
-        await prisma.$connect();
-            res.send('Ligação bem-sucedida com o PostgreSQL!');
-        } catch (error) {
-            res.send('Erro ao conectar ao PostgreSQL:', error);
-        } finally {
-            await prisma.$disconnect();
-        }
-}
-
-//Devolve todos os carros
+//Devolve todos os produtos
 exports.getAll = async (req, res) => {
     try {
         //le toda a tabela
@@ -24,15 +12,16 @@ exports.getAll = async (req, res) => {
     }
 }
 
-//Devolve um carro indicado por um id
+//Devolve um produto indicado por um id
 exports.getById = async (req, res) => {
     //apanha o id enviado
     const id = req.params.id*1;
+    
     try {
-        //procura o carro com o id
+        //procura o produto com o id
         const response = await prisma.Produtos.findUnique({
             where: {
-                id: id,
+                id_produto: id,
             },
         })
         //devolve o carro
@@ -42,63 +31,68 @@ exports.getById = async (req, res) => {
     }
 }
 
+//Criar um novo produto
 exports.create = async (req, res) => {
-    //apanhar os dados enviados
-    const { nome, descricao, preco, fabricante } = req.body;
+    // Apanhar os dados enviados
+    const {nome, descricao, preco, fabricante, categoria} = req.body;
+
     try {
-        //criar um novo carro
+        // Criar um novo produto
         const produto = await prisma.Produtos.create({
             data: {
-                nome: nome,           
+                nome: nome,
                 descricao: descricao,
-                preco: preco,
-                fabricante: fabricante
+                preco: preco, 
+                fabricante: fabricante,
+                id_categoria: categoria 
             },
-        })
-        //devolve o carro criado
-        res.status(201).json(produto)
+        });
+
+        // Devolve o produto criado
+        res.status(201).json(produto);
     } catch (error) {
-        res.status(400).json({ msg: error.message })
+        res.status(400).json({ msg: error.message });
     }
 }
 
-//Atualizar um carro
+//Atualizar um produto
 exports.update = async (req, res) => {
-    const { id, nome, descricao, preco, fabricante } = req.body;
+    const { id, nome, descricao, preco, fabricante, categoria} = req.body;
 
     try {
-        //procurar o carro com id e atualizar os dados
+        //procurar o produto com id e atualizar os dados
         const produto = await prisma.Produtos.update({
             where: {
-                id: id*1,
+                id_produto: id*1,
             },
             data: {
                 nome: nome,           
                 descricao: descricao,
                 preco: preco,
-                fabricante: fabricante
+                fabricante: fabricante,
+                id_categoria: categoria
             },
         })
-        //devolve o carro atualizado
+        //devolve o produto atualizado
         res.status(200).json(produto)
     } catch (error) {
         res.status(400).json({ msg: error.message })
     }
 }
 
-//apagar o carro com id passado
+//apagar o produto com id passado
 exports.delete = async (req, res) => {
-    //le o id do carro
+    //le o id do produto
     const id = req.params.id;
     try {
         //delete student
         await prisma.Produtos.delete({
             where: {
-                id: id*1,
+                id_produto: id*1,
             },
         })
         //just return ok
-        res.status(200).send("ok");
+        res.status(200).send("Apagado com sucesso!");
     } catch (error) {
         res.status(400).json({ msg: error.message })
     }

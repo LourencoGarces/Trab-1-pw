@@ -1,3 +1,4 @@
+/*
 const productsRouter = require('express').Router();
 const controller = require('../../Controllers/Local/Products');
 
@@ -9,3 +10,4 @@ productsRouter.put('/update', controller.update); //atualizar um produto
 productsRouter.delete('/delete/:id', controller.delete); //apagar um produto pelo id
 
 module.exports = productsRouter;
+*/
