@@ -19,7 +19,7 @@ model Utilizador {
     email          String   @unique
     contacto       String
     password       String
-    isAdmin        Boolean @default(false)
+    isAdmin        Boolean  @default(false)
     Avaliar       Avaliar[]
     A_seguir      A_seguir[]
     Lista_seguidos Lista_seguidos[]
@@ -27,8 +27,8 @@ model Utilizador {
 
 model Avaliar {
     id_avaliacao   Int      @id @default(autoincrement())
-    id_utilizador  Int      @unique
-    id_produto     Int      @unique
+    id_utilizador  Int      
+    id_produto     Int      
     produto        String
     texto_comentario String
     data_avaliacao DateTime
@@ -42,7 +42,7 @@ model Produtos {
     descricao     String
     preco        Float
     fabricante    String
-    id_categoria  Int      @unique
+    id_categoria  Int      
     Precos        Precos[]
     A_seguir      A_seguir[]
     Avaliar       Avaliar[]
@@ -51,21 +51,20 @@ model Produtos {
 
 model Precos {
     id_preco      Int      @id @default(autoincrement())
-    id_produto    Int      @unique
+    id_produto    Int      
     data_preco    DateTime
     Produtos     Produtos @relation(fields: [id_produto], references: [id_produto])
 }
 
 model A_seguir {
     id_seguir      Int      @id @default(autoincrement())
-    id_produto    Int      @unique
+    id_produto    Int      
     alerta_preco  Boolean
     id_utilizador  Int      
     id_lista       Int      
     Produtos     Produtos @relation(fields: [id_produto], references: [id_produto])
     Utilizador    Utilizador @relation(fields: [id_utilizador], references: [id_utilizador])
     Lista_seguidos Lista_seguidos @relation(fields: [id_lista], references: [id_lista])
-
 }
 
 model Lista_seguidos {

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 
-const routerLocal = require('./Routes/Local/Index');
+//const routerLocal = require('./Routes/Local/Index');
 const routerPgs = require('./Routes/Pgs/Index');
 const publicRouter = require('./Routes/Public');
 const privateRouter = require('./Routes/Private');
@@ -14,16 +14,16 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Servir arquivos estáticos
-app.use('/Styles', express.static('Styles'))
-app.use('/Assets', express.static('Assets'))
-app.use('/Scripts', express.static('Scripts'))
+//app.use('/Styles', express.static('Styles'))
+//app.use('/Assets', express.static('Assets'))
+//app.use('/Scripts', express.static('Scripts'))
+//app.use(express.static('Pages'))
 app.use(express.static('Pages'))
 
 // Rotas principais
 app.use('/', publicRouter);
-app.use('/Pages/', publicRouter);
 app.use('/Private/', privateRouter);
-app.use('/Api/Local/', routerLocal);
+//app.use('/Api/Local/', routerLocal);
 app.use('/Api/Pgs/', routerPgs);
 
 
