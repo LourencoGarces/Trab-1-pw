@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Utilizador {
+    id_utilizador   Int      @id @default(autoincrement())
+    nome           String
+    email          String   @unique
+    contacto       String
+    password       String
+    isAdmin        Boolean  @default(false)
+    Avaliar       Avaliar[]
+    A_seguir      A_seguir[]
+    Lista_seguidos Lista_seguidos[]
+}
+
+model Avaliar {
+    id_avaliacao   Int      @id @default(autoincrement())
+    id_utilizador  Int      
+    id_produto     Int      
+    produto        String
+    texto_comentario String
+    data_avaliacao DateTime
+    Utilizador     Utilizador @relation(fields: [id_utilizador], references: [id_utilizador])
+    Produtos       Produtos @relation(fields: [id_produto], references: [id_produto])
+}
+
+model Produtos {
+    id_produto    Int      @id @default(autoincrement())
+    nome          String
+    descricao     String
+    preco        Float
+    fabricante    String
+    id_categoria  Int      
+    Precos        Precos[]
+    A_seguir      A_seguir[]
+    Avaliar       Avaliar[]
+    Categorias    Categorias @relation(fields: [id_categoria], references: [id_categoria])
+}
+
+model Precos {
+    id_preco      Int      @id @default(autoincrement())
+    id_produto    Int      
+    data_preco    DateTime
+    Produtos     Produtos @relation(fields: [id_produto], references: [id_produto])
+}
+
+model A_seguir {
+    id_seguir      Int      @id @default(autoincrement())
+    id_produto    Int      
+    alerta_preco  Boolean
+    id_utilizador  Int      
+    id_lista       Int      
+    Produtos     Produtos @relation(fields: [id_produto], references: [id_produto])
+    Utilizador    Utilizador @relation(fields: [id_utilizador], references: [id_utilizador])
+    Lista_seguidos Lista_seguidos @relation(fields: [id_lista], references: [id_lista])
+}
+
+model Lista_seguidos {
+    id_lista       Int      @id @default(autoincrement())
+    id_utilizador  Int      
+    A_seguir      A_seguir[]
+    Utilizador    Utilizador @relation(fields: [id_utilizador], references: [id_utilizador])
+}
+
+model Categorias {
+    id_categoria   Int      @id @default(autoincrement())
+    descricao           String
+    Produtos       Produtos[]
+}
