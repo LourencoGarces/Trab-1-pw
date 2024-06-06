@@ -23,6 +23,57 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
+async function fetchCategories() {
+    let strHtml = ``
+    try {
+        // Fetch categories from the backend API
+        const response = await fetch('http://localhost:4242/api/pgs/Categories');
+        const data = await response.json();
+
+        for (const artigo of data) {
+            strHtml += `
+            <li>
+                <a href="#" class="nav-link" onclick="showProductsByCategory('${artigo.id_categoria}')">${artigo.descricao}</a>
+                </li>`
+        }
+
+        document.getElementById('categoryListPlaceholder').innerHTML = strHtml
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+    }
+}
+
+async function showProductsByCategory(category) {
+    debugger
+    try {
+        const response = await fetch(`http://localhost:4242/api/pgs/Products/category/${category}`);
+        const produtos = await response.json();
+        
+        let strHtml = '';
+        
+        produtos.forEach(artigo => {
+            strHtml += `
+                <tr>
+                    <td>${artigo.id_produto}</td>
+                    <td>${artigo.nome}</td>
+                    <td>${artigo.descricao}</td>
+                    <td>${artigo.preco}</td>
+                    <td>${artigo.fabricante}</td>
+                    <td>${artigo.id_categoria}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#upModal" onclick="preparaEditProdutos(${artigo.id_produto})"><i class="fa fa-pencil"></i> Editar</button>
+                        <button type='button' class='btn btn-danger' onclick="apagaProduto(${artigo.id_produto})"><i class="fa fa-trash"></i> Apagar</button>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        document.getElementById("productTableBody").innerHTML = strHtml;
+    } catch (error) {
+        console.error('Error fetching products for category:', error);
+    }
+}
+
 // Function to display all products sorted by ID
 const showProductList = () => {
     // Show product list section
@@ -237,7 +288,6 @@ const apagaProduto = async (id_produto) => {
 };
 
 const preparaEditProdutos = async (id_produto) => {
-    debugger
     try {
         const response = await fetch(`http://localhost:4242/api/pgs/Products/${id_produto}`);
         const product = await response.json();
@@ -268,7 +318,7 @@ const preparaEditProdutos = async (id_produto) => {
                 <div class="mb-3">
                     <label for="editProductCategory" class="form-label">Categoria:</label>
                     <select class="form-select" id="editProductCategory" required>
-                        ${categories.map(category => `<option id="idValue" value="${category.id_categoria}" ${product.id_categoria === category.id_categoria ? 'selected' : ''}>${category.descricao}</option>`).join('')}
+                        ${categories.map(category => `<option value="${category.id_categoria}" ${product.id_categoria === category.id_categoria ? 'selected' : ''}>${category.descricao}</option>`).join('')}
                     </select>
                 </div>
                 <button type="button" class="btn btn-primary" onclick="atualizaProduto(${id_produto})">Editar Produto</button>
@@ -284,12 +334,11 @@ const preparaEditProdutos = async (id_produto) => {
 };
 
 const atualizaProduto = async (id_produto) => {
-    debugger
     const nome = document.getElementById('editProductName').value;
     const descricao = document.getElementById('editProductDescription').value;
     const preco = parseFloat(document.getElementById('editProductPrice').value);
     const fabricante = document.getElementById('editProductManufacturer').value;
-    const categoria = parseInt(document.getElementById('idValue').value);
+    const categoria = parseInt(document.getElementById('editProductCategory').value);
 
     const updatedProduct = {
         id: id_produto,
@@ -297,7 +346,7 @@ const atualizaProduto = async (id_produto) => {
         descricao: descricao,
         preco: preco,
         fabricante: fabricante,
-        id_categoria: categoria
+        categoria: categoria
     };
 
     try {
@@ -306,7 +355,7 @@ const atualizaProduto = async (id_produto) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedProduct),
         });
-                                            //NÂO ESTÀ A PEGAR NO NOVO ID DA CATEGORIA VER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         if (!response.ok) {
             throw new Error("Erro ao atualizar o produto");
         }

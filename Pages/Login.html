@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,24 +14,21 @@
 </head>
 
 <body>
-  <!-- Sidebar -->
+  <!-- Sidebar navigation -->
   <div class="sidebar" id="sidebar">
-    <!-- Mobile Phones -->
-    <a href="MockUp_ProdutosTelemoveis.html" id="Telemoveis" onclick="atualizarMockup('categoria3')">Telemóveis</a>
-    <!-- Smart Watches -->
-    <a href="MockUp_ProdutosSmartWatches.html" id="Smartwatches" onclick="atualizarMockup('categoria2')">Smart
-      Watches</a>
-    <!-- Airpods -->
-    <a href="MockUp_ProdutosAirpods.html" id="Airpods" onclick="atualizarMockup('categoria')">Airpods</a>
-    <!-- iPads -->
-    <a href="MockUp_ProdutosIpads.html" id="Ipads" onclick="atualizarMockup('categoria5')">Ipads</a>
-    <!-- Computers -->
-    <a href="MockUp_ProdutosComputadores.html" id="Computadores"
-      onclick="atualizarMockup('categoria4')">Computadores</a>
-    <!-- Accessories -->
-    <a href="MockUp_ProdutosAssesorios.html" id="Assesorios" onclick="atualizarMockup('categoria1')">Accessories</a>
+    <!-- Mobile Phones Link -->
+    <a href="" id="Telemoveis">Telemóveis</a>
+    <!-- Smart Watches Link -->
+    <a href="" id="Smartwatches">Smart Watches</a>
+    <!-- Airpods Link -->
+    <a href="" id="Airpods">Airpods</a>
+    <!-- iPads Link -->
+    <a href="" id="Ipads">Ipads</a>
+    <!-- Computers Link -->
+    <a href="" id="Computadores">Computadores</a>
+    <!-- Accessories Link -->
+    <a href="" id="Assesorios">Assesórios</a>
   </div>
-
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div>
@@ -47,10 +43,10 @@
         <!-- Brand Logo (Clickable) -->
         <a href="Index.html" class="navbar-brand">Smart Buyer</a>
       </div>
-      <div class="container d-flex justify-content-end align-items-center">
+      <div class="container  d-flex justify-content-end align-items-star">
         <div id="divBusca">
           <!-- Search Input -->
-          <input type="text" id="txtBusca" placeholder="Search..." />
+          <input type="text" id="txtBusca" placeholder="Buscar..." />
           <!-- Search Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
             viewBox="0 0 16 16">
@@ -85,10 +81,10 @@
           <div class="modal-content">
             <div class="row">
               <div class="col-md-10">
-                <p>Please log in or register to continue.</p>
+                <p>Por favor, faça login ou registre-se para continuar.</p>
               </div>
               <div class="col-md-2">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
             </div>
             <div class="row">
@@ -104,62 +100,58 @@
       </div>
     </nav>
   </header>
-
-  <h1>Welcome!</h1>
-
+  <h1>Seja Bem Vindo!</h1>
   <!-- Main Container -->
   <div class="container">
     <div class="row">
       <!-- Profile Section -->
       <div class="col-md-4">
+        <!-- Log In Title -->
         <h2>Log In:</h2>
       </div>
-      <div class="col-md-3"></div>
-      <div class="col-md-4">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-4 vr-large">
         <!-- Create Account Section -->
-        <div class="formulario bg-light p-3 rounded">
-          <h3>If you don't have an account, please register!</h3>
+        <div class="formulario bg-light">
+          <h3>Se não tem conta por favor cadastre-se!</h3>
           <div class="d-flex justify-content-center align-items-center">
-            <a href="Register.html" class="btn btn-secondary">Create Account</a>
+            <a href="Register.html" class="btn btn-secondary">Criar Conta</a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-md-4 offset-md-4">
-        <!-- Profile Form -->
-        <div class="formulario bg-light p-4 rounded">
-          <!-- Profile Image -->
-          <div class="text-center">
-            <img src="Assets/logoMarca.png" onclick="redirectToIndex()" class="img-fluid mb-3" title="Logo Brand">
+      <!-- Nested Container -->
+      <div class="container">
+        <div class="col-md-5">
+          <div class="row">
+            <!-- Profile Form -->
+            <div class="formulario bg-light">
+              <!-- Profile Image -->
+              <img src="Assets/logoMarca.png" onclick="redirectToIndex()" class="center" title="Logo Brand">
+              <!-- Login Form -->
+              <form id="loginForm" action="#" method="post">
+                <!-- Email Input -->
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                <div class="mb-3">
+                  <!-- Password Input -->
+                  <label for="pwd">Password:</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter password"
+                    name="password">
+                </div>
+                <!-- Forgot Password Link -->
+                <div class="mb-3">
+                  <a href="Forgot.html">Forgot password?</a>
+                </div>
+                <!-- Login Button -->
+                <div class="d-flex justify-content-center align-items-center">
+                  <button type="button" onclick="loginUser()" class="btn btn-secondary">Login</button>
+                </div>
+              </form>
+            </div>
           </div>
-          <!-- Login Form -->
-          <form id="loginForm" action="#" method="post">
-            <!-- Email Input -->
-            <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
-            </div>
-            <!-- Password Input -->
-            <div class="mb-3">
-              <label for="password" class="form-label">Password:</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"
-                required>
-            </div>
-            <!-- Forgot Password Link -->
-            <div class="mb-3">
-              <a href="Forgot.html">Forgot password?</a>
-            </div>
-            <!-- Login Button -->
-            <div class="d-flex justify-content-center align-items-center">
-              <button type="button" onclick="loginUser()" class="btn btn-secondary">Login</button>
-            </div>
-          </form>
         </div>
-      </div>
-    </div>
   </div>
-
   <!-- Including JavaScript -->
   <!-- Custom JavaScript -->
   <script src="Scripts/Index.js"></script>
@@ -170,5 +162,4 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 </body>
-
 </html>

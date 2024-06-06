@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register Document</title>
+  <title>Registe Documentr</title>
   <!-- Including Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -15,23 +15,21 @@
 </head>
 
 <body>
-  <!-- Sidebar -->
+  <!-- Sidebar navigation -->
   <div class="sidebar" id="sidebar">
-    <!-- Mobile Phones -->
-    <a href="MockUp_ProdutosTelemoveis.html" id="Telemoveis" onclick="atualizarMockup('categoria3')">Mobile Phones</a>
-    <!-- Smart Watches -->
-    <a href="MockUp_ProdutosSmartWatches.html" id="Smartwatches" onclick="atualizarMockup('categoria2')">Smart
-      Watches</a>
-    <!-- Airpods -->
-    <a href="MockUp_ProdutosAirpods.html" id="Airpods" onclick="atualizarMockup('categoria')">Airpods</a>
-    <!-- iPads -->
-    <a href="MockUp_ProdutosIpads.html" id="Ipads" onclick="atualizarMockup('categoria5')">iPads</a>
-    <!-- Computers -->
-    <a href="MockUp_ProdutosComputadores.html" id="Computadores" onclick="atualizarMockup('categoria4')">Computers</a>
-    <!-- Accessories -->
-    <a href="MockUp_ProdutosAssesorios.html" id="Assesorios" onclick="atualizarMockup('categoria1')">Accessories</a>
+    <!-- Mobile Phones Link -->
+    <a href="" id="Telemoveis">Telemóveis</a>
+    <!-- Smart Watches Link -->
+    <a href="" id="Smartwatches">Smart Watches</a>
+    <!-- Airpods Link -->
+    <a href="" id="Airpods">Airpods</a>
+    <!-- iPads Link -->
+    <a href="" id="Ipads">Ipads</a>
+    <!-- Computers Link -->
+    <a href="" id="Computadores">Computadores</a>
+    <!-- Accessories Link -->
+    <a href="" id="Assesorios">Assesórios</a>
   </div>
-
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div>
@@ -46,10 +44,10 @@
         <!-- Brand Logo (Clickable) -->
         <a href="Index.html" class="navbar-brand">Smart Buyer</a>
       </div>
-      <div class="container d-flex justify-content-end align-items-center">
+      <div class="container  d-flex justify-content-end align-items-star">
         <div id="divBusca">
           <!-- Search Input -->
-          <input type="text" id="txtBusca" placeholder="Search..." />
+          <input type="text" id="txtBusca" placeholder="Buscar..." />
           <!-- Search Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
             viewBox="0 0 16 16">
@@ -84,10 +82,10 @@
           <div class="modal-content">
             <div class="row">
               <div class="col-md-10">
-                <p>Please log in or register to continue.</p>
+                <p>Por favor, faça login ou registre-se para continuar.</p>
               </div>
               <div class="col-md-2">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
             </div>
             <div class="row">
@@ -103,78 +101,79 @@
       </div>
     </nav>
   </header>
-
   <!-- Page Heading -->
-  <h1>Welcome!</h1>
-
+  <h1>Seja Bem Vindo!</h1>
   <!-- Main Container -->
-  <div class="container mt-4">
+  <div class="container">
     <div class="row">
       <!-- Profile Section -->
       <div class="col-md-4">
-        <h2>Register:</h2>
+        <!-- Register Title -->
+        <h2>Registo:</h2>
       </div>
-      <div class="col-md-4 offset-md-4">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-4 vr-large">
         <!-- Sign In Section -->
-        <div class="formulario bg-light p-3 rounded">
-          <h3>If you already have an account, please log in!</h3>
+        <div class="formulario bg-light">
+          <h3>Se já tem conta, por favor insira suas credenciais!</h3>
           <div class="d-flex justify-content-center align-items-center">
-            <a href="Login.html" class="btn btn-secondary">Log In</a>
+            <a href="Login.html" class="btn btn-secondary">Iniciar Sessão</a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-md-4 offset-md-4">
-        <!-- Profile Form -->
-        <div class="formulario bg-light p-4 rounded">
-          <!-- Profile Image -->
-          <div class="text-center">
-            <img src="Assets/logoMarca.png" onclick="redirectToIndex()" class="img-fluid mb-3" title="Logo Brand">
+      <!-- Nested Container -->
+      <div class="container">
+        <div class="col-md-5">
+          <div class="row">
+            <!-- Profile Form -->
+            <div class="formulario bg-light">
+              <!-- Profile Image -->
+              <img src="Assets/logoMarca.png" onclick="redirectToIndex()" class="center" title="Logo Brand">
+              <!-- Register Form -->
+              <form id="registerForm">
+                <!-- Email Input -->
+                <div class="mb-3">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+                <div class="mb-3">
+                  <!-- Name Input -->
+                  <label for="name">Nome:</label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                </div>
+                <div class="mb-3">
+                  <!-- Contact Input -->
+                  <label for="contact">Contacto:</label>
+                  <input type="text" class="form-control" id="contact" placeholder="Enter contact" name="contact">
+                </div>
+                <div class="mb-3">
+                  <!-- Password Input -->
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter password"
+                    name="password">
+                </div>
+                <div class="mb-3">
+                  <!-- Retype Password Input -->
+                  <label for="retypepassword">Retype-Password:</label>
+                  <input type="password" class="form-control" id="retypepassword" placeholder="Enter password"
+                    name="retypepassword">
+                </div>
+                <!-- Register Button JS -->
+                <div class="d-flex justify-content-center align-items-center">
+                  <button type="button" class="btn btn-secondary" id="registerButton" onclick="registerUser()">Registrar</button>
+                </div>
+              </form>
+            </div>
           </div>
-          <!-- Register Form -->
-          <form id="registerForm">
-            <div class="mb-3">
-              <!-- Email Input -->
-              <label for="email" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
-            </div>
-            <div class="mb-3">
-              <!-- Name Input -->
-              <label for="name" class="form-label">Name:</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
-            </div>
-            <div class="mb-3">
-              <!-- Contact Input -->
-              <label for="contact" class="form-label">Contact:</label>
-              <input type="text" class="form-control" id="contact" placeholder="Enter contact" name="contact" required>
-            </div>
-            <div class="mb-3">
-              <!-- Password Input -->
-              <label for="password" class="form-label">Password:</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"
-                required>
-            </div>
-            <div class="mb-3">
-              <!-- Retype Password Input -->
-              <label for="retypepassword" class="form-label">Retype Password:</label>
-              <input type="password" class="form-control" id="retypepassword" placeholder="Enter password again"
-                name="retypepassword" required>
-            </div>
-            <!-- Register Button JS -->
-            <div class="d-flex justify-content-center align-items-center">
-              <button type="button" class="btn btn-secondary" id="registerButton"
-                onclick="registerUser()">Register</button>
-            </div>
-          </form>
         </div>
       </div>
     </div>
   </div>
-
   <!-- Including JavaScript -->
   <!-- Custom JavaScript -->
   <script src="Scripts/Index.js"></script>
+  <!-- Custom JavaScript -->
   <script src="Scripts/Autentication.js"></script>
   <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
