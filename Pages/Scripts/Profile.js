@@ -1,8 +1,9 @@
 // Update the contact and name
 async function updateUserData() {
+    debugger
     var nome = document.getElementById("inputUsername").value;
     var contacto = document.getElementById("inputPhone").value;
-    var email = localStorage.getItem('loggedInUser');
+    var email = document.getElementById("inputEmailAddress").textContent;
 
     // Fetch the existing user data
     try {

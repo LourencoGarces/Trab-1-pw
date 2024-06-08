@@ -59,7 +59,7 @@
 /* Styles for sidebar icon */
 .sidebaricon {
     /* Set width of sidebar icon */
-    width: 15%;
+    width: 30px;
     /* Add margin to the sidebar icon */
     margin-left: 4%;
 }
@@ -70,7 +70,7 @@
     border: solid 1px;
     border-radius: 15px;
     /* Set width of search container */
-    width: 50%;
+    width: 80%;
 }
 
 /* Styles for search input */
@@ -96,7 +96,6 @@
 .header-container {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
-    width: 30%;
     margin-left: 3%;
 }
 
@@ -105,12 +104,8 @@
     background: none;
     cursor: pointer;
     padding: 0;
-    width: 10%; /* Set desired width */
+    width: 40px; /* Set desired width */
     margin-right: 5%; /* Adjust negative margin to reduce spacing */
-}
-
-.logoProfile, .logoCard {
-    width: 100%; /* Set width for logo buttons */
 }
 
 .profile img {

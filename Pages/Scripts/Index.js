@@ -102,7 +102,7 @@ closeButton.addEventListener("click", closeModal);
 
 // Function to update button visibility based on login status
 function updateButtonVisibility() {
-    const isLoggedIn = localStorage.getItem("loggedInUser") !== null;
+    const isLoggedIn = localStorage.getItem("token") !== null;
     const logoutButton = document.getElementById("logoutButton");
     const profileButton = document.getElementById("ProfileButton");
 
@@ -117,7 +117,7 @@ function updateButtonVisibility() {
 
 // Event listener to handle changes in local storage
 window.addEventListener("storage", function (event) {
-    if (event.key === "loggedInUser") {
+    if (event.key === "token") {
         updateButtonVisibility();
     }
 });
@@ -125,7 +125,7 @@ window.addEventListener("storage", function (event) {
 // Event listener for the Log Out button
 document.getElementById("logoutButton").addEventListener("click", function () {
     // Remove the loggedInUser from localStorage
-    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("token");
 
     // Optionally perform any other cleanup or redirection
     alert("A sair da conta.");

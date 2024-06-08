@@ -22,16 +22,6 @@ app.use('/Private/', privateRouter); // Use privateRouter for /Private path
 // app.use('/Api/Local/', routerLocal); // Use routerLocal for /Api/Local path (commented out)
 app.use('/Api/Pgs/', routerPgs); // Use routerPgs for /Api/Pgs path
 
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
-// Middleware to log the request body for debugging
-app.use((req, res, next) => {
-    console.log('Request Body:', req.body);
-    next();
-});
-
-
 const port = process.env.SERVER_PORT || 4242; // Define the server port, default to 4242 if not specified
 app.listen(port, () => { // Start the express server
     console.log('Express server listening on port', port); // Log server listening message

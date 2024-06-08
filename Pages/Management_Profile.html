@@ -15,19 +15,25 @@
 </head>
 
 <body>
-    <!-- Sidebar -->
+    <!-- Sidebar navigation -->
     <div class="sidebar" id="sidebar">
-        <!-- Sidebar links for different categories -->
-        <a href="" id="Telemoveis">Mobile Phones</a>
+        <!-- Mobile Phones Link -->
+        <a href="" id="Telemoveis">Telemóveis</a>
+        <!-- Smart Watches Link -->
         <a href="" id="Smartwatches">Smart Watches</a>
+        <!-- Airpods Link -->
         <a href="" id="Airpods">Airpods</a>
-        <a href="" id="Ipads">iPads</a>
-        <a href="" id="Computadores">Computers</a>
-        <a href="" id="Assesorios">Accessories</a>
+        <!-- iPads Link -->
+        <a href="" id="Ipads">Ipads</a>
+        <!-- Computers Link -->
+        <a href="" id="Computadores">Computadores</a>
+        <!-- Accessories Link -->
+        <a href="" id="Assesorios">Assesórios</a>
     </div>
+    
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div>
+            <div class="col-md-1">
                 <!-- Sidebar Toggle Icon -->
                 <svg id="sidebarToggle" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     class="bi sidebaricon bi-justify" viewBox="0 0 16 16">
@@ -35,14 +41,14 @@
                         d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
                 </svg>
             </div>
-            <div>
+            <div class="col-md-1">
                 <!-- Brand Logo (Clickable) -->
                 <a href="Index.html" class="navbar-brand">Smart Buyer</a>
             </div>
-            <div class="container d-flex justify-content-end align-items-start">
+            <div class="container d-flex justify-content-end align-items-start col-md-6">
                 <div id="divBusca">
                     <!-- Search Input -->
-                    <input type="text" id="txtBusca" placeholder="Search..." />
+                    <input type="text" id="txtBusca" placeholder="Procurar..." />
                     <!-- Search Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-search" viewBox="0 0 16 16">
@@ -51,7 +57,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="header-container">
+            <div class="header-container col-md-3">
                 <!-- Profile Button -->
                 <button class="iconButton" id="profileButton">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoProfile bi-person"
@@ -60,7 +66,7 @@
                             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                     </svg>
                 </button>
-                <!-- Card Button -->
+                <!-- Cart Button -->
                 <button class="iconButton" id="cardButton">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoCard bi-card-list"
                         viewBox="0 0 16 16">
@@ -72,18 +78,21 @@
                 </button>
                 <!-- Log Out Button -->
                 <button id="logoutButton" style="display: none;">Log Out</button>
-                <!-- Profile Image Button -->
+
+                <!-- Temporary brand logo for management profile -->
+                <a href="Management_Profile.html" class="navbar-brand">Smart Buyer</a> <!-- Temporary link -->
+
+                <!-- Profile Image -->
                 <div class="profile iconButton" id="ProfileButton" style="display: none;">
-                    <a href="Management_Profile.html" id="ProfileImage"></a>
                 </div>
             </div>
-            <!-- Modal -->
+            <!-- Modal for login or register -->
             <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="row">
                             <div class="col-md-10">
-                                <p>Please login or register to continue.</p>
+                                <p>Por favor, faça login ou registre-se para continuar.</p>
                             </div>
                             <div class="col-md-2">
                                 <button type="button" class="btn-close " data-bs-dismiss="modal"
@@ -103,6 +112,7 @@
             </div>
         </nav>
     </header>
+
     <!-- Management Profile Container -->
     <div class="Management_container" id="Management_container">
         <!-- Dynamic content will be loaded here -->
