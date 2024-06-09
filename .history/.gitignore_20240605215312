@@ -1,5 +1,0 @@
-#Ignore all of I don't want to send for the GitHub
-node_modules
-# Keep environment variables out of version control
-.env
-Anotações

@@ -92,7 +92,7 @@ async function loginUser() {
     };
 
     try {
-        const response = await fetch('http://localhost:4242/Api/Pgs/Users/login', {
+        const response = await fetch('http://localhost:4242/Api/Pgs/Auth/signin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -105,12 +105,13 @@ async function loginUser() {
         if (response.ok) {
             alert("Login successful!");
 
+            // Store the token in local storage
+            localStorage.setItem('token', responseData.token);
+
             // Redirect based on user role
             if (responseData.role === 'admin') {
-                localStorage.setItem('loggedInUser', email);
                 window.location.href = 'ProfileAdmin.html';
             } else if (responseData.role === 'user') {
-                localStorage.setItem('loggedInUser', email);
                 window.location.href = 'Index.html';
             } else {
                 alert("Unknown role for this user.");
@@ -161,7 +162,7 @@ async function registerUser() {
     };
 
     try {
-        const response = await fetch('http://localhost:4242/Api/Pgs/Users/create', {
+        const response = await fetch('http://localhost:4242/Api/Pgs/Auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -195,85 +196,106 @@ function forgotPassword() {
     alert("Um email de recuperação de senha foi enviado para " + email);
 }
 
-// Loading manager profile of normal user
+const leTokenSFF = async () => {
+    var dados = {
+        token: localStorage.getItem("token"),
+    };
+    console.log(JSON.stringify(dados));
+    const response = await fetch("http://localhost:4242/Api/Pgs/Auth/readToken", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dados),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        alert("Erro ao fazer login");
+        return null; // Return null if the request failed
+    } else {
+        alert("Token lido com sucesso");
+        return result; // Return the decoded token data
+    }
+};
+
 document.addEventListener('DOMContentLoaded', async function() {
-    // Retrieve the email of the logged-in user from localStorage (assuming user is authenticated)
-    var loggedInUserEmail = localStorage.getItem('loggedInUser');
-    
-    // Check if a logged-in user email exists
-    if (loggedInUserEmail) {
+    const token = localStorage.getItem('token');
+    if (token) {
         // Redirect to the index page if the current page is the login or registration page
-        if (window.location.pathname.indexOf('/Login.html') > -1 || window.location.pathname.indexOf('/Register.html') > -1 || window.location.pathname.indexOf('/Forgot.html') > -1) {
+        if (window.location.pathname.includes('/Login.html') || window.location.pathname.includes('/Register.html') || window.location.pathname.includes('/Forgot.html')) {
             window.location.href = 'Index.html';
+            return;
         }
-        
 
         try {
-            // Fetch user data from the backend API
-            const response = await fetch(`http://localhost:4242/api/pgs/Users/email/${loggedInUserEmail}`);
-            const userData = await response.json();
-
-            // Display user information on the profile page
-            var Management_container = document.getElementById('Management_container');
-            Management_container.innerHTML = `
-            <div class="container">
-            <hr>
-            <div class="row">
-                <div class="col-md-4">
-                    <!-- Profile picture card-->
-                    <div class="card ">
-                        <div class="card-header">Foto de Perfil</div>
-                        <div class="card-body text-center">
-                            <!-- Profile picture image-->
-                            <img class="img-account-profile rounded-circle" id="profileImage" src="${userData.img}" alt="Foto de Perfil">
-                            <!-- Profile picture help block-->
-                            <div class="small font-italic text-muted mb-4">JPG ou PNG menor que 5 MB</div>
-                            <!-- Profile picture upload button-->
-                            <input type="file" id="imageUploadInput" style="display: none;" accept="image/png, image/jpeg">
-                            <button id="uploadImageButton" class="btn border" type="button">Carregar Imagem</button>
+            const userData = await leTokenSFF();
+            if (userData) {
+                // Display user information on the profile page
+                var Management_container = document.getElementById('Management_container');
+                Management_container.innerHTML = `
+                <div class="container">
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- Profile picture card-->
+                            <div class="card ">
+                                <div class="card-header">Foto de Perfil</div>
+                                <div class="card-body text-center">
+                                    <!-- Profile picture image-->
+                                    <img class="img-account-profile rounded-circle" id="profileImage" src="${userData.img}" alt="Foto de Perfil">
+                                    <!-- Profile picture help block-->
+                                    <div class="small font-italic text-muted mb-4">JPG ou PNG menor que 5 MB</div>
+                                    <!-- Profile picture upload button-->
+                                    <input type="file" id="imageUploadInput" style="display: none;" accept="image/png, image/jpeg">
+                                    <button id="uploadImageButton" class="btn border" type="button">Carregar Imagem</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <!-- Account details card-->
+                            <div class="card md-4">
+                                <div class="card-header">Detalhes da conta</div>
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Form Group (username)-->
+                                        <div>
+                                            <label class="small" for="inputUsername">Nome de Utilizador</label>
+                                            <input class="form-control" id="inputUsername" type="text" placeholder="${userData.nome}">
+                                        </div>
+                                        <!-- Form Group (email address)-->
+                                        <div>
+                                            <label class="small" for="inputEmailAddress">Email</label>
+                                            <label class="form-control" id="inputEmailAddress" for="inputEmailAddress">${userData.email}</label>
+                                        </div>
+                                        <!-- Form Row-->
+                                        <div class="row">
+                                            <!-- Form Group (phone number)-->
+                                            <div class="col-md-6">
+                                                <label class="small" for="inputPhone">Número de Telefone</label>
+                                                <input class="form-control mb-3" id="inputPhone" type="tel" placeholder="${userData.contacto}">
+                                            </div>
+                                        </div>
+                                        <!-- Save changes button-->
+                                        <button class="btn border" id="inputSave" type="button" onclick="updateUserData()">Save</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <!-- Account details card-->
-                    <div class="card md-4">
-                        <div class="card-header">Detalhes da conta</div>
-                        <div class="card-body">
-                            <form>
-                                <!-- Form Group (username)-->
-                                <div>
-                                    <label class="small" for="inputUsername">Nome de Utilizador</label>
-                                    <input class="form-control" id="inputUsername" type="text" placeholder="${userData.nome}">
-                                </div>
-                                <!-- Form Group (email address)-->
-                                <div>
-                                    <label class="small" for="inputEmailAddress">Email</label>
-                                    <label class="form-control" for="inputEmailAddress">${userData.email}</label>
-                                </div>
-                                <!-- Form Row-->
-                                <div class="row">
-                                    <!-- Form Group (phone number)-->
-                                    <div class="col-md-6">
-                                        <label class="small" for="inputPhone">Número de Telefone</label>
-                                        <input class="form-control mb-3" id="inputPhone" type="tel" placeholder="${userData.contacto}" >
-                                    </div>
-                                </div>
-                                <!-- Save changes button-->
-                                <button class="btn border" id="inputSave" type="button" onclick="updateUserData()">Save</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            `;
+                `;
+            } else {
+                console.error("Failed to load user data.");
+            }
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            console.error("Error in loadUserProfile:", error);
         }
     } else {
-        console.error('No user logged in.'); // Log an error if no user is logged in
-        // Redirect to the login page if the current page is not the login or registration page or the forgot password page
-        if (window.location.pathname.indexOf('/Login.html') === -1 && window.location.pathname.indexOf('/Register.html') === -1 && window.location.pathname.indexOf('/Forgot') === -1) {
+        console.error('No user logged in.');
+        // Redirect to the login page if the current page is not the login, registration, or forgot password page
+        if (!window.location.pathname.includes('/Login.html') && !window.location.pathname.includes('/Register.html') && !window.location.pathname.includes('/Forgot.html')) {
             window.location.href = 'Login.html';
         }
     }
