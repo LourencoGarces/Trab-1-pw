@@ -209,9 +209,7 @@ const leTokenSFF = async () => {
         body: JSON.stringify(dados),
     });
 
-    console.log(response);
     const result = await response.json();
-    console.log(result);
 
     if (!response.ok) {
         alert("Erro ao fazer login");
