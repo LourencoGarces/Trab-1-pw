@@ -97,3 +97,21 @@ exports.delete = async (req, res) => {
         res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
     }
 }
+
+exports.getByCategory = async (req, res) => {
+    // Get the ID from the request parameters
+    const categoria = req.params.categoria * 1;
+    
+    try {
+        // Find products with the given category ID
+        const response = await prisma.Produtos.findMany({
+            where: {
+                id_categoria: categoria, // Use id_categoria se for o nome correto da chave
+            },
+        });
+        // Send the response with status 200 (OK)
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(404).json({ msg: error.message }); // Send error message with status 404 (Not Found)
+    }
+}

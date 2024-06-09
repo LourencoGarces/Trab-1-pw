@@ -14,9 +14,6 @@ app.use(bodyParser.json()); // Use body-parser middleware to parse JSON request 
 app.use(cors()); // Use CORS middleware to enable Cross-Origin Resource Sharing
 
 // Serve static files
-// app.use('/Styles', express.static('Styles')); // Serve static files from Styles directory (commented out)
-// app.use('/Assets', express.static('Assets')); // Serve static files from Assets directory (commented out)
-// app.use('/Scripts', express.static('Scripts')); // Serve static files from Scripts directory (commented out)
 app.use(express.static('Pages')); // Serve static files from Pages directory
 
 // Main routes
@@ -24,18 +21,6 @@ app.use('/', publicRouter); // Use publicRouter for the root path
 app.use('/Private/', privateRouter); // Use privateRouter for /Private path
 // app.use('/Api/Local/', routerLocal); // Use routerLocal for /Api/Local path (commented out)
 app.use('/Api/Pgs/', routerPgs); // Use routerPgs for /Api/Pgs path
-
-app.use('/test-db', pgsRouter); // Use the Pgs router for '/test-db' endpoint
-
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
-// Middleware to log the request body for debugging
-app.use((req, res, next) => {
-    console.log('Request Body:', req.body);
-    next();
-});
-
 
 const port = process.env.SERVER_PORT || 4242; // Define the server port, default to 4242 if not specified
 app.listen(port, () => { // Start the express server

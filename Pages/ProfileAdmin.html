@@ -22,6 +22,7 @@
             </div>
         </nav>
     </header>
+    
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <!-- Sidebar Section -->
@@ -37,32 +38,15 @@
                         <li>
                             <a href="#submenu1" class="nav-link px-0 align-middle" data-bs-toggle="collapse"
                                 id="listProducts">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="nav-link px-0 align-middle">Product
-                                    List</span>
+                                <i class="fs-4 bi-bootstrap"></i> <span class="nav-link px-0 align-middle" onclick="fetchCategories()">Product List</span>
                             </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <!-- Submenu Items -->
                                 <li>
-                                    <a href="#" class="nav-link" onclick="showProductList()">All Products</a>
+                                    <a href="#" class="nav-link" onclick="listarProdutos()">Listar todos</a>
                                 </li>
-                                <li>
-                                    <a href="#" class="nav-link" onclick="">Mobile Phones</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link" onclick="">iPads</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link" onclick="">Smart Watches</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link" onclick="">Airpods</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link" onclick="">Computers</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link" onclick="">Accessories</a>
-                                </li>
+                                <!-- Submenu Items Placeholder -->
+                                <div id="categoryListPlaceholder"></div>
+                                
                             </ul>
                         </li>
                         <!-- Add Product Link -->
