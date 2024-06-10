@@ -9,8 +9,8 @@ usersRouter.put('/update/:id', controller.update); // Update a user by id
 usersRouter.delete('/delete/:id', controller.delete); // Delete a user by id
 usersRouter.post('/login', controller.login); // Login the user
 usersRouter.get('/email/:email', controller.getUserByEmail); // Get a user by email
-usersRouter.post('/changepassword', controller.changepassword); // ChangePassword
-usersRouter.post('/forgotpassword', controller.forgotpassword); // ForgotPassword
-usersRouter.post('/resetpassword', controller.resetpassword); // ResetPassword
+usersRouter.post('/changepassword',controler.changepassword);//ChangePassword
+usersRouter.post('/forgotpassword',controller.forgotpassword);//ForgotPassword
+usersRouter.post('/resetpassword',controller.resetpassword);//ResetPassword;
 
 module.exports = usersRouter;
