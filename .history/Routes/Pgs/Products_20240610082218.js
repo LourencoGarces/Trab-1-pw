@@ -4,11 +4,11 @@ const controller = require('../../Controllers/Pgs/Products');
 const productsRouter = express.Router();
 
 // CRUD para produtos
-productsRouter.get('/', controller.getAll); // le todos
-productsRouter.get('/:id', controller.getById); // le um produto indicado pelo id
-productsRouter.post('/create', controller.create); // criar um produto
-productsRouter.put('/update/:id', controller.update); // atualizar um produto
-productsRouter.delete('/delete/:id', controller.delete); // apagar um produto
+productsRouter.get('/', controller.getAll); //le todos
+productsRouter.get('/:id', controller.getById); //le um produto indicado pelo id
+productsRouter.post('/create', controller.create); //criar um produto
+productsRouter.put('/update/:id', controller.update); //atualizar um produto
+productsRouter.delete('/delete/:id', controller.delete); //apagar um produto
 
 // Function to get Products by Category
 productsRouter.get('/category/:categoria', controller.getByCategory);
@@ -30,4 +30,4 @@ productsRouter.get('/product/:id', (req, res) => {
     res.sendFile(path.join(__dirname, '../../public/Product.html'));
 });
 
-module.exports = productsRouter;
+module.exports = productsRoute
