@@ -1,0 +1,120 @@
+/* Styles for login button */
+.LogIn {
+  /* Set width to 45% */
+  width: 80%;
+  /* Add margin */
+  margin: 2%;
+}
+
+/* Styles for register button */
+.Register {
+  /* Set width to 45% */
+  width: 80%;
+  /* Add margin */
+  margin: 2%;
+}
+
+/*Style for body*/
+body {
+  /* Set total height of the page */
+  height: 100vh;
+  /* Set a linear gradient as background */
+  background: white
+}
+
+/* Styles for brand logo */
+.center {
+  /* Set width to 350% */
+  width: 100%;
+}
+
+/*Style for h1 Titles*/
+h1 {
+  color: #0e0d0d; /* Dark orange text color */
+  text-align: center;
+  padding: 10px; /* Increased padding for more emphasis */
+  font-family: "Roboto", sans-serif; /* Modern sans-serif font */
+  font-size: 3.25em; /* Font size increased to 2.5 times the default size */
+  text-shadow: 2px 2px 4px rgba(9, 9, 9, 0.989); /* Soft shadow to highlight text */
+  /* Add margin */
+  margin: 1%;
+}
+
+/*Style for h2 Subtitles*/
+h2 {
+  color: rgb(9, 9, 9);
+  text-align: center;
+  padding: 5px;
+  font-size: 2.60em; /* Font size increased to 2.5 times the default size */
+  font-family: "Times New Roman", Times, serif;
+  text-shadow: 2px 2px 4px rgb(9, 9, 9);
+  /* Add margin */
+  margin: 1%;
+}
+
+/*Style for h3 Minor Subtitles*/
+h3 {
+  color: rgb(14, 14, 14);
+  text-align: left;
+  padding: 2px;
+  font-family: "Times New Roman", Times, serif;
+  text-shadow: 2px 2px 4px rgba(152, 150, 150, 0.5); 
+}
+
+/*Style for h4 */
+h4 {
+  color: rgb(14, 14, 14);
+  text-align: left;
+  padding: 2px;
+  font-family: "Times New Roman", Times, serif;
+  text-shadow: 2px 2px 4px rgba(152, 150, 150, 0.5);
+  /* Add margin */
+}
+
+/*Style for h5 */
+h5 {
+  color: rgb(14, 14, 14);
+  text-align: left;
+  padding: 2px;
+  font-family: "Times New Roman", Times, serif;
+  text-shadow: 2px 2px 4px rgba(152, 150, 150, 0.5);
+}
+
+/*Style for img*/
+img {
+  max-width: 165%; 
+  max-height: 165%;
+}
+
+/*Style for the btn*/
+.btn {
+  padding: 10px 10px; 
+  margin: 10px; 
+}
+
+/*Style for container*/
+.table-container {
+  margin: 0 auto; 
+  max-width: 1050px; 
+}
+
+/*Style for the table*/
+table {
+  border-collapse: collapse;
+  width: 100%; 
+  color: white; 
+  font-size: 20px; 
+  text-align: center; 
+}
+
+/*footer Copyrigth*/
+footer {
+  color: #141313; 
+  padding: 1px; 
+  text-align: left; 
+  position: fixed; 
+  left: 0;
+  bottom: 0;
+  width: 100%; 
+  background-color: #f0f0f0; 
+}
