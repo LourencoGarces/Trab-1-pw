@@ -40,16 +40,17 @@ exports.getById = async (req, res) => {
 // Define a function to create a new product
 exports.create = async (req, res) => {
     // Destructure the product data from the request body
-    const { nome, descricao, imagem, preco, fabricante } = req.body;
+    const { nome, descricao, imagem, preco, fabricante, categoria } = req.body;
     try {
         // Create a new product in the database with the provided data
         const newProduct = await prisma.Produtos.create({
             data: {
-                nome,
-                descricao,
-                preco,
-                fabricante,
-                imagem
+                nome: nome,
+                descricao: descricao,
+                preco: preco, 
+                fabricante: fabricante,
+                id_categoria: categoria, 
+                imagem: imagem
             },
         });
         // Send the created product as a response
@@ -63,7 +64,7 @@ exports.create = async (req, res) => {
 // Define a function to update a product
 exports.update = async (req, res) => {
     // Destructure the product data from the request body
-    const { id, nome, descricao, preco, fabricante, imagem } = req.body;
+    const { id, nome, descricao, preco, fabricante, imagem, categoria } = req.body;
     try {
         // Update the product with the specified ID in the database
         const produto = await prisma.Produtos.update({
@@ -71,11 +72,12 @@ exports.update = async (req, res) => {
                 id_produto: parseInt(id),
             },
             data: {
-                nome,
-                descricao,
-                preco,
-                fabricante,
-                imagem
+                nome: nome,
+                descricao: descricao,
+                preco: preco, 
+                fabricante: fabricante,
+                id_categoria: categoria, 
+                imagem: imagem
             },
         });
         // Send the updated product as a response
