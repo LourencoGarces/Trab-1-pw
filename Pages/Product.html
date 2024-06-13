@@ -100,8 +100,21 @@
         <!-- Dynamic content will be inserted here -->
     </div> 
     <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const productId = window.location.pathname.split('/').pop();
+            try {
+                const response = await fetch(`/api/products/${productId}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const product = await response.json();
+                createProductSection(product);
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        });
 
-    function createProductSection(product) {
+        function createProductSection(product) {
             const productSection = document.getElementById('ProductSection');
             productSection.innerHTML = `
                 <div class="col-md-5">

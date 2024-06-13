@@ -42,6 +42,7 @@ model Produtos {
     descricao     String // Product description
     preco        Float // Product price
     fabricante    String // Product manufacturer
+    imagem        String//Product image
     id_categoria  Int // Foreign key referencing Categorias
     Precos        Precos[] // One-to-many relation with Precos model
     A_seguir      A_seguir[] // One-to-many relation with A_seguir model

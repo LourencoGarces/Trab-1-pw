@@ -1,112 +1,232 @@
-const { PrismaClient } = require('@prisma/client'); // Import PrismaClient from @prisma/client
-const prisma = new PrismaClient(); // Create a new instance of PrismaClient
+// Import PrismaClient from the Prisma client package
+const { PrismaClient } = require('@prisma/client');
 
-// Function to get all products
+// Instantiate a new PrismaClient
+const prisma = new PrismaClient();
+
+// Define a function to get all products
 exports.getAll = async (req, res) => {
     try {
-        // Read all records from the 'Produtos' table
+        // Fetch all products from the database
         const response = await prisma.Produtos.findMany();
-        res.status(200).json(response); // Send the response with status 200 (OK)
+        // Send the fetched products as a response
+        res.json(response);
     } catch (error) {
-        res.status(500).json({ msg: error.message }); // Send error message with status 500 (Internal Server Error)
+        // Log the error and send an error response
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching products' });
     }
-}
+};
 
-// Function to get a product by ID
+// Define a function to get a product by its ID
 exports.getById = async (req, res) => {
-    // Get the ID from the request parameters
-    const id = req.params.id * 1;
-    
+    // Parse the ID from the request parameters
+    const id = parseInt(req.params.id);
     try {
-        // Find the product with the given ID
+        // Fetch the product with the specified ID from the database
         const response = await prisma.Produtos.findUnique({
             where: {
-                id_produto: id,
+                id_produto: id_produto,
             },
         });
-        // Send the response with status 200 (OK)
+        // Send the fetched product as a response
         res.status(200).json(response);
     } catch (error) {
-        res.status(404).json({ msg: error.message }); // Send error message with status 404 (Not Found)
+        // Send an error response
+        res.status(404).json({ msg: error.message });
     }
-}
+};
 
-// Function to create a new product
+// Define a function to create a new product
 exports.create = async (req, res) => {
-    // Get the data from the request body
-    const { nome, descricao, preco, fabricante, categoria } = req.body;
-
+    // Destructure the product data from the request body
+    const { nome, descricao, imagem, preco, fabricante } = req.body;
     try {
-        // Create a new product with the given data
-        const produto = await prisma.Produtos.create({
+        // Create a new product in the database with the provided data
+        const newProduct = await prisma.Produtos.create({
             data: {
-                nome: nome,
-                descricao: descricao,
-                preco: preco, 
-                fabricante: fabricante,
-                id_categoria: categoria 
+                nome,
+                descricao,
+                preco,
+                fabricante,
+                imagem
             },
         });
-        // Send the created product with status 201 (Created)
-        res.status(201).json(produto);
+        // Send the created product as a response
+        res.status(201).json(newProduct);
     } catch (error) {
-        res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
+        // Send an error response
+        res.status(400).json({ msg: error.message });
     }
-}
+};
 
-// Function to update a product
+// Define a function to update a product
 exports.update = async (req, res) => {
-    // Get the data from the request body
-    const { id, nome, descricao, preco, fabricante, categoria } = req.body;
-
+    // Destructure the product data from the request body
+    const { id, nome, descricao, preco, fabricante, imagem } = req.body;
     try {
-        // Find the product by ID and update with new data
+        // Update the product with the specified ID in the database
         const produto = await prisma.Produtos.update({
             where: {
-                id_produto: id * 1,
+                id_produto: parseInt(id),
             },
             data: {
-                nome: nome,
-                descricao: descricao,
-                preco: preco,
-                fabricante: fabricante,
-                id_categoria: categoria
+                nome,
+                descricao,
+                preco,
+                fabricante,
+                imagem
             },
         });
-        // Send the updated product with status 200 (OK)
+        // Send the updated product as a response
         res.status(200).json(produto);
     } catch (error) {
-        res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
+        // Send an error response
+        res.status(400).json({ msg: error.message });
     }
-}
+};
 
-// Function to delete a product by ID
+// Define a function to delete a product
 exports.delete = async (req, res) => {
-    // Get the ID from the request parameters
-    const id = req.params.id;
+    // Parse the ID from the request parameters
+    const id = parseInt(req.params.id);
     try {
-        // Delete the product with the given ID
+        // Delete the product with the specified ID from the database
         await prisma.Produtos.delete({
             where: {
-                id_produto: id * 1,
+                id_produto: id_produto,
             },
         });
-        // Send a success message with status 200 (OK)
-        res.status(200).send("Apagado com sucesso!");
+        // Send a success response
+        res.status(200).send("Deleted successfully!");
     } catch (error) {
-        res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
+        // Send an error response
+        res.status(400).json({ msg: error.message });
     }
-}
+};
 
+// Define a function to get products by category
 exports.getByCategory = async (req, res) => {
-    // Get the ID from the request parameters
-    const categoria = req.params.categoria * 1;
-    
+    // Parse the category from the request parameters
+    const category = parseInt(req.params.categoria);
     try {
-        // Find products with the given category ID
-        const response = await prisma.Produtos.findMany({
+        // Fetch the products with the specified category from the database
+        const produtos = await prisma.Produtos.findMany({
             where: {
-                id_categoria: categoria, // Use id_categoria se for o nome correto da chave
+                id_categoria: id_categoria,
+            },
+        });
+        // Send the fetched products as a response
+        res.status(200).json(produtos);
+    } catch (error) {
+        // Send an error response
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+// Define a function to get products by image
+exports.getByImage = async (req, res) => {
+    // Get the image from the request parameters
+    const image = req.params.imagem;
+    try {
+        // Fetch the products with the specified image from the database
+        const produtos = await prisma.Produtos.findMany({
+            where: {
+                imagem: imagem,
+            },
+        });
+        // Send the fetched products as a response
+        res.status(200).json(produtos);
+    } catch (error) {
+        // Send an error response
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+// Define a function to get products by manufacturer
+exports.getByManufacturer = async (req, res) => {
+    // Get the manufacturer from the request parameters
+    const manufacturer = req.params.fabricante;
+    try {
+        // Fetch the products with the specified manufacturer from the database
+        const produtos = await prisma.produtos.findMany({
+            where: {
+                fabricante: fabricante,
+            },
+        });
+        // Send the fetched products as a response
+        res.status(200).json(produtos);
+    } catch (error) {
+        // Send an error response
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+// Define a function to get products by price
+exports.getByPrice = async (req, res) => {
+    // Parse the price from the request parameters
+    const price = parseFloat(req.params.preco);
+    try {
+        // Fetch the products with the specified price from the database
+        const produtos = await prisma.produtos.findMany({
+            where: {
+                preco: preco,
+            },
+        });
+        // Send the fetched products as a response
+        res.status(200).json(produtos);
+    } catch (error) {
+        // Send an error response
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+// Define a function to get products by name
+exports.getByName = async (req, res) => {
+    // Get the name from the request parameters
+    const name = req.params.nome;
+    try {
+        // Fetch the products with the specified name from the database
+        const produtos = await prisma.Produtos.findMany({
+            where: {
+                nome: nome,
+            },
+        });
+        // Send the fetched products as a response
+        res.status(200).json(produtos);
+    } catch (error) {
+        // Send an error response
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+// Define a function to get products by category ID
+exports.getByIdCategory = async (req, res) => {
+    // Parse the category ID from the request parameters
+    const id_category = parseInt(req.params.id_categoria);
+    try {
+        // Fetch the products with the specified category ID from the database
+        const produtos = await prisma.Produtos.findMany({
+            where: {
+                id_categoria: id_categoria,
+            },
+        });
+        // Send the fetched products as a response
+        res.status(200).json(produtos);
+    } catch (error) {
+        // Send an error response
+        res.status(500).json({ msg: error.message });
+    }
+};
+//Fuction to get products by descricao
+exports.getByDetalhes = async (req, res) => {
+    // Get the descricao from the request parameters
+    const detalhes = req.params.detalhes;
+    try {
+        // Find the product with the given descricao
+        const response = await prisma.Produtos.findUnique({
+            where: {
+                descricao: descricao,
             },
         });
         // Send the response with status 200 (OK)

@@ -163,3 +163,64 @@ exports.getUserByEmail = async (req, res) => {
         res.status(500).json({ msg: "Internal server error" }); // Send error message with status 500 (Internal Server Error)
     }
 }
+//Function to changepassword
+exports.changepassword = async (req, res) => {
+    // Get the data from the request body
+    const { id_utilizador, password } = req.body;
+
+    try {
+        // Find the user by ID and update with new data
+        const utilizador = await prisma.Utilizador.update({
+            where: {
+                id_utilizador: id_utilizador,
+            },
+            data: {
+                password,
+            },
+        });
+        // Send the updated user with status 200 (OK)
+        res.status(200).json(utilizador);
+    } catch (error) {
+        res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
+    }
+}
+//Function to forgotpassword
+exports.forgotpassword = async (req, res) => {
+    // Get the data from the request body
+    const { email } = req.body;
+
+    try {
+        // Find the user by ID and update with new data
+        const utilizador = await prisma.Utilizador.findUnique({
+            where: {
+                email: email,
+            },
+        });
+        // Send the updated user with status 200 (OK)
+        res.status(200).json(utilizador);
+    } catch (error) {
+        res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
+    }
+}
+//Function to resetpassword
+exports.resetpassword = async (req, res) => {
+    // Get the data from the request body
+    const { id_utilizador, password } = req.body;
+
+    try {
+        // Find the user by ID and update with new data
+        const utilizador = await prisma.Utilizador.update({
+            where: {
+                id_utilizador: id_utilizador,
+            },
+            data: {
+                password,
+            },
+        });
+        // Send the updated user with status 200 (OK)
+        res.status(200).json(utilizador);
+    } catch (error) {
+        res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
+    }
+}
+
