@@ -84,6 +84,11 @@ function redirectToRegister() {
     window.location.href = "Register.html";
 }
 
+// Function to redirect to the register page
+function redirectToRegister() {
+    window.location.href = "Login-explore.html";
+}
+
 // Adds an event listener for the Log In button
 document.querySelector(".LogIn").addEventListener("click", redirectToLogin);
 

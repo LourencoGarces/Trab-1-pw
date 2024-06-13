@@ -8,6 +8,7 @@ const followedRouter = require('./Followed_list');
 const followingRouter = require('./Following');
 const autenticationRouter = require('./Auth');
 
+
 router.use('/Products', productsRouter);
 router.use('/Users', usersRouter);
 router.use('/Categories', categoriesRouter);
