@@ -20,7 +20,7 @@ exports.getById = async (req, res) => {
         // Find the category with the given ID
         const response = await prisma.Categorias.findUnique({
             where: {
-                id_categoria: id,
+                id_categoria: id_categoria,
             },
         });
         // Send the response with status 200 (OK)
@@ -29,6 +29,25 @@ exports.getById = async (req, res) => {
         res.status(404).json({ msg: error.message }); // Send error message with status 404 (Not Found)
     }
 }
+
+//Fuction to get category by descricao
+exports.getByDescricao = async (req, res) => {
+    // Get the descricao from the request parameters
+    const descricao = req.params.descricao;
+    try {
+        // Find the category with the given descricao
+        const response = await prisma.Categorias.findUnique({
+            where: {
+                descricao: descricao,
+            },
+        });
+        // Send the response with status 200 (OK)
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(404).json({ msg: error.message }); // Send error message with status 404 (Not Found)
+    }
+}
+
 
 // Function to create a new category
 exports.create = async (req, res) => {
@@ -87,3 +106,5 @@ exports.delete = async (req, res) => {
         res.status(400).json({ msg: error.message }); // Send error message with status 400 (Bad Request)
     }
 }
+
+
