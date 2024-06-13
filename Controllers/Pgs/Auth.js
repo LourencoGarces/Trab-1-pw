@@ -23,7 +23,6 @@ exports.signin = async (req, res) => {
                     contacto: user.contacto, 
                     isAdmin: user.isAdmin 
                 };
-                console.log('Token Payload:', payload);
 
                 const accessToken = authenticateUtil.generateAccessToken(payload);
 
