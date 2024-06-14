@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('No user logged in.');
         // Redirect to the login page if the current page is not the login, registration, or forgot password page
         if (!window.location.pathname.includes('/Login.html') && !window.location.pathname.includes('/Register.html') && !window.location.pathname.includes('/Forgot.html')) {
-            window.location.href = 'Login.html';
+            window.location.href = 'Login-explore.html';
         }
     }
 });

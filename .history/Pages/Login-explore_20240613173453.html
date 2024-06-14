@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Explore</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Styles/login-explore.css">
+</head>
+<body>
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-md-6 login-section d-flex justify-content-center align-items-center">
+                <a href="Login.html" class="text-decoration-none text-dark">
+                    <h1>Login</h1>
+                </a>
+            </div>
+            <div class="col-md-6 explore-section d-flex justify-content-center align-items-center">
+                <a id="explore-link" href="Index.html" class="text-decoration-none text-dark">
+                    <h1>Explore</h1>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                document.getElementById('explore-link').setAttribute('href', 'Login-explore.html');
+                document.getElementById('explore-link').classList.add('disabled');
+            }
+        });
+    </script>
+</body>
+</html>

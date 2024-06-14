@@ -1,0 +1,60 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+.container-fluid {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    width: 100%;
+    height: 100%;
+}
+
+.login-section {
+    background-color: rgba(255, 183, 178, 0.8); /* cor mais clara e transparente */
+    color: #FFF;
+    font-weight: bold;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.explore-section {
+    background-color: rgba(173, 216, 230, 0.8); /* cor mais clara e transparente */
+    color: #FFF;
+    font-weight: bold;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-section a, .explore-section a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    color: #FFF;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* fonte de desenho */
+    text-transform: uppercase; /* tudo em maiúsculas */
+    font-weight: bold; /* em negrito */
+}
+
+@media (max-width: 768px) {
+    .login-section, .explore-section {
+        font-size: 2rem;
+        height: 50vh;
+    }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Document</title>
+  <!-- Including Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Including Custom Autentication CSS -->
+  <link rel="stylesheet" href="Styles/Autentication.css">
+  <!-- Including Custom Sidebar CSS -->
+  <link rel="stylesheet" href="Styles/Sidebar.css">
+</head>
+
+<body>
+   <!-- Sidebar navigation -->
+   <div class="sidebar" id="sidebar">
+    <!-- Mobile Phones Link -->
+    <a href="Product.html" id="Telemoveis">Telemóveis</a>
+    <!-- Smart Watches Link -->
+    <a href="Product.html" id="Smartwatches">Smart Watches</a>
+    <!-- Airpods Link -->
+    <a href="Product.html" id="Airpods">Airpods</a>
+    <!-- iPads Link -->
+    <a href="Product.html" id="Ipads">Ipads</a>
+    <!-- Computers Link -->
+    <a href="Product.html" id="Computadores">Computadores</a>
+    <!-- Accessories Link -->
+    <a href="Product.html" id="Assesorios">Assesórios</a>
+</div>
+
+
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="col-md-1">
+              <!-- Sidebar Toggle Icon -->
+              <svg id="sidebarToggle" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                  class="bi sidebaricon bi-justify" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                      d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+              </svg>
+          </div>
+          <div class="col-md-1">
+              <!-- Brand Logo (Clickable) -->
+              <a href="Index.html" class="navbar-brand">Smart Buyer</a>
+          </div>
+          <div class="container d-flex justify-content-end align-items-start col-md-6">
+              <div id="divBusca">
+                  <!-- Search Input -->
+                  <input type="text" id="txtBusca" placeholder="Procurar..." />
+                  <!-- Search Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-search" viewBox="0 0 16 16">
+                      <path
+                          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                  </svg>
+              </div>
+          </div>
+          <div class="header-container col-md-3">
+              <!-- Profile Button -->
+              <button class="iconButton" id="profileButton">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoProfile bi-person"
+                      viewBox="0 0 16 16">
+                      <path
+                          d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                  </svg>
+              </button>
+              <!-- Cart Button -->
+              <button class="iconButton" id="cardButton">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoCard bi-card-list"
+                      viewBox="0 0 16 16">
+                      <path
+                          d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+                      <path
+                          d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
+                  </svg>
+              </button>
+              <!-- Log Out Button -->
+              <button id="logoutButton" style="display: none;">Log Out</button>
+
+              <!-- Profile Image -->
+              <div class="profile iconButton" id="ProfileButton" style="display: none;">
+              </div>
+          </div>
+          <!-- Modal for login or register -->
+          <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="row">
+                          <div class="col-md-10">
+                              <p>Por favor, faça login ou registre-se para continuar.</p>
+                          </div>
+                          <div class="col-md-2">
+                              <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn border LogIn">Log In</button>
+                          </div>
+                          <div class="col-md-6">
+                              <button class="btn border Register">Register</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </nav>
+  </header>
+
+  <h1>Seja Bem Vindo!</h1>
+  <!-- Main Container -->
+  <div class="container">
+    <div class="row">
+      <!-- Profile Section -->
+      <div class="col-md-4">
+        <!-- Log In Title -->
+        <h2>Log In:</h2>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-4 vr-large">
+        <!-- Create Account Section -->
+        <div class="formulario bg-light">
+          <h3>Se não tem conta por favor cadastre-se!</h3>
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="Register.html" class="btn btn-secondary">Criar Conta</a>
+          </div>
+        </div>
+      </div>
+      <!-- Nested Container -->
+      <div class="container">
+        <div class="col-md-5">
+          <div class="row">
+            <!-- Profile Form -->
+            <div class="formulario bg-light">
+              <!-- Profile Image -->
+              <img src="Assets/Logo_Titulo.png" onclick="redirectToIndex()" class="center" title="Logo Brand">
+              <!-- Login Form -->
+              <form id="loginForm" action="#" method="post">
+                <!-- Email Input -->
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                <div class="mb-3">
+                  <!-- Password Input -->
+                  <label for="pwd">Password:</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter password"
+                    name="password">
+                </div>
+                <!-- Forgot Password Link -->
+                <div class="mb-3">
+                  <a href="Forgot.html">Forgot password?</a>
+                </div>
+                <!-- Login Button -->
+                <div class="d-flex justify-content-center align-items-center">
+                  <button type="button" onclick="loginUser()" class="btn btn-secondary">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <!-- Including JavaScript -->
+  <!-- Custom JavaScript -->
+  <script src="Scripts/Index.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="Scripts/Autentication.js"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+    <script src="Scripts/Index.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+
+</body>
+</html>

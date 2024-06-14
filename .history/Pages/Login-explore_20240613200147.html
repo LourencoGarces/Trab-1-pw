@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Explore Document</title>
+    <!-- Including Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Including Custom CSS -->
+    <link rel="stylesheet" href="Styles/Autentication.css">
+    <!-- Including Custom Sidebar CSS -->
+    <link rel="stylesheet" href="Styles/Sidebar.css">
+    <link rel="stylesheet" href="Styles/login-explore.css">
+</head>
+<body>
+
+    <!-- Sidebar navigation -->
+    <div class="sidebar" id="sidebar">
+        <a href="Product.html" id="Telemoveis">Telemóveis</a>
+        <a href="Product.html" id="Smartwatches">Smart Watches</a>
+        <a href="Product.html" id="Airpods">Airpods</a>
+        <a href="Product.html" id="Ipads">Ipads</a>
+        <a href="Product.html" id="Computadores">Computadores</a>
+        <a href="Product.html" id="Assesorios">Assesórios</a>
+    </div>
+
+    <!-- Header section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="col-md-1">
+                    <svg id="sidebarToggle" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi sidebaricon bi-justify" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                </div>
+                <div class="col-md-1">
+                    <a href="Index.html" class="navbar-brand">Smart Buyer</a>
+                </div>
+                <div class="col-md-1">
+                    <a href="Login-explore.html">
+                        <img src="Assets/Logo_Titulo.png" class="logoMarca img-fluid" alt="Logo Brand">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="container d-flex justify-content-end align-items-center col-md-6">
+                        <div id="divBusca">
+                            <input type="text" id="txtBusca" placeholder="Procurar..." />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="header-container col-md-3">
+                        <button class="iconButton" id="profileButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoProfile bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                            </svg>
+                        </button>
+                        <button class="iconButton" id="cardButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoCard bi-card-list" viewBox="0 0 16 16">
+                                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+                                <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
+                            </svg>
+                        </button>
+                        <button id="logoutButton" style="display: none;">Log Out</button>
+                        <div class="profile iconButton" id="ProfileButton" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-md-6 login-section d-flex justify-content-center align-items-center">
+                <a href="Login.html" class="text-decoration-none text-dark">
+                    <h1>Login</h1>
+                </a>
+            </div>
+            <div class="col-md-6 explore-section d-flex justify-content-center align-items-center">
+                <a id="explore-link" href="Index.html" class="text-decoration-none text-dark">
+                    <h1>Explore</h1>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/Index.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
