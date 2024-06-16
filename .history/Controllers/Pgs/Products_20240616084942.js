@@ -1,11 +1,13 @@
 // src/Controllers/Pgs/Products.js
 
 const { PrismaClient } = require('@prisma/client');
+
+// Instantiate a new PrismaClient
 const prisma = new PrismaClient();
 const { fetchProductData } = require('../../services/scrapingService');
 
 // Define a function to get all products
-const getAll = async (req, res) => {
+exports.getAll = async (req, res) => {
     try {
         const response = await prisma.produtos.findMany();
         res.json(response);
@@ -16,7 +18,7 @@ const getAll = async (req, res) => {
 };
 
 // Define a function to get a product by its ID
-const getById = async (req, res) => {
+exports.getById = async (req, res) => {
     const id = parseInt(req.params.id);
     try {
         const response = await prisma.produtos.findUnique({
@@ -29,7 +31,7 @@ const getById = async (req, res) => {
 };
 
 // Define a function to create a new product
-const create = async (req, res) => {
+exports.create = async (req, res) => {
     const { nome, descricao, imagem, preco, fabricante } = req.body;
     try {
         const newProduct = await prisma.produtos.create({
@@ -42,7 +44,7 @@ const create = async (req, res) => {
 };
 
 // Define a function to update a product
-const update = async (req, res) => {
+exports.update = async (req, res) => {
     const { id, nome, descricao, preco, fabricante, imagem } = req.body;
     try {
         const produto = await prisma.produtos.update({
@@ -56,7 +58,7 @@ const update = async (req, res) => {
 };
 
 // Define a function to delete a product
-const deleteProduct = async (req, res) => {
+exports.delete = async (req, res) => {
     const id = parseInt(req.params.id);
     try {
         await prisma.produtos.delete({
@@ -69,7 +71,7 @@ const deleteProduct = async (req, res) => {
 };
 
 // Define a function to get products by category
-const getByCategory = async (req, res) => {
+exports.getByCategory = async (req, res) => {
     const id_categoria = parseInt(req.params.categoria);
     try {
         const produtos = await prisma.produtos.findMany({
@@ -82,7 +84,7 @@ const getByCategory = async (req, res) => {
 };
 
 // Define a function to get products by image
-const getByImage = async (req, res) => {
+exports.getByImage = async (req, res) => {
     const imagem = req.params.imagem;
     try {
         const produtos = await prisma.produtos.findMany({
@@ -95,7 +97,7 @@ const getByImage = async (req, res) => {
 };
 
 // Define a function to get products by manufacturer
-const getByManufacturer = async (req, res) => {
+exports.getByManufacturer = async (req, res) => {
     const fabricante = req.params.fabricante;
     try {
         const produtos = await prisma.produtos.findMany({
@@ -108,7 +110,7 @@ const getByManufacturer = async (req, res) => {
 };
 
 // Define a function to get products by price
-const getByPrice = async (req, res) => {
+exports.getByPrice = async (req, res) => {
     const preco = parseFloat(req.params.preco);
     try {
         const produtos = await prisma.produtos.findMany({
@@ -121,7 +123,7 @@ const getByPrice = async (req, res) => {
 };
 
 // Define a function to get products by name
-const getByName = async (req, res) => {
+exports.getByName = async (req, res) => {
     const nome = req.params.nome;
     try {
         const produtos = await prisma.produtos.findMany({
@@ -134,7 +136,7 @@ const getByName = async (req, res) => {
 };
 
 // Define a function to get products by category ID
-const getByIdCategory = async (req, res) => {
+exports.getByIdCategory = async (req, res) => {
     const id_categoria = parseInt(req.params.id_categoria);
     try {
         const produtos = await prisma.produtos.findMany({
@@ -147,7 +149,7 @@ const getByIdCategory = async (req, res) => {
 };
 
 // Fuction to get products by detalhes
-const getByDetalhes = async (req, res) => {
+exports.getByDetalhes = async (req, res) => {
     const descricao = req.params.detalhes;
     try {
         const response = await prisma.produtos.findUnique({
@@ -201,7 +203,7 @@ module.exports = {
     getById,
     create,
     update,
-    delete: deleteProduct,
+    delete,
     getByCategory,
     getByImage,
     getByManufacturer,

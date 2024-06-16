@@ -10,7 +10,9 @@ const routerPgs = require('./Routes/Pgs/Index'); // Importar rotas Pgs
 const publicRouter = require('./Routes/Public'); // Importar rotas públicas
 const privateRouter = require('./Routes/Private'); // Importar rotas privadas
 const categoriesRouter = require('./Routes/Pgs/Categories'); // Importar rotas de categorias
+//Importar rotas para produtos
 const productsRouter = require('./Routes/Pgs/Products'); // Importar rotas de produtos
+
 
 
 const app = express(); // Criar uma instância do express
@@ -30,8 +32,9 @@ app.get('/', (req, res) => {
 app.use('/Public', publicRouter); // Usar publicRouter para a rota /Public
 app.use('/Private', privateRouter); // Usar privateRouter para a rota /Private
 app.use('/Api/Pgs', routerPgs); // Usar routerPgs para a rota /Api/Pgs
+app.use('/Api/Pgs/Products',categoriesRouter); // Usar categoriesRouter para a ro
 app.use('/Api/Pgs/Categories', categoriesRouter); // Usar categoriesRouter para a rota /Api/Categories
-app.use('Api/Pgs/products',productsRouter);//usar productsRouter para a rota /Api/Produtos
+
 
 
 const port = process.env.SERVER_PORT || 4242; // Definir a porta do servidor, padrão para 4242 se não especificado

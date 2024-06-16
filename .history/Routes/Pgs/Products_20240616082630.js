@@ -1,10 +1,7 @@
-// src/Routes/Pgs/Products.js
-
 const express = require('express');
 const path = require('path');
 const controller = require('../../Controllers/Pgs/Products');
 const productsRouter = express.Router();
-const { scrapeAndSaveProduct } = require('../../Controllers/Pgs/Products');
 
 // CRUD para produtos
 productsRouter.get('/', controller.getAll); // le todos
@@ -27,9 +24,7 @@ productsRouter.get('/name/:nome', controller.getByName);
 productsRouter.get('/id_category/:id_categoria', controller.getByIdCategory);
 // Function to get Products by Detalhes
 productsRouter.get('/detalhes/:detalhes', controller.getByDetalhes);
-
-// Adicionando a rota de scraping
-productsRouter.post('/scrape', scrapeAndSaveProduct);
+router.post('/scrape', scrapeAndSaveProduct);
 
 // Rota para servir o HTML
 productsRouter.get('/product/:id', (req, res) => {

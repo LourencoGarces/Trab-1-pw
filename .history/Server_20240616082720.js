@@ -1,5 +1,8 @@
 require('dotenv').config(); // Carregar variáveis de ambiente do arquivo .env
 
+const express = require('express');
+const app = express();
+const productRoutes = require('./src/routes/productRoutes');
 
 const bodyParser = require('body-parser'); // Middleware para analisar corpos de requisições
 const cors = require('cors'); // Middleware para habilitar Cross-Origin Resource Sharing
@@ -10,7 +13,7 @@ const routerPgs = require('./Routes/Pgs/Index'); // Importar rotas Pgs
 const publicRouter = require('./Routes/Public'); // Importar rotas públicas
 const privateRouter = require('./Routes/Private'); // Importar rotas privadas
 const categoriesRouter = require('./Routes/Pgs/Categories'); // Importar rotas de categorias
-const productsRouter = require('./Routes/Pgs/Products'); // Importar rotas de produtos
+const productsRouter = require('./Routes/Pgs/Products');//Importar rotas de Produtos
 
 
 const app = express(); // Criar uma instância do express
@@ -25,13 +28,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Pages/Login-explore.html'));
 });
 
-
 // Rotas principais para usar no postman
 app.use('/Public', publicRouter); // Usar publicRouter para a rota /Public
 app.use('/Private', privateRouter); // Usar privateRouter para a rota /Private
 app.use('/Api/Pgs', routerPgs); // Usar routerPgs para a rota /Api/Pgs
+app.use('/Api/Pgs/Products',categoriesRouter); // Usar categoriesRouter para a ro
 app.use('/Api/Pgs/Categories', categoriesRouter); // Usar categoriesRouter para a rota /Api/Categories
-app.use('Api/Pgs/products',productsRouter);//usar productsRouter para a rota /Api/Produtos
+
 
 
 const port = process.env.SERVER_PORT || 4242; // Definir a porta do servidor, padrão para 4242 se não especificado

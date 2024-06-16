@@ -1,5 +1,3 @@
-// src/Routes/Pgs/Index.js
-
 const router = require('express').Router();
 const productsRouter = require('./Products');
 const usersRouter = require('./Users');
@@ -9,6 +7,7 @@ const pricesRouter = require('./Prices');
 const followedRouter = require('./Followed_list');
 const followingRouter = require('./Following');
 const autenticationRouter = require('./Auth');
+
 
 router.use('/Products', productsRouter);
 router.use('/Users', usersRouter);
