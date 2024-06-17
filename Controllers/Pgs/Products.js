@@ -27,11 +27,22 @@ const getById = async (req, res) => {
 };
 
 // Define a function to create a new product
-const create = async (req, res) => {
-    const { nome, descricao, imagem, preco, fabricante } = req.body;
+
+exports.create = async (req, res) => {
+    // Destructure the product data from the request body
+    const { nome, descricao, imagem, preco, fabricante, categoria } = req.body;
     try {
-        const newProduct = await prisma.produtos.create({
-            data: { nome, descricao, preco, fabricante, imagem },
+        // Create a new product in the database with the provided data
+        const newProduct = await prisma.Produtos.create({
+            data: {
+                nome: nome,
+                descricao: descricao,
+                preco: preco, 
+                fabricante: fabricante,
+                id_categoria: categoria, 
+                imagem: imagem
+            },
+
         });
         res.status(201).json(newProduct);
     } catch (error) {
@@ -40,12 +51,25 @@ const create = async (req, res) => {
 };
 
 // Define a function to update a product
-const update = async (req, res) => {
-    const { id, nome, descricao, preco, fabricante, imagem } = req.body;
+
+exports.update = async (req, res) => {
+    // Destructure the product data from the request body
+    const { id, nome, descricao, preco, fabricante, imagem, categoria } = req.body;
     try {
-        const produto = await prisma.produtos.update({
-            where: { id_produto: parseInt(id) },
-            data: { nome, descricao, preco, fabricante, imagem },
+        // Update the product with the specified ID in the database
+        const produto = await prisma.Produtos.update({
+            where: {
+                id_produto: parseInt(id),
+            },
+            data: {
+                nome: nome,
+                descricao: descricao,
+                preco: preco, 
+                fabricante: fabricante,
+                id_categoria: categoria, 
+                imagem: imagem
+            },
+
         });
         res.status(200).json(produto);
     } catch (error) {

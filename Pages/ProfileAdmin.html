@@ -53,6 +53,10 @@
                         <li>
                             <a class="nav-link px-0 align-middle" href="#" id="addProduct">Add Product</a>
                         </li>
+                        <!-- Add Category Link -->
+                        <li>
+                            <a class="nav-link px-0 align-middle" href="#" id="addCategory">Add Category</a>
+                        </li>
                     </ul>
                     <hr>
                 </div>
@@ -106,6 +110,17 @@
                                 <div id="productCategory"></div>
                             </div>
                             <button type="submit" class="btn btn-primary">Add Product</button>
+                        </form>
+                    </div>
+                    <!-- Add Category Form Section -->
+                    <div id="addCategorieSection" style="display: none;">
+                        <h2>Add New Category</h2>
+                        <form id="addCategorieForm">
+                            <div class="mb-3">
+                                <label for="categorieName" class="form-label">Name:</label>
+                                <input type="text" class="form-control" id="categorieName" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Category</button>
                         </form>
                     </div>
                     <!-- Edit Product Form Section -->

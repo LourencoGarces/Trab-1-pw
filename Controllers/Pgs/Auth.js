@@ -23,9 +23,9 @@ exports.signin = async (req, res) => {
                     email: user.email,
                     contacto: user.contacto, 
                     isAdmin: user.isAdmin 
-                }; // Create payload for JWT
 
-                console.log('Token Payload:', payload);
+                };
+
 
                 const accessToken = authenticateUtil.generateAccessToken(payload); // Generate access token
 

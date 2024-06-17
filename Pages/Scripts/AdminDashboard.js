@@ -1,8 +1,11 @@
 // DOM Elements
 const productListSection = document.getElementById('productListSection');
 const addProductSection = document.getElementById('addProductSection');
+const editProductSection = document.getElementById('editProductSection');
 const productTableBody = document.getElementById('productTableBody');
 const addProductForm = document.getElementById('addProductForm');
+const addCategorieSection = document.getElementById('addCategorieSection');
+const addCategorieForm = document.getElementById('addCategorieForm');
 
 document.addEventListener('DOMContentLoaded', async function() {
     var productCategory = document.getElementById('productCategory');
@@ -15,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         productCategory.innerHTML = `
             <select class="form-select" id="productCategoryValue" required>
                 <option value="" selected disabled>Seleciona a categoria</option>
-                ${categories.map(category => `<option id="idValue" value="${category.id_categoria}">${category.descricao}</option>`).join('')}
+                ${categories.map(category => `<option value="${category.id_categoria}">${category.descricao}</option>`).join('')}
             </select>
         `;
     } catch (error) {
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 async function fetchCategories() {
-    let strHtml = ``
+    let strHtml = ``;
     try {
         // Fetch categories from the backend API
         const response = await fetch('http://localhost:4242/api/pgs/Categories');
@@ -34,17 +37,17 @@ async function fetchCategories() {
             strHtml += `
             <li>
                 <a href="#" class="nav-link" onclick="showProductsByCategory('${artigo.id_categoria}')">${artigo.descricao}</a>
-                </li>`
+                </li>`;
         }
 
-        document.getElementById('categoryListPlaceholder').innerHTML = strHtml
+        document.getElementById('categoryListPlaceholder').innerHTML = strHtml;
     } catch (error) {
         console.error('Error fetching categories:', error);
     }
 }
 
 async function showProductsByCategory(category) {
-    debugger
+    location.reload();
     try {
         const response = await fetch(`http://localhost:4242/api/pgs/Products/category/${category}`);
         const produtos = await response.json();
@@ -80,6 +83,7 @@ const showProductList = () => {
     productListSection.style.display = 'block';
     addProductSection.style.display = 'none';
     editProductSection.style.display = 'none';
+    addCategorieSection.style.display = 'none';
 };
 
 // Function to display the add product form
@@ -88,6 +92,16 @@ const showAddProductForm = () => {
     productListSection.style.display = 'none';
     addProductSection.style.display = 'block';
     editProductSection.style.display = 'none';
+    addCategorieSection.style.display = 'none';
+};
+
+// Function to display the add category form
+const showAddCategorieForm = () => {
+    addCategorieForm.reset();
+    productListSection.style.display = 'none';
+    addProductSection.style.display = 'none';
+    editProductSection.style.display = 'none';
+    addCategorieSection.style.display = 'block';
 };
 
 // Event listener for "List Products" link
@@ -100,16 +114,20 @@ document.getElementById('addProduct').addEventListener('click', () => {
     showAddProductForm();
 });
 
+// Event listener for "Add Category" link
+document.getElementById('addCategory').addEventListener('click', () => {
+    showAddCategorieForm();
+});
+
 // Event listener for form submission
 addProductForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-
     // Retrieve form input values
     const productName = document.getElementById('productName').value;
     const productDescription = document.getElementById('productDescription').value;
     const productPrice = parseFloat(document.getElementById('productPrice').value); 
     const productManufacturer=  document.getElementById('productManufacturer').value;
-    const productCategoryValue = parseInt(document.getElementById('idValue').value);
+    const productCategoryValue = parseInt(document.getElementById('productCategoryValue').value);
 
     // Create new product object with category ID
     const newProduct = {
@@ -117,7 +135,8 @@ addProductForm.addEventListener('submit', async (event) => {
         descricao: productDescription,
         preco: productPrice,
         fabricante: productManufacturer,
-        categoria: productCategoryValue
+        categoria: productCategoryValue,
+        imagem: "we" //Implementar imagens
     };
 
     try {
@@ -139,6 +158,51 @@ addProductForm.addEventListener('submit', async (event) => {
         }
     } catch (error) {
         console.error('Error adding product:', error);
+    }
+});
+
+// Event listener for form submission
+addCategorieForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    // Retrieve form input values
+    const descricao = document.getElementById('categorieName').value;
+    // Fetch existing categories
+    const response = await fetch('http://localhost:4242/api/pgs/Categories');
+    const categories = await response.json();
+
+    // Check if the category already exists
+    const categoryExists = categories.some(category => category.descricao.toLowerCase() === descricao.toLowerCase());
+
+    if (categoryExists) {
+        alert('A categoria já existe!');
+        return; // Stop further execution if category exists
+    }
+
+    // Create new category object
+    const newCategorie = {
+        descricao: descricao,
+    };
+
+    try {
+        // Send POST request to the backend API to create a new category
+        const response = await fetch(`http://localhost:4242/Api/Pgs/Categories/create`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newCategorie),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Categoria adicionada com sucesso');
+
+            // Show product list after adding and refresh page
+            location.reload();
+            showProductList();
+        } else {
+            alert('Erro ao adicionar categoria: ' + result.msg);
+        }
+    } catch (error) {
+        console.error('Error adding category:', error);
     }
 });
 
@@ -209,6 +273,7 @@ const formeditProduct = async (productId) => {
         editProductSection.style.display = 'block';
         productListSection.style.display = 'none';
         addProductSection.style.display = 'none';
+        addCategorieSection.style.display = 'none';
     } catch (error) {
         console.error('Error fetching product data:', error);
     }
@@ -328,6 +393,7 @@ const preparaEditProdutos = async (id_produto) => {
         editProductSection.style.display = 'block';
         productListSection.style.display = 'none';
         addProductSection.style.display = 'none';
+        addCategorieSection.style.display = 'none';
     } catch (error) {
         console.error("Houve um erro:", error);
     }
@@ -363,6 +429,7 @@ const atualizaProduto = async (id_produto) => {
         editProductSection.style.display = 'none';
         productListSection.style.display = 'block';
         addProductSection.style.display = 'none';
+        addCategorieSection.style.display = 'none';
         listarProdutos(); // Refresh the product list
     } catch (error) {
         console.error("Houve um erro:", error);

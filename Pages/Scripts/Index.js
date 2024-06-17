@@ -176,8 +176,8 @@ const readToken = async () => {
 };
 
 const redirectBasedOnRole = (userData) => {
-    const role = userData.isAdmin ? 'admin' : 'user';
-
+    role = userData.isAdmin;
+    debugger
     // Check the user's role and create the button accordingly
     if (role === "admin") {
         var ProfileButton = document.getElementById('ProfileButton');

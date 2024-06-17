@@ -215,7 +215,6 @@ const leTokenSFF = async () => {
         alert("Erro ao fazer login");
         return null; // Return null if the request failed
     } else {
-        alert("Token lido com sucesso");
         return result; // Return the decoded token data
     }
 };
