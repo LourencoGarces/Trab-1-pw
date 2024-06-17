@@ -1,43 +1,33 @@
-// Import PrismaClient from the Prisma client package
 const { PrismaClient } = require('@prisma/client');
-
-// Instantiate a new PrismaClient
 const prisma = new PrismaClient();
+const { fetchProductData } = require('../../services/scrapingService');
 
 // Define a function to get all products
-exports.getAll = async (req, res) => {
+const getAll = async (req, res) => {
     try {
-        // Fetch all products from the database
-        const response = await prisma.Produtos.findMany();
-        // Send the fetched products as a response
+        const response = await prisma.produtos.findMany();
         res.json(response);
     } catch (error) {
-        // Log the error and send an error response
         console.error(error);
         res.status(500).json({ error: 'An error occurred while fetching products' });
     }
 };
 
 // Define a function to get a product by its ID
-exports.getById = async (req, res) => {
-    // Parse the ID from the request parameters
+const getById = async (req, res) => {
     const id = parseInt(req.params.id);
     try {
-        // Fetch the product with the specified ID from the database
-        const response = await prisma.Produtos.findUnique({
-            where: {
-                id_produto: id_produto,
-            },
+        const response = await prisma.produtos.findUnique({
+            where: { id_produto: id },
         });
-        // Send the fetched product as a response
         res.status(200).json(response);
     } catch (error) {
-        // Send an error response
         res.status(404).json({ msg: error.message });
     }
 };
 
 // Define a function to create a new product
+
 exports.create = async (req, res) => {
     // Destructure the product data from the request body
     const { nome, descricao, imagem, preco, fabricante, categoria } = req.body;
@@ -52,16 +42,16 @@ exports.create = async (req, res) => {
                 id_categoria: categoria, 
                 imagem: imagem
             },
+
         });
-        // Send the created product as a response
         res.status(201).json(newProduct);
     } catch (error) {
-        // Send an error response
         res.status(400).json({ msg: error.message });
     }
 };
 
 // Define a function to update a product
+
 exports.update = async (req, res) => {
     // Destructure the product data from the request body
     const { id, nome, descricao, preco, fabricante, imagem, categoria } = req.body;
@@ -79,161 +69,170 @@ exports.update = async (req, res) => {
                 id_categoria: categoria, 
                 imagem: imagem
             },
+
         });
-        // Send the updated product as a response
         res.status(200).json(produto);
     } catch (error) {
-        // Send an error response
         res.status(400).json({ msg: error.message });
     }
 };
 
 // Define a function to delete a product
-exports.delete = async (req, res) => {
-    // Parse the ID from the request parameters
+const deleteProduct = async (req, res) => {
     const id = parseInt(req.params.id);
     try {
-        // Delete the product with the specified ID from the database
-        await prisma.Produtos.delete({
-            where: {
-                id_produto: id_produto,
-            },
+        await prisma.produtos.delete({
+            where: { id_produto: id },
         });
-        // Send a success response
         res.status(200).send("Deleted successfully!");
     } catch (error) {
-        // Send an error response
         res.status(400).json({ msg: error.message });
     }
 };
 
 // Define a function to get products by category
-exports.getByCategory = async (req, res) => {
-    // Parse the category from the request parameters
-    const category = parseInt(req.params.categoria);
+const getByCategory = async (req, res) => {
+    const id_categoria = parseInt(req.params.categoria);
     try {
-        // Fetch the products with the specified category from the database
-        const produtos = await prisma.Produtos.findMany({
-            where: {
-                id_categoria: id_categoria,
-            },
+        const produtos = await prisma.produtos.findMany({
+            where: { id_categoria },
         });
-        // Send the fetched products as a response
         res.status(200).json(produtos);
     } catch (error) {
-        // Send an error response
         res.status(500).json({ msg: error.message });
     }
 };
 
 // Define a function to get products by image
-exports.getByImage = async (req, res) => {
-    // Get the image from the request parameters
-    const image = req.params.imagem;
+const getByImage = async (req, res) => {
+    const imagem = req.params.imagem;
     try {
-        // Fetch the products with the specified image from the database
-        const produtos = await prisma.Produtos.findMany({
-            where: {
-                imagem: imagem,
-            },
+        const produtos = await prisma.produtos.findMany({
+            where: { imagem },
         });
-        // Send the fetched products as a response
         res.status(200).json(produtos);
     } catch (error) {
-        // Send an error response
         res.status(500).json({ msg: error.message });
     }
 };
 
 // Define a function to get products by manufacturer
-exports.getByManufacturer = async (req, res) => {
-    // Get the manufacturer from the request parameters
-    const manufacturer = req.params.fabricante;
+const getByManufacturer = async (req, res) => {
+    const fabricante = req.params.fabricante;
     try {
-        // Fetch the products with the specified manufacturer from the database
         const produtos = await prisma.produtos.findMany({
-            where: {
-                fabricante: fabricante,
-            },
+            where: { fabricante },
         });
-        // Send the fetched products as a response
         res.status(200).json(produtos);
     } catch (error) {
-        // Send an error response
         res.status(500).json({ msg: error.message });
     }
 };
 
 // Define a function to get products by price
-exports.getByPrice = async (req, res) => {
-    // Parse the price from the request parameters
-    const price = parseFloat(req.params.preco);
+const getByPrice = async (req, res) => {
+    const preco = parseFloat(req.params.preco);
     try {
-        // Fetch the products with the specified price from the database
         const produtos = await prisma.produtos.findMany({
-            where: {
-                preco: preco,
-            },
+            where: { preco },
         });
-        // Send the fetched products as a response
         res.status(200).json(produtos);
     } catch (error) {
-        // Send an error response
         res.status(500).json({ msg: error.message });
     }
 };
 
 // Define a function to get products by name
-exports.getByName = async (req, res) => {
-    // Get the name from the request parameters
-    const name = req.params.nome;
+const getByName = async (req, res) => {
+    const nome = req.params.nome;
     try {
-        // Fetch the products with the specified name from the database
-        const produtos = await prisma.Produtos.findMany({
-            where: {
-                nome: nome,
-            },
+        const produtos = await prisma.produtos.findMany({
+            where: { nome },
         });
-        // Send the fetched products as a response
         res.status(200).json(produtos);
     } catch (error) {
-        // Send an error response
         res.status(500).json({ msg: error.message });
     }
 };
 
 // Define a function to get products by category ID
-exports.getByIdCategory = async (req, res) => {
-    // Parse the category ID from the request parameters
-    const id_category = parseInt(req.params.id_categoria);
+const getByIdCategory = async (req, res) => {
+    const id_categoria = parseInt(req.params.id_categoria);
     try {
-        // Fetch the products with the specified category ID from the database
-        const produtos = await prisma.Produtos.findMany({
-            where: {
-                id_categoria: id_categoria,
-            },
+        const produtos = await prisma.produtos.findMany({
+            where: { id_categoria },
         });
-        // Send the fetched products as a response
         res.status(200).json(produtos);
     } catch (error) {
-        // Send an error response
         res.status(500).json({ msg: error.message });
     }
 };
-//Fuction to get products by descricao
-exports.getByDetalhes = async (req, res) => {
-    // Get the descricao from the request parameters
-    const detalhes = req.params.detalhes;
+
+// Function to get products by detalhes (details)
+const getByDetalhes = async (req, res) => {
+    const descricao = req.params.detalhes;
     try {
-        // Find the product with the given descricao
-        const response = await prisma.Produtos.findUnique({
-            where: {
-                descricao: descricao,
-            },
+        const response = await prisma.produtos.findUnique({
+            where: { descricao },
         });
-        // Send the response with status 200 (OK)
         res.status(200).json(response);
     } catch (error) {
-        res.status(404).json({ msg: error.message }); // Send error message with status 404 (Not Found)
+        res.status(404).json({ msg: error.message });
+    }
+};
+
+// Function to save a product to the database
+async function saveProduct(productData) {
+    try {
+        const categoria = await prisma.categorias.upsert({
+            where: { descricao: productData.categoria },
+            update: {},
+            create: { descricao: productData.categoria },
+        });
+
+        const produto = await prisma.produtos.create({
+            data: {
+                nome: productData.nome,
+                descricao: productData.descricao,
+                preco: productData.preco,
+                fabricante: productData.fabricante,
+                imagem: productData.imagem,
+                id_categoria: categoria.id_categoria,
+            },
+        });
+
+        return produto;
+    } catch (error) {
+        console.error(error);
+        return null;
     }
 }
+
+// Function to scrape product data from a URL and save it to the database
+async function scrapeAndSaveProduct(req, res) {
+    const { url } = req.body;
+    const productData = await fetchProductData(url);
+    if (productData) {
+        const savedProduct = await saveProduct(productData);
+        res.status(201).json(savedProduct);
+    } else {
+        res.status(500).json({ error: 'Failed to fetch product data' });
+    }
+}
+
+// Export all the functions to be used in other parts of the application
+module.exports = {
+    getAll,
+    getById,
+    create,
+    update,
+    delete: deleteProduct,
+    getByCategory,
+    getByImage,
+    getByManufacturer,
+    getByPrice,
+    getByName,
+    getByIdCategory,
+    getByDetalhes,
+    scrapeAndSaveProduct,
+};
