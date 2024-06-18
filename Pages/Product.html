@@ -16,7 +16,7 @@
 <body>
     <!-- Sidebar navigation -->
     <div class="sidebar" id="sidebar">
-        <a href="Product.html" id="Telemoveis">Telemóveis</a>
+        <a href="Product.html" id="Telemoveis" onclick="fetchProductsByCategory(id)">Telemóveis</a>
         <a href="Product.html" id="Smartwatches">Smart Watches</a>
         <a href="Product.html" id="Airpods">Airpods</a>
         <a href="Product.html" id="Ipads">Ipads</a>
@@ -75,23 +75,35 @@
 
     <div class="container-fluid h-100">
         <div class="row h-100">
-            <div class="col-md-6 login-section d-flex justify-content-center align-items-center">
-                <a href="Product.html" class="text-decoration-none text-dark">
-                    <h1>Produtos</h1>
-                </a>
-            </div>
-            <div class="col-md-6 login-section d-flex justify-content-center align-items-center">
-                <a href="Manufactering.html" class="text-decoration-none text-dark">
-                    <h1>Fabricante</h1>
-                </a>
-            </div>
-            <div class="col-md-6 login-section d-flex justify-content-center align-items-center">
-                <a href="Categories.html" class="text-decoration-none text-dark">
-                    <h1>Categorias</h1>
-                </a>
-            </div>
-            <div class="col-md-6 login-section d-flex justify-content-center align-items-center">
+            <div class="login-section d-flex justify-content-center align-items-center">
                 <div class="container">
+                    <div class="col-12 d-flex justify-content-end">
+                        <select class="form-select" id="filterCategory">
+                            <option value="">Selecione a categoria</option>
+                            <option value="telemoveis">Telemoveis</option>
+                            <option value="clothing">Roupas</option>
+                            <option value="books">Livros</option>
+                            <!-- Adicione mais opções de categoria conforme necessário -->
+                        </select>
+                        
+                        <select class="form-select" id="filterPrice">
+                            <option value="">Selecione o intervalo de preço</option>
+                            <option value="0-50">0 - 50</option>
+                            <option value="51-100">51 - 100</option>
+                            <option value="101-200">101 - 200</option>
+                            <!-- Adicione mais opções de faixa de preço conforme necessário -->
+                        </select>
+                        
+                        <select class="form-select" id="filterManufacturer">
+                            <option value="">Selecione o fabricante</option>
+                            <option value="manufacturer1">Fabricante 1</option>
+                            <option value="manufacturer2">Fabricante 2</option>
+                            <option value="manufacturer3">Fabricante 3</option>
+                            <!-- Adicione mais opções de fabricante conforme necessário -->
+                        </select>
+                        
+                        <button id="applyFilters" class="btn btn-primary">Aplicar Filtros</button>                        
+                    </div>
                     <div class="row" id="ProductSection">
                         <!-- Dynamic content will be inserted here -->
                     </div>

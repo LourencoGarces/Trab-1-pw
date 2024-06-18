@@ -27,8 +27,7 @@ const getById = async (req, res) => {
 };
 
 // Define a function to create a new product
-
-exports.create = async (req, res) => {
+const create = async (req, res) => {
     // Destructure the product data from the request body
     const { nome, descricao, imagem, preco, fabricante, categoria } = req.body;
     try {
@@ -51,8 +50,7 @@ exports.create = async (req, res) => {
 };
 
 // Define a function to update a product
-
-exports.update = async (req, res) => {
+const update = async (req, res) => {
     // Destructure the product data from the request body
     const { id, nome, descricao, preco, fabricante, imagem, categoria } = req.body;
     try {
@@ -209,7 +207,7 @@ async function saveProduct(productData) {
 }
 
 // Function to scrape product data from a URL and save it to the database
-async function scrapeAndSaveProduct(req, res) {
+const scrapeAndSaveProduct = async (req, res) => {
     const { url } = req.body;
     const productData = await fetchProductData(url);
     if (productData) {
