@@ -292,6 +292,7 @@ const removeFromWishlist = async (req, res) => {
     }
 };
 
+
 module.exports = {
     getAll,
     getById,

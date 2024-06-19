@@ -12,6 +12,7 @@ const categoriesRouter = require('./Routes/Pgs/Categories'); // Import category 
 const productsRouter = require('./Routes/Pgs/Products'); // Import product routes
 
 
+
 const app = express(); // Create an instance of Express
 app.use(bodyParser.json()); // Use body-parser middleware to parse JSON request bodies
 app.use(cors()); // Use CORS middleware to enable Cross-Origin Resource Sharing

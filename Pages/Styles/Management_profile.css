@@ -67,3 +67,15 @@ body{
     background-color: #f1e0e3;
     border-color: #f1e0e3;
 }
+
+/* Define fontes para títulos h1 e h2 */
+h1, h2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: light;
+    font-size: 30px;
+
+}
