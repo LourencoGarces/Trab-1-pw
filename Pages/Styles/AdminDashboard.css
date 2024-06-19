@@ -41,3 +41,15 @@
 .btn-danger:hover {
     background-color: #c82333; /* Darker shade on hover */
 }
+
+/* Define fontes para títulos h1 e h2 */
+h2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+  }
+  h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: light;
+    font-size: 30px;
+  
+  }

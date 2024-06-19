@@ -31,7 +31,17 @@
     perspective: 1000px; /* Add perspective for 3D effect */
     margin-bottom: 40%;
 }
+/* Define fontes para títulos h1 e h2 */
+h1, h2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: light;
+    font-size: 30px;
 
+}
 .card-img{
     width: 100%;
     height: 100%;
@@ -77,6 +87,8 @@
 }
 
 body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
     background-color: #faf9f8;
 }
 
