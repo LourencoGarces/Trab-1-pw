@@ -34,13 +34,6 @@ productsRouter.delete('/wishlist/:userId/:productId', controller.removeFromWishl
 
 
 
-//Minha parte
-
-// Wishlist routes
-productsRouter.post('/wishlist', controller.addToWishlist);
-productsRouter.get('/wishlist/:userId', controller.getWishlist);
-
-
 // Route to serve the HTML for a specific product by id
 productsRouter.get('/product/:id', (req, res) => {
     res.sendFile(path.join(__dirname, '../../public/Product.html'));
