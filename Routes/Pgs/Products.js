@@ -1,10 +1,10 @@
-// src/Routes/Pgs/Products.js
+// /Routes/Pgs/Products.js
 
 const express = require('express'); // Import the Express framework
 const path = require('path'); // Import the path module to work with file paths
 const controller = require('../../Controllers/Pgs/Products'); // Import the Products controller
+
 const productsRouter = express.Router(); // Create a new router instance from Express
-const { scrapeAndSaveProduct } = require('../../Controllers/Pgs/Products'); // Import the scrapeAndSaveProduct function
 
 // CRUD operations for products
 productsRouter.get('/', controller.getAll); // Get all products
@@ -27,9 +27,12 @@ productsRouter.get('/name/:nome', controller.getByName); // Get products by name
 productsRouter.get('/id_category/:id_categoria', controller.getByIdCategory); // Get products by category ID
 // Function to get products by details
 productsRouter.get('/detalhes/:detalhes', controller.getByDetalhes); // Get products by details
+// Wishlist routes
+productsRouter.post('/wishlist', controller.addToWishlist);
+productsRouter.get('/wishlist/:userId', controller.getWishlist);
+productsRouter.delete('/wishlist/:userId/:productId', controller.removeFromWishlist);
 
-// Adding the scraping route
-productsRouter.post('/scrape', scrapeAndSaveProduct); // Scrape and save product data
+
 
 // Route to serve the HTML for a specific product by id
 productsRouter.get('/product/:id', (req, res) => {

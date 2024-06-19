@@ -1,11 +1,35 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const { fetchProductData } = require('../../services/scrapingService');
 
-// Define a function to get all products
+// Function to get all products with optional filtering
 const getAll = async (req, res) => {
+    const { categoria, preco_min, preco_max, fabricante } = req.query;
     try {
-        const response = await prisma.produtos.findMany();
+        const filter = {};
+
+        // Apply category filter if provided
+        if (categoria) {
+            filter.id_categoria = parseInt(categoria);
+        }
+        // Apply price range filter if provided
+        if (preco_min || preco_max) {
+            filter.preco = {};
+            if (preco_min) {
+                filter.preco.gte = parseFloat(preco_min);
+            }
+            if (preco_max) {
+                filter.preco.lte = parseFloat(preco_max);
+            }
+        }
+        // Apply manufacturer filter if provided
+        if (fabricante) {
+            filter.fabricante = fabricante;
+        }
+
+        // Fetch products from database with applied filters
+        const response = await prisma.produtos.findMany({
+            where: filter,
+        });
         res.json(response);
     } catch (error) {
         console.error(error);
@@ -13,7 +37,7 @@ const getAll = async (req, res) => {
     }
 };
 
-// Define a function to get a product by its ID
+// Function to get a product by its ID
 const getById = async (req, res) => {
     const id = parseInt(req.params.id);
     try {
@@ -26,7 +50,7 @@ const getById = async (req, res) => {
     }
 };
 
-// Define a function to create a new product
+// Function to create a new product
 const create = async (req, res) => {
     // Destructure the product data from the request body
     const { nome, descricao, imagem, preco, fabricante, categoria } = req.body;
@@ -41,7 +65,6 @@ const create = async (req, res) => {
                 id_categoria: categoria, 
                 imagem: imagem
             },
-
         });
         res.status(201).json(newProduct);
     } catch (error) {
@@ -49,7 +72,7 @@ const create = async (req, res) => {
     }
 };
 
-// Define a function to update a product
+// Function to update a product
 const update = async (req, res) => {
     // Destructure the product data from the request body
     const { id, nome, descricao, preco, fabricante, imagem, categoria } = req.body;
@@ -67,7 +90,6 @@ const update = async (req, res) => {
                 id_categoria: categoria, 
                 imagem: imagem
             },
-
         });
         res.status(200).json(produto);
     } catch (error) {
@@ -75,7 +97,7 @@ const update = async (req, res) => {
     }
 };
 
-// Define a function to delete a product
+// Function to delete a product
 const deleteProduct = async (req, res) => {
     const id = parseInt(req.params.id);
     try {
@@ -88,7 +110,7 @@ const deleteProduct = async (req, res) => {
     }
 };
 
-// Define a function to get products by category
+// Function to get products by category
 const getByCategory = async (req, res) => {
     const id_categoria = parseInt(req.params.categoria);
     try {
@@ -101,7 +123,7 @@ const getByCategory = async (req, res) => {
     }
 };
 
-// Define a function to get products by image
+// Function to get products by image
 const getByImage = async (req, res) => {
     const imagem = req.params.imagem;
     try {
@@ -114,7 +136,7 @@ const getByImage = async (req, res) => {
     }
 };
 
-// Define a function to get products by manufacturer
+// Function to get products by manufacturer
 const getByManufacturer = async (req, res) => {
     const fabricante = req.params.fabricante;
     try {
@@ -127,7 +149,7 @@ const getByManufacturer = async (req, res) => {
     }
 };
 
-// Define a function to get products by price
+// Function to get products by price
 const getByPrice = async (req, res) => {
     const preco = parseFloat(req.params.preco);
     try {
@@ -140,7 +162,7 @@ const getByPrice = async (req, res) => {
     }
 };
 
-// Define a function to get products by name
+// Function to get products by name
 const getByName = async (req, res) => {
     const nome = req.params.nome;
     try {
@@ -153,7 +175,7 @@ const getByName = async (req, res) => {
     }
 };
 
-// Define a function to get products by category ID
+// Function to get products by category ID
 const getByIdCategory = async (req, res) => {
     const id_categoria = parseInt(req.params.id_categoria);
     try {
@@ -166,7 +188,7 @@ const getByIdCategory = async (req, res) => {
     }
 };
 
-// Function to get products by detalhes (details)
+// Function to get products by details
 const getByDetalhes = async (req, res) => {
     const descricao = req.params.detalhes;
     try {
@@ -206,19 +228,70 @@ async function saveProduct(productData) {
     }
 }
 
-// Function to scrape product data from a URL and save it to the database
-const scrapeAndSaveProduct = async (req, res) => {
-    const { url } = req.body;
-    const productData = await fetchProductData(url);
-    if (productData) {
-        const savedProduct = await saveProduct(productData);
-        res.status(201).json(savedProduct);
-    } else {
-        res.status(500).json({ error: 'Failed to fetch product data' });
-    }
-}
+// Function to add a product to the wishlist
+const addToWishlist = async (req, res) => {
+    const { userId, productId } = req.body;
+    try {
+        // Check if the user's wishlist already exists
+        let listaSeguidos = await prisma.lista_seguidos.findFirst({
+            where: { id_utilizador: parseInt(userId) }
+        });
 
-// Export all the functions to be used in other parts of the application
+        // If it does not exist, create a new wishlist
+        if (!listaSeguidos) {
+            listaSeguidos = await prisma.lista_seguidos.create({
+                data: {
+                    id_utilizador: parseInt(userId)
+                }
+            });
+        }
+
+        // Add the product to the wishlist
+        const wishlistItem = await prisma.a_seguir.create({
+            data: {
+                id_produto: parseInt(productId),
+                alerta_preco: false, // Set as needed
+                id_utilizador: parseInt(userId),
+                id_lista: listaSeguidos.id_lista
+            }
+        });
+        res.status(201).json(wishlistItem);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+// Function to get the wishlist items of a user
+const getWishlist = async (req, res) => {
+    const userId = parseInt(req.params.userId);
+    try {
+        const wishlist = await prisma.a_seguir.findMany({
+            where: { id_utilizador: userId },
+            include: { Produtos: true }
+        });
+        res.status(200).json(wishlist);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+// Function to remove a product from the wishlist
+const removeFromWishlist = async (req, res) => {
+    const userId = parseInt(req.params.userId);
+    const productId = parseInt(req.params.productId);
+    try {
+        await prisma.a_seguir.deleteMany({
+            where: {
+                id_utilizador: userId,
+                id_produto: productId
+            }
+        });
+        res.status(200).json({ msg: 'Product removed from wishlist' });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
+
 module.exports = {
     getAll,
     getById,
@@ -232,5 +305,7 @@ module.exports = {
     getByName,
     getByIdCategory,
     getByDetalhes,
-    scrapeAndSaveProduct,
+    addToWishlist,
+    getWishlist,
+    removeFromWishlist
 };

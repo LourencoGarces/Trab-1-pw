@@ -18,102 +18,99 @@
 
 <body>
     
-    <!-- Sidebar navigation -->
-    <div class="sidebar" id="sidebar">
-        <!-- Mobile Phones Link -->
-        <a href="Product.html" id="Telemoveis">Telemóveis</a>
-        <!-- Smart Watches Link -->
-        <a href="Product.html" id="Smartwatches">Smart Watches</a>
-        <!-- Airpods Link -->
-        <a href="Product.html" id="Airpods">Airpods</a>
-        <!-- iPads Link -->
-        <a href="Product.html" id="Ipads">Ipads</a>
-        <!-- Computers Link -->
-        <a href="Product.html" id="Computadores">Computadores</a>
-        <!-- Accessories Link -->
-        <a href="Product.html" id="Assesorios">Assesórios</a>
-    </div>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="col-md-1">
-                <!-- Sidebar Toggle Icon -->
-                <svg id="sidebarToggle" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                    class="bi sidebaricon bi-justify" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+   <!-- Sidebar navigation -->
+   <div class="sidebar" id="sidebar">
+    <a href="Product.html" id="Telemoveis" onclick="fetchProductsByCategory(id)">Telemóveis</a>
+    <a href="Product.html" id="Smartwatches" onclick="fetchProductsByCategory(id)">Smartwatches</a>
+    <a href="Product.html" id="Airpods" onclick="fetchProductsByCategory(id)">Airpods</a>
+    <a href="Product.html" id="Ipads" onclick="fetchProductsByCategory(id)">Ipads</a>
+    <a href="Product.html" id="Computadores" onclick="fetchProductsByCategory(id)">Computadores</a>
+    <a href="Product.html" id="Assesorios"  onclick="fetchProductsByCategory(id)">Assesorios</a>
+</div>
+<!-- Header section -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="col-md-1">
+            <!-- Sidebar Toggle Icon -->
+            <svg id="sidebarToggle" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                class="bi sidebaricon bi-justify" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+            </svg>
+        </div>
+        <div class="col-md-1">
+            <!-- Brand Logo (Clickable) -->
+            <a href="Index.html" class="navbar-brand">Smart Buyer</a>
+        </div>
+        <div class="container d-flex justify-content-end align-items-start col-md-6">
+            <div id="divBusca">
+                <!-- Search Input -->
+                <input type="text" id="txtBusca" placeholder="Procurar..." />
+                <!-- Search Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                 </svg>
             </div>
-            <div class="col-md-1">
-                <!-- Brand Logo (Clickable) -->
-                <a href="Index.html" class="navbar-brand">Smart Buyer</a>
-            </div>
-            <div class="container d-flex justify-content-end align-items-start col-md-6">
-                <div id="divBusca">
-                    <!-- Search Input -->
-                    <input type="text" id="txtBusca" placeholder="Procurar..." />
-                    <!-- Search Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                    </svg>
-                </div>
-            </div>
-            <div class="header-container col-md-3">
-                <!-- Profile Button -->
-                <button class="iconButton" id="profileButton">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoProfile bi-person"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                    </svg>
-                </button>
-                <!-- Cart Button -->
-                <button class="iconButton" id="cardButton">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi logoCard bi-card-list"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
-                        <path
-                            d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
-                    </svg>
-                </button>
-                <!-- Log Out Button -->
-                <button id="logoutButton" style="display: none;">Log Out</button>
+        </div>
+        <div class="header-container col-md-3">
+            <!-- Profile Button -->
+            <button class="iconButton" id="profileButton">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 756.52 756.52">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: #004093;
+                            }
+                        </style>
+                    </defs>
+                    <circle class="cls-1" cx="378.26" cy="292.59" r="133.28" />
+                    <polygon class="cls-1" points="378.26 621.17 469.21 463.64 287.31 463.64 378.26 621.17" />
+                    <path class="cls-1"
+                        d="M960,88C751.09,88,581.74,257.35,581.74,466.26S751.09,844.52,960,844.52s378.26-169.35,378.26-378.26S1168.91,88,960,88Zm0,648.75c-149.39,0-270.49-121.1-270.49-270.49S810.61,195.77,960,195.77s270.49,121.1,270.49,270.49S1109.39,736.75,960,736.75Z"
+                        transform="translate(-581.74 -88)" />
+                </svg>
+            </button>
+            <!-- Cart Button -->
+            <button class="iconButton" id="cardButton" data-bs-toggle="modal" data-bs-target="#infoModal">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 592.17 712.74"><defs><style>.cls-1{fill:#004093;}</style></defs><path class="cls-1" d="M1080.28,729.84c-4.31,29.19-31.15,51.68-63.62,51.68-32,0-58.53-21.84-63.43-50.41A77.4,77.4,0,0,1,938.68,725h0c-.53,40.57,34.56,73.61,77.92,73.61,43,0,77.92-32.55,77.92-72.7q0-1.47-.06-2.91A77.33,77.33,0,0,1,1080.28,729.84Z" transform="translate(-717.05 -192.24)"/><ellipse class="cls-1" cx="927.62" cy="633.44" rx="41.09" ry="41.2" transform="translate(-892.97 650.78) rotate(-45.08)"/><ellipse class="cls-1" cx="1098.22" cy="633.44" rx="41.2" ry="41.09" transform="translate(-842.97 771.06) rotate(-45.06)"/><path class="cls-1" d="M1309.22,499.08c0-169.46-132.56-306.84-296.08-306.84S717.05,329.62,717.05,499.08q0,7.31.34,14.53-.33,5.92-.34,11.93V692.26C717.05,809.75,812.29,905,929.77,905H1096.5c117.49,0,212.72-95.24,212.72-212.73V525.54q0-6-.34-11.93Q1309.21,506.38,1309.22,499.08ZM1016.39,846.65A172.06,172.06,0,0,1,842.83,673.09c.79-93.42,77.14-169.77,170.56-170.57A172.08,172.08,0,0,1,1187,676.09C1186.16,769.51,1109.81,845.86,1016.39,846.65Zm119.69-398.71H890.2a159,159,0,0,0-112.91,46.83c4.1-127.69,108.88-229.94,237.56-229.94,129.89,0,235.44,104.2,237.64,233.57A159.1,159.1,0,0,0,1136.08,447.94Z" transform="translate(-717.05 -192.24)"/></svg>
+            </button>
 
-                <!-- Temporary brand logo for management profile -->
-                <a href="Management_Profile.html" class="navbar-brand">Smart Buyer</a> <!-- Temporary link -->
+            <!-- Log Out Button -->
+            <button id="logoutButton" style="display: none;">Log Out</button>
 
-                <!-- Profile Image -->
-                <div class="profile iconButton" id="ProfileButton" style="display: none;">
-                </div>
+            <!-- Profile Image -->
+            <div class="profile iconButton" id="ProfileButton" style="display: none;">
             </div>
-            <!-- Modal for login or register -->
-            <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <p>Por favor, faça login ou registre-se para continuar.</p>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn-close " data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
+        </div>
+        <!-- Modal for login or register -->
+        <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p>Por favor, faça login ou registre-se para continuar.</p>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn border LogIn">Log In</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn border Register">Register</button>
-                            </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn border LogIn">Log In</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn border Register">Register</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
     <!-- Main Container -->
     <div class="container">
