@@ -7,7 +7,7 @@ const addProductForm = document.getElementById('addProductForm');
 const addCategorieSection = document.getElementById('addCategorieSection');
 const addCategorieForm = document.getElementById('addCategorieForm');
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
     var productCategory = document.getElementById('productCategory');
     try {
         // Fetch categories from the backend API
@@ -51,9 +51,9 @@ async function showProductsByCategory(category) {
     try {
         const response = await fetch(`http://localhost:4242/api/pgs/Products/category/${category}`);
         const produtos = await response.json();
-        
+
         let strHtml = '';
-        
+
         produtos.forEach(artigo => {
             strHtml += `
                 <tr>
@@ -70,7 +70,7 @@ async function showProductsByCategory(category) {
                 </tr>
             `;
         });
-        
+
         document.getElementById("productTableBody").innerHTML = strHtml;
     } catch (error) {
         console.error('Error fetching products for category:', error);
@@ -125,8 +125,8 @@ addProductForm.addEventListener('submit', async (event) => {
     // Retrieve form input values
     const productName = document.getElementById('productName').value;
     const productDescription = document.getElementById('productDescription').value;
-    const productPrice = parseFloat(document.getElementById('productPrice').value); 
-    const productManufacturer=  document.getElementById('productManufacturer').value;
+    const productPrice = parseFloat(document.getElementById('productPrice').value);
+    const productManufacturer = document.getElementById('productManufacturer').value;
     const productCategoryValue = parseInt(document.getElementById('productCategoryValue').value);
 
     // Create new product object with category ID
@@ -307,9 +307,9 @@ const listarProdutos = async () => {
     try {
         const response = await fetch('http://localhost:4242/api/pgs/Products/');
         const produtos = await response.json();
-        
+
         let strHtml = '';
-        
+
         produtos.forEach(artigo => {
             strHtml += `
                 <tr>
@@ -326,7 +326,7 @@ const listarProdutos = async () => {
                 </tr>
             `;
         });
-        
+
         document.getElementById("productTableBody").innerHTML = strHtml;
     } catch (error) {
         console.error('Error fetching product data:', error);
@@ -359,7 +359,7 @@ const preparaEditProdutos = async (id_produto) => {
 
         const categoriesResponse = await fetch(`http://localhost:4242/api/pgs/Categories/`);
         const categories = await categoriesResponse.json();
-        
+
         // Create and populate the edit form
         editProductSection.innerHTML = `
             <h2>Edit Product</h2>

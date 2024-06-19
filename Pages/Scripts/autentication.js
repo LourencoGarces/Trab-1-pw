@@ -12,10 +12,10 @@ Here we have the following functions:
 */
 
 // Adds an event listener for the sidebar toggle button
-document.getElementById('sidebarToggle').addEventListener('click', function() {
+document.getElementById('sidebarToggle').addEventListener('click', function () {
     // Toggle the 'active' class of the sidebar to show it
     document.getElementById('sidebar').classList.toggle('active');
-}); 
+});
 
 // Function to close the sidebar
 function closeSidebar() {
@@ -27,7 +27,7 @@ function closeSidebar() {
 }
 
 // Event listener to handle clicks outside of the sidebar
-document.body.addEventListener('click', function(event) {
+document.body.addEventListener('click', function (event) {
     // Check if the clicked element is not inside the sidebar or the sidebar toggle button
     if (!event.target.closest('#sidebar') && !event.target.closest('#sidebarToggle')) {
         // If clicked outside of the sidebar, close the sidebar
@@ -39,23 +39,23 @@ document.body.addEventListener('click', function(event) {
 var modal = document.getElementById("myModal"); // Get the modal by its ID
 
 // Add a click event to the profile button to open the modal
-document.getElementById("profileButton").addEventListener("click", function() {
+document.getElementById("profileButton").addEventListener("click", function () {
     modal.style.display = "block"; // Set the modal style to 'block' to show it
 });
 
 // Function to redirect to the Index.html
 function redirectToIndex() {
-    window.location.href = "Index.html"; 
+    window.location.href = "Index.html";
 }
 
 // Function to redirect to the login page
 function redirectToLogin() {
-    window.location.href = "Login.html"; 
+    window.location.href = "Login.html";
 }
 
 // Function to redirect to the register page
 function redirectToRegister() {
-    window.location.href = "Register.html"; 
+    window.location.href = "Register.html";
 }
 
 // Adds an event listener for the Log In button
@@ -133,7 +133,7 @@ async function registerUser() {
     var contacto = document.getElementById("contact").value;
     var senha = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypepassword").value;
-    
+
     // Check if fields are filled
     if (email.trim() === '' || nome.trim() === '' || senha.trim() === '' || retypePassword.trim() === '') {
         alert("Por favor, preencha todos os campos.");
@@ -219,7 +219,7 @@ const leTokenSFF = async () => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
     const token = localStorage.getItem('token');
     if (token) {
         // Redirect to the index page if the current page is the login or registration page

@@ -192,7 +192,7 @@ const redirectBasedOnRole = (userData) => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', async function() {   
+document.addEventListener('DOMContentLoaded', async function () {
     const token = localStorage.getItem('token');
     if (token) {
         // Redirect to the index page if the current page is the login or registration page
@@ -218,5 +218,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (!window.location.pathname.includes('/Login.html') && !window.location.pathname.includes('/Register.html') && !window.location.pathname.includes('/Forgot.html')) {
             window.location.href = 'Login-explore.html';
         }
+    }
+});
+
+document.getElementById('searchIcon').addEventListener('click', function () {
+    const query = document.getElementById('txtBusca').value;
+    if (query) {
+        window.location.href = `Product.html?search=${query}`;
     }
 });
